@@ -35,7 +35,7 @@
 </div>
 <form>
   <input type="text" placeholder="Usuario">
-  <input type="password" placeholder="ContraseÃ±a">
+  <input type="password" placeholder="Contraseña">
   <a href="#" >¿Olvidaste tu nombre de usuario o contraseña?</a>
   <input type="submit" value="Entrar">
 
