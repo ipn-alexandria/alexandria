@@ -21,7 +21,7 @@
     <source src="./img/video/IMG_3727.mov" type="video/mp4">
     <source src="movie.webm" type="video/webm">
          Sorry, your browser does not support HTML5 video. //
-         Lo sentimos, tu navegador no soporta la visualizaciÃ³n de video <a href src="https://www.google.com.mx/chrome/">https://www.google.com.mx/chrome/</a>
+         Lo sentimos, tu navegador no soporta la visualizacion de video <a href src="https://www.google.com.mx/chrome/">https://www.google.com.mx/chrome/</a>
 </video>
 <body>
   <div class="cap">
@@ -29,11 +29,12 @@
         <img src="./img/resources/logo.png" width="17%">
     </div>
 </div>
-<form>
-  <input type="text" placeholder="Usuario">
-  <input type="password" placeholder="ContraseÃ±a">
-  <a href="#" >Â¿Olvidaste tu nombre de usuario o contraseÃ±a?</a>
+<form method="post" action="login.jsp">
+  <input type="text" placeholder="Usuario" name="uname">
+  <input type="password" placeholder="Contraseña" name="pass">
+  <a href="#" >¿Olvidaste tu nombre de usuario o contraseña?</a>
   <input type="submit" value="Entrar">
+  <input type="reset" value="Reset">
 
 </form>
 </body>
@@ -42,7 +43,7 @@
     <br>    <br>
     <br>    
     <footer>
-        Alexandria-IPN 2016 Â©
+        Alexandria-IPN 2016 ©
     </footer>
 
 </html>
