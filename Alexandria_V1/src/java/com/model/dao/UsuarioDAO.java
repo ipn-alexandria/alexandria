@@ -25,6 +25,10 @@ public class UsuarioDAO {
             = "SELECT * FROM Usuario WHERE (idUsuario = ? ) "; 
     private static final String SQL_SELECT_ALL
             = "SELECT * FROM Usuario"; 
+    
+    private static final String SQL_SELECT_LOGIN
+            = "SELECT * FROM Usuario WHERE ( nombreUsuario = ? AND contrasena = ? ) ";
+    
     public Connection conexion;
     
     public Connection obtenerConexion() {
@@ -121,6 +125,28 @@ public class UsuarioDAO {
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdUsuario());
+            rs = ps.executeQuery();
+            List<Usuario> usuarioList = obtenerLista(rs);
+            if(usuarioList.size() >0){
+                a = (Usuario) usuarioList.get(0);
+            }else {
+                a = null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            
+        }
+        return a;
+    }
+    
+    public Usuario readLogin(Usuario a) {
+        try {
+            obtenerConexion();
+            ResultSet rs;
+            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_LOGIN);
+            ps.setString(1, a.getNombreUsuario());
+            ps.setString(2, a.getContrasena());
             rs = ps.executeQuery();
             List<Usuario> usuarioList = obtenerLista(rs);
             if(usuarioList.size() >0){

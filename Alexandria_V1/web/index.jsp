@@ -29,7 +29,7 @@
         <img src="./img/resources/logo.png" width="17%">
     </div>
 </div>
-<form method="post" action="login.jsp">
+<form method="post" action="LoginServlet">
   <input type="text" placeholder="Usuario" name="uname">
   <input type="password" placeholder="Contraseña" name="pass">
   <a href="#" >¿Olvidaste tu nombre de usuario o contraseña?</a>
