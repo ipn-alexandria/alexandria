@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
-                            //getServletConfig().getServletContext().getRequestDispatcher("/principalpaciente.jsp").forward(request,response);
+                            getServletConfig().getServletContext().getRequestDispatcher("/jsp/administrador/principalAdministrador.jsp").forward(request,response);
                             break;
                     case 2: System.out.println("LISTO REDIRIGIR ----Profesor----");
                             id = u2.getIdUsuario();
@@ -83,6 +83,7 @@ public class LoginServlet extends HttpServlet {
             }
             else {
                 System.out.println("ERROR DE USUARIO");
+                getServletConfig().getServletContext().getRequestDispatcher("/jsp/errorLogin.jsp").forward(request,response);
             }
             
             
