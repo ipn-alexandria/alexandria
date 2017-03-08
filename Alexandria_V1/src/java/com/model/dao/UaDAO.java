@@ -1,5 +1,6 @@
 package com.model.dao;
 
+import com.model.db.Conexion;
 import com.model.entities.Ua;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,25 +28,11 @@ public class UaDAO {
             = "SELECT * FROM Ua"; 
     public Connection conexion;
     
-    public Connection obtenerConexion() {
-        String userName = "root";
-        String userPassword = "mike";
-        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-        String driverBd = "com.mysql.jdbc.Driver";
-        try {
-            Class.forName(driverBd);
-            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(UaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;
-    }
+    Conexion con = new Conexion();
     
     public void create(Ua a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreUA());
             ps.setInt(2, a.getNivel());
@@ -65,7 +52,7 @@ public class UaDAO {
     
     public void update(Ua a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreUA());
             ps.setInt   (2, a.getNivel());
@@ -86,7 +73,7 @@ public class UaDAO {
     
     public void delete(Ua a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdUA());
             ps.executeUpdate();
@@ -105,7 +92,7 @@ public class UaDAO {
     
     public Ua read(Ua a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdUA());
@@ -127,7 +114,7 @@ public class UaDAO {
     public List readAll() {
          List<Ua> uaList = null;
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();

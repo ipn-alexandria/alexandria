@@ -1,5 +1,6 @@
 package com.model.dao;
 
+import com.model.db.Conexion;
 import com.model.entities.Tipodeusuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,25 +28,11 @@ public class TipodeusuarioDAO {
             = "SELECT * FROM Tipodeusuario"; 
     public Connection conexion;
     
-    public Connection obtenerConexion() {
-        String userName = "root";
-        String userPassword = "mike";
-        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-        String driverBd = "com.mysql.jdbc.Driver";
-        try {
-            Class.forName(driverBd);
-            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(TipodeusuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;
-    }
+    Conexion con = new Conexion();
     
     public void create(Tipodeusuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreTipodeusuario());
             ps.executeUpdate();
@@ -64,7 +51,7 @@ public class TipodeusuarioDAO {
     
     public void update(Tipodeusuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreTipodeusuario());
             ps.setInt(2, a.getIdTipodeusuario());
@@ -84,7 +71,7 @@ public class TipodeusuarioDAO {
     
     public void delete(Tipodeusuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdTipodeusuario());
             ps.executeUpdate();
@@ -103,7 +90,7 @@ public class TipodeusuarioDAO {
     
     public Tipodeusuario read(Tipodeusuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdTipodeusuario());
@@ -125,7 +112,7 @@ public class TipodeusuarioDAO {
     public List readAll() {
          List<Tipodeusuario> tipodeusuarioList = null;
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();

@@ -1,5 +1,6 @@
 package com.model.dao;
 
+import com.model.db.Conexion;
 import com.model.entities.Tema;
 import com.model.entities.Ua;
 import java.sql.Connection;
@@ -28,25 +29,11 @@ public class TemaDAO {
             = "SELECT * FROM Tema"; 
     public Connection conexion;
     
-    public Connection obtenerConexion() {
-        String userName = "root";
-        String userPassword = "mike";
-        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-        String driverBd = "com.mysql.jdbc.Driver";
-        try {
-            Class.forName(driverBd);
-            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(TemaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;
-    }
+    Conexion con = new Conexion();
     
     public void create(Tema a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
             ps.setInt(1, a.getIdUA());
             ps.setString(2, a.getNombretema());
@@ -66,7 +53,7 @@ public class TemaDAO {
     
     public void update(Tema a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
             ps.setInt(1, a.getIdUA());
             ps.setString(2, a.getNombretema());
@@ -87,7 +74,7 @@ public class TemaDAO {
     
     public void delete(Tema a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdTema());
             ps.executeUpdate();
@@ -106,7 +93,7 @@ public class TemaDAO {
     
     public Tema read(Tema a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdTema());
@@ -128,7 +115,7 @@ public class TemaDAO {
     public List readAll() {
          List<Tema> temaList = null;
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();

@@ -28,26 +28,11 @@ public class MaterialDAO {
             = "SELECT * FROM Material"; 
     public Connection conexion;
     
-//    public Connection obtenerConexion() {
-//        String userName = "root";
-//        String userPassword = "mike";
-//        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-//        String driverBd = "com.mysql.jdbc.Driver";
-//        try {
-//            Class.forName(driverBd);
-//            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-//        } catch (ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return conexion;
-//    }
-    Conexion conn = new Conexion();
+    Conexion con = new Conexion();
+    
     public void create(Material a) {
         try {
-//            Conexion conn = new Conexion();
-            conn.obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreMaterial());
             ps.setInt(2, a.getIdTema());
@@ -75,7 +60,7 @@ public class MaterialDAO {
     
     public void update(Material a) {
         try {
-            conn.obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreMaterial());
             ps.setInt(2, a.getIdTema());
@@ -104,7 +89,7 @@ public class MaterialDAO {
     
     public void delete(Material a) {
         try {
-            conn.obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdMaterial());
             ps.executeUpdate();
@@ -123,7 +108,7 @@ public class MaterialDAO {
     
     public Material read(Material a) {
         try {
-            conn.obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdMaterial());
@@ -145,7 +130,7 @@ public class MaterialDAO {
     public List readAll() {
          List<Material> materialList = null;
         try {
-            conn.obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();

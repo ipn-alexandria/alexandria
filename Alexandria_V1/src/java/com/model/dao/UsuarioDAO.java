@@ -1,5 +1,6 @@
 package com.model.dao;
 
+import com.model.db.Conexion;
 import com.model.entities.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,25 +32,11 @@ public class UsuarioDAO {
     
     public Connection conexion;
     
-    public Connection obtenerConexion() {
-        String userName = "root";
-        String userPassword = "mike";
-        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-        String driverBd = "com.mysql.jdbc.Driver";
-        try {
-            Class.forName(driverBd);
-            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conexion;
-    }
+    Conexion con = new Conexion();
     
     public void create(Usuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreUsuario());
             ps.setString(2, a.getContrasena());
@@ -75,7 +62,7 @@ public class UsuarioDAO {
     
     public void update(Usuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreUsuario());
             ps.setString(2, a.getContrasena());
@@ -102,7 +89,7 @@ public class UsuarioDAO {
     
     public void delete(Usuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdUsuario());
             ps.executeUpdate();
@@ -121,7 +108,7 @@ public class UsuarioDAO {
     
     public Usuario read(Usuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdUsuario());
@@ -142,7 +129,7 @@ public class UsuarioDAO {
     
     public Usuario readLogin(Usuario a) {
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_LOGIN);
             ps.setString(1, a.getNombreUsuario());
@@ -165,7 +152,7 @@ public class UsuarioDAO {
     public List readAll() {
          List<Usuario> usuarioList = null;
         try {
-            obtenerConexion();
+            con.obtenerConexion();
             ResultSet rs;
             PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
