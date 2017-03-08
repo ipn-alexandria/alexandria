@@ -32,8 +32,7 @@ public class UaDAO {
     
     public void create(Ua a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreUA());
             ps.setInt(2, a.getNivel());
             ps.executeUpdate();
@@ -52,8 +51,7 @@ public class UaDAO {
     
     public void update(Ua a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreUA());
             ps.setInt   (2, a.getNivel());
             ps.setInt   (3, a.getIdUA());
@@ -73,8 +71,7 @@ public class UaDAO {
     
     public void delete(Ua a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdUA());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -92,9 +89,8 @@ public class UaDAO {
     
     public Ua read(Ua a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdUA());
             rs = ps.executeQuery();
             List<Ua> uaList = obtenerLista(rs);
@@ -114,9 +110,8 @@ public class UaDAO {
     public List readAll() {
          List<Ua> uaList = null;
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
             uaList = obtenerLista(rs);
         } catch (SQLException ex) {

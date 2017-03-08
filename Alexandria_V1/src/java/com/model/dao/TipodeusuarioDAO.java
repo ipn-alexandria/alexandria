@@ -32,8 +32,7 @@ public class TipodeusuarioDAO {
     
     public void create(Tipodeusuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreTipodeusuario());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -51,8 +50,7 @@ public class TipodeusuarioDAO {
     
     public void update(Tipodeusuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreTipodeusuario());
             ps.setInt(2, a.getIdTipodeusuario());
             ps.executeUpdate();
@@ -71,8 +69,7 @@ public class TipodeusuarioDAO {
     
     public void delete(Tipodeusuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdTipodeusuario());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -90,9 +87,8 @@ public class TipodeusuarioDAO {
     
     public Tipodeusuario read(Tipodeusuario a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdTipodeusuario());
             rs = ps.executeQuery();
             List<Tipodeusuario> tipodeusuarioList = obtenerLista(rs);
@@ -112,9 +108,8 @@ public class TipodeusuarioDAO {
     public List readAll() {
          List<Tipodeusuario> tipodeusuarioList = null;
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
             tipodeusuarioList = obtenerLista(rs);
         } catch (SQLException ex) {

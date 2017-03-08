@@ -32,8 +32,7 @@ public class MaterialDAO {
     
     public void create(Material a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreMaterial());
             ps.setInt(2, a.getIdTema());
             ps.setInt(3, a.getNivelMaterial());
@@ -60,8 +59,7 @@ public class MaterialDAO {
     
     public void update(Material a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreMaterial());
             ps.setInt(2, a.getIdTema());
             ps.setInt(3, a.getNivelMaterial());
@@ -89,8 +87,7 @@ public class MaterialDAO {
     
     public void delete(Material a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdMaterial());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -108,9 +105,8 @@ public class MaterialDAO {
     
     public Material read(Material a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdMaterial());
             rs = ps.executeQuery();
             List<Material> materialList = obtenerLista(rs);
@@ -130,9 +126,8 @@ public class MaterialDAO {
     public List readAll() {
          List<Material> materialList = null;
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
             materialList = obtenerLista(rs);
         } catch (SQLException ex) {

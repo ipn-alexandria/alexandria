@@ -36,8 +36,7 @@ public class UsuarioDAO {
     
     public void create(Usuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
             ps.setString(1, a.getNombreUsuario());
             ps.setString(2, a.getContrasena());
             ps.setString(3, a.getNombre());
@@ -62,8 +61,7 @@ public class UsuarioDAO {
     
     public void update(Usuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE);
             ps.setString(1, a.getNombreUsuario());
             ps.setString(2, a.getContrasena());
             ps.setString(3, a.getNombre());
@@ -89,8 +87,7 @@ public class UsuarioDAO {
     
     public void delete(Usuario a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdUsuario());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -108,9 +105,8 @@ public class UsuarioDAO {
     
     public Usuario read(Usuario a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdUsuario());
             rs = ps.executeQuery();
             List<Usuario> usuarioList = obtenerLista(rs);
@@ -129,9 +125,8 @@ public class UsuarioDAO {
     
     public Usuario readLogin(Usuario a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_LOGIN);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_LOGIN);
             ps.setString(1, a.getNombreUsuario());
             ps.setString(2, a.getContrasena());
             rs = ps.executeQuery();
@@ -152,9 +147,8 @@ public class UsuarioDAO {
     public List readAll() {
          List<Usuario> usuarioList = null;
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
             usuarioList = obtenerLista(rs);
         } catch (SQLException ex) {
@@ -198,11 +192,11 @@ public class UsuarioDAO {
         c.setEstado(1);
         c.setIdTipodeusuario(1);
         
-        c.setIdUsuario(1);
+//        c.setIdUsuario(1);
 
         UsuarioDAO d = new UsuarioDAO();
-//        d.create(c);
-        d.update(c);
+        d.create(c);
+//        d.update(c);
 //        d.delete(c);
 //        System.out.println(d.read(u));
 //        System.out.println(d.readAll());

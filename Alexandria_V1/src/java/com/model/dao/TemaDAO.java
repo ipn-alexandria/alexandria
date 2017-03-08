@@ -33,8 +33,7 @@ public class TemaDAO {
     
     public void create(Tema a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_INSERT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
             ps.setInt(1, a.getIdUA());
             ps.setString(2, a.getNombretema());
             ps.executeUpdate();
@@ -53,8 +52,7 @@ public class TemaDAO {
     
     public void update(Tema a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE);
             ps.setInt(1, a.getIdUA());
             ps.setString(2, a.getNombretema());
             ps.setInt(3, a.getIdTema());
@@ -74,8 +72,7 @@ public class TemaDAO {
     
     public void delete(Tema a) {
         try {
-            con.obtenerConexion();
-            PreparedStatement ps = conexion.prepareStatement(SQL_DELETE);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_DELETE);
             ps.setInt(1, a.getIdTema());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -93,9 +90,8 @@ public class TemaDAO {
     
     public Tema read(Tema a) {
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT);
             ps.setInt(1, a.getIdTema());
             rs = ps.executeQuery();
             List<Tema> temaList = obtenerLista(rs);
@@ -115,9 +111,8 @@ public class TemaDAO {
     public List readAll() {
          List<Tema> temaList = null;
         try {
-            con.obtenerConexion();
             ResultSet rs;
-            PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL);
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_ALL);
             rs = ps.executeQuery();
             temaList = obtenerLista(rs);
         } catch (SQLException ex) {
