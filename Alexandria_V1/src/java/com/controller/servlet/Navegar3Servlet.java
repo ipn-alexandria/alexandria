@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.controller.servlet;
 
 import com.model.dao.MaterialDAO;
@@ -8,9 +13,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class SubirMaterialServlet extends HttpServlet {
+/**
+ *
+ * @author Alan
+ */
+public class Navegar3Servlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -19,48 +38,39 @@ public class SubirMaterialServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubirMaterialServlet</title>");            
+            out.println("<title>Servlet Navegar3Servlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SubirMaterialServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Navegar3Servlet at " + request.getContextPath() + "</h1>");
             
-            String nomat = request.getParameter("NombreMaterial");
-            int idtema = Integer.parseInt(request.getParameter("IdTema"));
-            int nimat = Integer.parseInt(request.getParameter("NivelMaterial"));
-            int idua = Integer.parseInt(request.getParameter("IdUa"));
-            int timat = Integer.parseInt(request.getParameter("TipoMaterial"));
             
-            String idusu = (String)request.getSession().getAttribute("id");
-            response.getWriter().print("<p> La variable vale " + idusu + "</p>");
+            HttpSession session = request.getSession();
             
-            int sidusu = Integer.parseInt(idusu);
+            String idtip;
             
+            int idMaterial = Integer.parseInt(request.getParameter("IdMaterial"));
             
             Material m1 = new Material();
             Material m2 = new Material();
             MaterialDAO mdao1 = new MaterialDAO();
             
+            int idtipom;
+            m1.setIdMaterial(idMaterial);
             
-            m1.setNombreMaterial(nomat);
-            m1.setIdTema(idtema);
-            m1.setNivelMaterial(nimat);
-            m1.setDireccionMaterial("");
-            m1.setFiltroUno(0);
-            m1.setFiltroDos(0);
-            m1.setVisibilidadMaterial(0);
-            m1.setTipoMaterial(timat);
-            m1.setIdUa(idua);
-            m1.setIdUsuario(sidusu);
+            m2 = mdao1.read(m1);
+            idtipom = m2.getTipoMaterial();
             
-            mdao1.create(m1);
-            
-            System.out.println("LLEGmos AQUI");
-            
-            if (timat == 1) {
-                response.sendRedirect("jsp/alumno/subirvideo.jsp");
+            if (idtipom == 1) {
+                idtip = Integer.toString(idMaterial);
+                System.out.println("Dato enviado ID: " + idtip);
+                session.setAttribute("idMaterial", idtip);
+                response.sendRedirect("jsp/alumno/vervideo.jsp");
             }
             else {
-                response.sendRedirect("jsp/alumno/subirpdf.jsp");
+                idtip = Integer.toString(idMaterial);
+                System.out.println("Dato enviado ID: " + idtip);
+                session.setAttribute("idMaterial", idtip);
+                response.sendRedirect("jsp/alumno/verpdf.jsp");
             }
             
             

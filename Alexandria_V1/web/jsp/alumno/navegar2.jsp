@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.model.entities.Tema"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,37 +38,44 @@
 </div>
     
     
-<form method="post" action="../../SubirMaterialServlet" name="subir">
-  <input type="text" placeholder="Nombre del Material" name="NombreMaterial" required>
+<form method="post" action="../../Navegar2Servlet" name="navegar">
+  <p> Seleccione Tema </p>
+  <select name="IdTema" class="form-control">
+  <% 
+  List TemaL = (List) session.getAttribute("ListaTemas");
+ 
   
-  <p> Eliga el tema </p>
-<select name="IdTema" class="form-control" >
-  <option value="1">Arrays</option>
-  <option value="2">Otro Tema</option>
-</select>
-  <p> Nivel el tema </p>
-  <select name="NivelMaterial" class="form-control" >
-  <option value="1">Facil</option>
-  <option value="2">Normal</option>
-  <option value="3">Experto</option>
-  <option value="4">Legendario</option>
-</select>
+  int currentIdTema;
+  String currentNombre;
+  int currentIdUA;
   
-  <p> Unidad de Aprendizaje </p>
-  <select name="IdUa" class="form-control">
-  <option value="1">Algoritmia y Programacion Estructurada</option>
-  <option value="2">y Algoritmia</option>
-</select>
+  Iterator<Tema> TIt = TemaL.iterator();
+  while (TIt.hasNext()) {
+  Tema Taux = TIt.next();
   
-    <p> Tipo de archivo </p>
-  <select name="TipoMaterial" class="form-control" >
-  <option value="0">PDF</option>
-  <option value="1">Video</option>
-</select>
+  currentIdTema = Taux.getIdTema();
+  currentNombre = Taux.getNombretema();
+  currentIdUA = Taux.getIdUA();
+  
+  %>
+ 
+  <option value= <%=currentIdTema %> >  <%=currentNombre %>  </option>
+ 
+  
+  
+
+  
+  <%
+  }
+  %>
+
+  </select>
+  
+ 
 
   <br>
  
-  <input type="submit" value="Subir">
+  <input type="submit" value="Continuar">
   <a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
 
 </form>

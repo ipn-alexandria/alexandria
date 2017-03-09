@@ -1,3 +1,7 @@
+<%@page import="com.model.entities.Material"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.model.entities.Tema"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,37 +39,44 @@
 </div>
     
     
-<form method="post" action="../../SubirMaterialServlet" name="subir">
-  <input type="text" placeholder="Nombre del Material" name="NombreMaterial" required>
+<form method="post" action="../../Navegar3Servlet" name="navegar">
+  <p> Seleccione Tema </p>
+  <select name="IdMaterial" class="form-control">
+  <% 
+  List MatL = (List) session.getAttribute("ListaMaterial");
+ 
   
-  <p> Eliga el tema </p>
-<select name="IdTema" class="form-control" >
-  <option value="1">Arrays</option>
-  <option value="2">Otro Tema</option>
-</select>
-  <p> Nivel el tema </p>
-  <select name="NivelMaterial" class="form-control" >
-  <option value="1">Facil</option>
-  <option value="2">Normal</option>
-  <option value="3">Experto</option>
-  <option value="4">Legendario</option>
-</select>
+  int currentIdMat;
+  String currentNombre;
   
-  <p> Unidad de Aprendizaje </p>
-  <select name="IdUa" class="form-control">
-  <option value="1">Algoritmia y Programacion Estructurada</option>
-  <option value="2">y Algoritmia</option>
-</select>
   
-    <p> Tipo de archivo </p>
-  <select name="TipoMaterial" class="form-control" >
-  <option value="0">PDF</option>
-  <option value="1">Video</option>
-</select>
+  Iterator<Material> MIt = MatL.iterator();
+  while (MIt.hasNext()) {
+  Material Maux = MIt.next();
+  
+  currentIdMat = Maux.getIdTema();
+  currentNombre = Maux.getNombreMaterial();
+ 
+  
+  %>
+ 
+  <option value= <%=currentIdMat %> >  <%=currentNombre %>  </option>
+ 
+  
+  
+
+  
+  <%
+  }
+  %>
+
+  </select>
+  
+ 
 
   <br>
  
-  <input type="submit" value="Subir">
+  <input type="submit" value="Continuar">
   <a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
 
 </form>

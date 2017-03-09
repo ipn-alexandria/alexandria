@@ -1,16 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.controller.servlet;
 
 import com.model.dao.MaterialDAO;
 import com.model.entities.Material;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class SubirMaterialServlet extends HttpServlet {
+/**
+ *
+ * @author Alan
+ */
+public class Navegar2Servlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -19,49 +40,28 @@ public class SubirMaterialServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubirMaterialServlet</title>");            
+            out.println("<title>Servlet Navegar2Servlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SubirMaterialServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Navegar2Servlet at " + request.getContextPath() + "</h1>");
             
-            String nomat = request.getParameter("NombreMaterial");
-            int idtema = Integer.parseInt(request.getParameter("IdTema"));
-            int nimat = Integer.parseInt(request.getParameter("NivelMaterial"));
-            int idua = Integer.parseInt(request.getParameter("IdUa"));
-            int timat = Integer.parseInt(request.getParameter("TipoMaterial"));
+             HttpSession session = request.getSession();
             
-            String idusu = (String)request.getSession().getAttribute("id");
-            response.getWriter().print("<p> La variable vale " + idusu + "</p>");
-            
-            int sidusu = Integer.parseInt(idusu);
-            
+            int idTema = Integer.parseInt(request.getParameter("IdTema"));
             
             Material m1 = new Material();
-            Material m2 = new Material();
             MaterialDAO mdao1 = new MaterialDAO();
             
+            m1.setIdTema(idTema);
             
-            m1.setNombreMaterial(nomat);
-            m1.setIdTema(idtema);
-            m1.setNivelMaterial(nimat);
-            m1.setDireccionMaterial("");
-            m1.setFiltroUno(0);
-            m1.setFiltroDos(0);
-            m1.setVisibilidadMaterial(0);
-            m1.setTipoMaterial(timat);
-            m1.setIdUa(idua);
-            m1.setIdUsuario(sidusu);
+            List<Material> materialList= new ArrayList<>();
+            materialList = mdao1.readFROMTEMA(m1);
             
-            mdao1.create(m1);
+            System.out.println(mdao1.readFROMTEMA(m1));
             
-            System.out.println("LLEGmos AQUI");
+            session.setAttribute("ListaMaterial", materialList);
+            response.sendRedirect("jsp/alumno/navegar3.jsp");
             
-            if (timat == 1) {
-                response.sendRedirect("jsp/alumno/subirvideo.jsp");
-            }
-            else {
-                response.sendRedirect("jsp/alumno/subirpdf.jsp");
-            }
             
             
             

@@ -33,6 +33,8 @@ public class RegistroServlet extends HttpServlet {
             String matricula = request.getParameter("Matricula");
             int tusu = Integer.parseInt(request.getParameter("Tipo"));
             
+             out.println("<br/><br/>" + nusu + " " + cusu + " " + nombre + " "+ paterno + " " + materno + " " + matricula + " " + tusu + "<br/>");
+            
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
             UsuarioDAO udao1 = new UsuarioDAO();

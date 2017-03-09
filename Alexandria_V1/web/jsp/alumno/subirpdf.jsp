@@ -14,43 +14,25 @@
     <style> 
     body{background-image: url(./img/background.jpg);  }
     </style>
- 
+
     <title>Alexandria</title>
 
     <!-- Bootstrap Core CSS -->
 
 
 </head>
-<video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
-  <!--  <source src="./img/video/IMG_3727.mov" type="video/mp4"> -->
-    <source src="movie.webm" type="video/webm">
-         Sorry, your browser does not support HTML5 video. //
-         Lo sentimos, tu navegador no soporta la visualizacion de video <a href src="https://www.google.com.mx/chrome/">https://www.google.com.mx/chrome/</a>
-</video>
-<body>
+
+<body >
   <div class="cap">
     <div class="title">
-        <img src="./img/resources/logo.png" width="17%">
+        <img src="./img/resources/logo.png" width="25%">
     </div>
 </div>
-    
-    
-<form method="post" action="../../NavegarServlet" name="navegar">
- 
+<form>
   
-
-  <p> Unidad de Aprendizaje </p>
-  <select name="IdUA" class="form-control">
-  <option value="1">Algoritmia y Programacion Estructurada</option>
-  <option value="2">y Algoritmia</option>
-</select>
+    <p> Aqui se subira un pdf </p>
   
- 
-
-  <br>
- 
-  <input type="submit" value="Continuar">
-  <a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
+  <a href="alumno.jsp" > <input type="button" value="Subir"> </a>
 
 </form>
 </body>

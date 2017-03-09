@@ -26,6 +26,10 @@ public class MaterialDAO {
             = "SELECT * FROM Material WHERE (idMaterial = ? ) "; 
     private static final String SQL_SELECT_ALL
             = "SELECT * FROM Material"; 
+    
+    private static final String SQL_SELECT_FROMTEMA
+            = "SELECT * FROM Material WHERE (idTema = ?)";
+    
     public Connection conexion;
     
     Conexion con = new Conexion();
@@ -161,27 +165,67 @@ public class MaterialDAO {
         return materialList;
     }
     
+    public List readFROMTEMA(Material a) {
+         List<Material> materialList = null;
+        try {
+            ResultSet rs;
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_FROMTEMA);
+            ps.setInt(1, a.getIdTema());
+            rs = ps.executeQuery();
+            materialList = obtenerLista(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+        }
+        return materialList;
+    }
+    
+    private List<Material> obtenerListaFROMTEMA(ResultSet rs) {
+        List<Material> materialList= new ArrayList<>();
+        try {
+            while(rs.next()){
+                Material a = new Material();
+                a.setIdMaterial(rs.getInt("idMaterial"));
+                a.setNombreMaterial(rs.getString("nombreMaterial"));
+                a.setIdTema(rs.getInt("idTema"));
+                a.setNivelMaterial(rs.getInt("nivelMaterial"));
+                a.setDireccionMaterial(rs.getString("direccionMaterial"));
+                a.setFiltroUno(rs.getInt("filtroUno"));
+                a.setFiltroDos(rs.getInt("filtroDos"));
+                a.setVisibilidadMaterial(rs.getInt("visibilidadMaterial"));
+                a.setTipoMaterial(rs.getInt("tipoMaterial"));
+                a.setIdUsuario(rs.getInt("idUsuario"));
+                a.setIdUa(rs.getInt("idUa"));
+                materialList.add(a);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return materialList;
+    }
+    
     
     public static void main(String[] args) {
         Material c = new Material();
         
-        c.setNombreMaterial("Arrays unidimensionales, introduccion");
+//        c.setNombreMaterial("Arrays unidimensionales, introduccion");
         c.setIdTema(1);
-        c.setNivelMaterial(1);
-        c.setDireccionMaterial("https://www.youtube.com/watch?v=Us-TVg40ExM");
-        c.setFiltroUno(0);
-        c.setFiltroDos(0);
-        c.setVisibilidadMaterial(0);
-        c.setTipoMaterial(1);
-        c.setIdUsuario(1);
-        c.setIdUa(1);
+//        c.setNivelMaterial(1);
+//        c.setDireccionMaterial("https://www.youtube.com/watch?v=Us-TVg40ExM");
+//        c.setFiltroUno(0);
+//        c.setFiltroDos(0);
+//        c.setVisibilidadMaterial(0);
+//        c.setTipoMaterial(1);
+//        c.setIdUsuario(1);
+//        c.setIdUa(1);
 
         MaterialDAO d = new MaterialDAO();
-        d.create(c);
+        d.readFROMTEMA(c);
+//        d.create(c);
 //        d.update(c);
 //        d.delete(c);
 //        System.out.println(d.read(u));
-//        System.out.println(d.readAll());
+        System.out.println(d.readFROMTEMA(c));
     }
     
 }

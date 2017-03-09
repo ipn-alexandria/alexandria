@@ -26,7 +26,11 @@ public class TemaDAO {
     private static final String SQL_SELECT
             = "SELECT * FROM Tema WHERE (idTema = ? ) "; 
     private static final String SQL_SELECT_ALL
-            = "SELECT * FROM Tema"; 
+            = "SELECT * FROM Tema";
+    
+    private static final String SQL_SELECT_FROMUA
+            = "SELECT * FROM Tema WHERE (idUA = ?)"; 
+    
     public Connection conexion;
     
     Conexion con = new Conexion();
@@ -138,18 +142,48 @@ public class TemaDAO {
         return temaList;
     }
     
+    public List readFROMUA(Tema a) {
+         List<Tema> temaList = null;
+        try {
+            ResultSet rs;
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_FROMUA);
+            ps.setInt(1, a.getIdUA());
+            rs = ps.executeQuery();
+            temaList = obtenerLista(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(TemaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+        }
+        return temaList;
+    }
+    
+    private List<Tema> obtenerListaFROMUA(ResultSet rs) {
+        List<Tema> temaList= new ArrayList<>();
+        try {
+            while(rs.next()){
+                Tema a = new Tema();
+                a.setIdTema(rs.getInt("idTema"));
+                a.setIdUA(rs.getInt("idUA"));
+                a.setNombretema(rs.getString("nombreTema"));
+                temaList.add(a);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return temaList;
+    }
+    
         public static void main(String[] args) {
         Tema c = new Tema();
 //        c.setIdCarrera(23);
         c.setIdUA(1);
-        c.setNombretema("Arrays unidimensionales");
+//        c.setNombretema("Arrays unidimensionales");
 
         TemaDAO d = new TemaDAO();
-        d.create(c);
 //        d.update(c);
 //        d.delete(c);
 //        System.out.println(d.read(u));
-//        System.out.println(d.readAll());
+        System.out.println(d.readFROMUA(c));
     }
     
     

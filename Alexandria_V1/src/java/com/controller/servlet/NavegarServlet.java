@@ -1,16 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.controller.servlet;
 
-import com.model.dao.MaterialDAO;
-import com.model.entities.Material;
+import com.model.dao.TemaDAO;
+import com.model.entities.Tema;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class SubirMaterialServlet extends HttpServlet {
+/**
+ *
+ * @author Alan
+ */
+public class NavegarServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -19,51 +40,28 @@ public class SubirMaterialServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubirMaterialServlet</title>");            
+            out.println("<title>Servlet NavegarServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SubirMaterialServlet at " + request.getContextPath() + "</h1>");
-            
-            String nomat = request.getParameter("NombreMaterial");
-            int idtema = Integer.parseInt(request.getParameter("IdTema"));
-            int nimat = Integer.parseInt(request.getParameter("NivelMaterial"));
-            int idua = Integer.parseInt(request.getParameter("IdUa"));
-            int timat = Integer.parseInt(request.getParameter("TipoMaterial"));
-            
-            String idusu = (String)request.getSession().getAttribute("id");
-            response.getWriter().print("<p> La variable vale " + idusu + "</p>");
-            
-            int sidusu = Integer.parseInt(idusu);
+            out.println("<h1>Servlet NavegarServlet at " + request.getContextPath() + "</h1>");
             
             
-            Material m1 = new Material();
-            Material m2 = new Material();
-            MaterialDAO mdao1 = new MaterialDAO();
+            HttpSession session = request.getSession();
             
+            int idUA = Integer.parseInt(request.getParameter("IdUA"));
             
-            m1.setNombreMaterial(nomat);
-            m1.setIdTema(idtema);
-            m1.setNivelMaterial(nimat);
-            m1.setDireccionMaterial("");
-            m1.setFiltroUno(0);
-            m1.setFiltroDos(0);
-            m1.setVisibilidadMaterial(0);
-            m1.setTipoMaterial(timat);
-            m1.setIdUa(idua);
-            m1.setIdUsuario(sidusu);
+            Tema t1 = new Tema();
+            TemaDAO tdao1 = new TemaDAO();
             
-            mdao1.create(m1);
+            t1.setIdUA(idUA);
             
-            System.out.println("LLEGmos AQUI");
+            List<Tema> temaList= new ArrayList<>();
+            temaList = tdao1.readFROMUA(t1);
             
-            if (timat == 1) {
-                response.sendRedirect("jsp/alumno/subirvideo.jsp");
-            }
-            else {
-                response.sendRedirect("jsp/alumno/subirpdf.jsp");
-            }
+            System.out.println(tdao1.readFROMUA(t1));
             
-            
+            session.setAttribute("ListaTemas", temaList);
+            response.sendRedirect("jsp/alumno/navegar2.jsp");
             
             out.println("</body>");
             out.println("</html>");

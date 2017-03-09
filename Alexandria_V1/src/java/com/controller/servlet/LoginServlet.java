@@ -72,8 +72,9 @@ public class LoginServlet extends HttpServlet {
                             id = u2.getIdUsuario();
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
-                            session.setAttribute("id", idactual);
-                           // getServletConfig().getServletContext().getRequestDispatcher("jsp/alumno/alumno.jsp").forward(request,response);
+                            session.setAttribute("id", idactual); 
+                            System.out.println(session.getAttribute("id"));
+                            
                             response.sendRedirect("jsp/alumno/alumno.jsp");
                             break;
 
