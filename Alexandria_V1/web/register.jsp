@@ -11,6 +11,9 @@
     <meta name="author" content="">
     <link rel="icon" href="./img/resources/logo.ico" sizes="16x16 32x32 48x48 64x64 110x110 114x114" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" type="text/css" href="./css/grades.css" media="screen" />
+    <style> 
+    body{background-image: url(./img/background.jpg);  }
+    </style>
  <!--  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> -->
     <title>Alexandria</title>
 
@@ -35,13 +38,12 @@
 
   
 
-  <input type="text" placeholder="Usuario" name="Usuario">
-
-  <input type="password" placeholder="Contraseña" name="Pass">
-  <input type="text" placeholder="Nombre" name="Nombre">
-  <input type="text" placeholder="Apellido Paterno" name="Paterno">
-  <input type="text" placeholder="Apellido Materno" name="Materno">
-<input type="text" placeholder="Matricula" name="Matricula">
+  <input type="text" placeholder="Usuario" name="Usuario"required>
+  <input type="password" placeholder="Contraseña" name="Pass" required>
+  <input type="text" placeholder="Nombre" name="Nombre" required>
+  <input type="text" placeholder="Apellido Paterno" name="Paterno" required>
+  <input type="text" placeholder="Apellido Materno" name="Materno" required>
+<input type="text" placeholder="Matricula" name="Matricula"  required>
 
 
 <select name="Tipo" class="form-control">
