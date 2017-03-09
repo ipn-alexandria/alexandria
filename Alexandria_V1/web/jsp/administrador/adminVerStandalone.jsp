@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -13,19 +14,19 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
         <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
         <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" type="text/css" media="all" href="assets/css/style-projects.css">
+        <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" media="all" href="../../assets/css/style-projects.css">
         
 
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../../assets/ico/apple-touch-icon-57-precomposed.png">
     </head>
   <body>
 
@@ -42,7 +43,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand wow fadeInDownBig" href="index.html"><img src="assets/img/slider/Office.png" width="100" alt="Office"></a>      
+                <a class="navbar-brand wow fadeInDownBig" href="index.html"><img src="../../assets/img/slider/Office.png" width="100" alt="Office"></a>      
             </div>
         
             <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
@@ -85,7 +86,7 @@
                     <div class="carousel-inner">
                         <!-- Begin Slide 1 -->
                         <div class="item active">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="../../assets/img/slider/slide2.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3>   <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p>                <!--Texto Carrousel 2 -->
@@ -95,7 +96,7 @@
 
                         <!-- Begin Slide 2 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="../../assets/img/slider/slide2.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p> <!--Texto Carrousel  -->
@@ -105,7 +106,7 @@
 
                         <!-- Begin Slide 3 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="../../assets/img/slider/slide2.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"> </p> <!--Texto Carrousel  -->
@@ -142,19 +143,19 @@
             <div class="row services-row services-row-head services-row-1">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated fadeInLeft" data-wow-offset="40">
-                        <img src="assets/img/clothes/4.jpg" height="90%" width="90%" />
+                        <img src="../../assets/img/clothes/4.jpg" height="90%" width="90%" />
                     </div>
                 </div>
         
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                        <img src="assets/img/clothes/2.jpg" height="90%" width="90%" />
+                        <img src="../../assets/img/clothes/2.jpg" height="90%" width="90%" />
                     </div>
                 </div>
         
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated fadeInRight" data-wow-offset="40">
-                        <img src="assets/img/clothes/3.jpg" height="90%" width="90%" />
+                        <img src="../../assets/img/clothes/3.jpg" height="90%" width="90%" />
                     </div>        
                 </div>
             </div>
@@ -168,7 +169,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" >
                     <div class="services-group wow animated zoomIn" data-wow-offset="40">
                     
-                        <img src="assets/img/clothes/1.jpg" height="90%" width="90%" />
+                        <img src="../../assets/img/clothes/1.jpg" height="90%" width="90%" />
                     </div>
                     
                 </div>
