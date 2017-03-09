@@ -1,0 +1,118 @@
+body {
+  background: #fff;
+  margin: 0 0;
+  padding:10px;
+  text-align:center;
+  font-family: 'Lato', sans-serif;
+}
+#videobcg {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   min-width: 100%;
+
+   width: 100%;
+    z-index: -1000;
+   overflow: hidden;
+    -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.title {font-family: 'Lato', sans-serif;
+  position:relative;
+   font-weight:regular;
+  font-size: 14px;
+  text-shadow: 0px 1px 2px rgba(255,255,255,.125);
+  color: #121212;
+  text-align:center;
+}
+
+.cap {
+  margin-top:75px;
+ }
+
+form {
+  font-family: 'Lato', sans-serif;
+  background: rgba(255,255,255, .55);
+  box-shadow: 1px 1px 2px rgba(0,0,0, .25);
+  border-radius: 15px;
+  font-size: 14px;
+  margin: 20px auto 0;
+  padding: 10px;
+  width:25%;
+  height: 35%;
+}
+
+input {
+  font-family: 'Lato', sans-serif;
+  display: block;
+  font-size: 14px;
+  width:90%;
+  margin: 20px auto;
+  padding: 10px 8px 10px 8px;
+  border-radius: 5px;
+   border: 1px solid #008080;
+}
+
+input {
+  opacity: 0.5;
+}
+
+input:hover,
+input:focus {
+  opacity: .7;
+  color:#08c;
+  border: 1px solid #008080;
+ }
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+   border: 1px solid #008080;
+  outline: none;
+}
+
+input[type="submit"] {
+  appearance: none;
+  opacity: .99;
+  width:120px;
+  background: #008080;
+   border: 1px (255,255,255, .35);
+  border-radius: 4px;
+  color: #eee;
+  cursor: pointer;
+  text-shadow:0px -1px 0px rgba(0,0,0,.5);
+}
+
+
+
+input[type="submit"]:hover {
+  background: #008080;
+  width:120px;
+  border: 1px (255,255,255, .35);
+  border-radius: 3px;
+   text-shadow:0px 1px 1px rgba(0,0,0,.65);
+  -webkit-transition: all 0.40s ease-out;
+  transition: all 0.40s ease-out;
+}
+/* unvisited link */
+a:link {
+    color: #008080;text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #008080;text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #008080;text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #008080;text-decoration: none;
+}
