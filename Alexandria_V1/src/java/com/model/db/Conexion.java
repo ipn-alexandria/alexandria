@@ -22,7 +22,7 @@ public class Conexion {
     
     public Connection obtenerConexion() {
         String userName = "root";
-        String userPassword = "root";
+        String userPassword = "mike";
         String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
         String driverBd = "com.mysql.jdbc.Driver";
         try {

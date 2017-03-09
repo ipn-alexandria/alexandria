@@ -35,19 +35,18 @@
 
   
 
-  <input type="text" placeholder="Usuario" name="uname">
+  <input type="text" placeholder="Usuario" name="Usuario">
 
-  <input type="password" placeholder="Contraseña" name="pass">
-  <input type="text" placeholder="Nombre" name="uname">
-  <input type="text" placeholder="Apellido Paterno" name="uname">
-  <input type="text" placeholder="Apellido Materno" name="uname">
-<input type="text" placeholder="Matricula" name="uname">
+  <input type="password" placeholder="Contraseña" name="Pass">
+  <input type="text" placeholder="Nombre" name="Nombre">
+  <input type="text" placeholder="Apellido Paterno" name="Paterno">
+  <input type="text" placeholder="Apellido Materno" name="Materno">
+<input type="text" placeholder="Matricula" name="Matricula">
 
 
-<select name="selectTipo" form="registro" ">
-  <option class="boton" value="alumno">Alumno</option>
-  <option class="boton" value="profesor">Profesor</option>
-  
+<select name="Tipo" class="form-control">
+  <option value="4">Alumno</option>
+  <option value="2">Profesor</option>
 </select>
 
   <br>
