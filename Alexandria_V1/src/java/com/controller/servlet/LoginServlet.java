@@ -25,6 +25,44 @@ public class LoginServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             
+             HttpSession session = request.getSession();
+            
+             
+             //
+             
+             
+             String currentTipo;
+try
+    {
+    
+    System.out.print("CodigoServlet");
+    System.out.print(session.getAttribute("idTipo"));
+    currentTipo = session.getAttribute("idTipo").toString();
+    
+    
+
+
+if          ((currentTipo.equals("1")) || 
+            (currentTipo.equals("2")) || 
+            (currentTipo.equals("3")) || 
+            (currentTipo.equals("4") ))
+    {
+        
+        System.out.print("CodigoServlet Sesion Invalidada");
+       
+    response.sendRedirect("index.jsp");  
+    session.invalidate();
+    return;
+    
+    }
+
+} catch(Exception e){}
+
+             
+             
+             
+             //
+            
             
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
@@ -38,7 +76,7 @@ public class LoginServlet extends HttpServlet {
 //            String nusu = request.getParameter("txtNombreU");
 //            String cusu = request.getParameter("txtClaveU");
             out.println("<br/><br/>" + nusu + " " + cusu + "<br/>");
-            HttpSession session = request.getSession();
+           
             
             u1.setNombreUsuario(nusu);
             u1.setContrasena(cusu);
@@ -52,6 +90,7 @@ public class LoginServlet extends HttpServlet {
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
+                            session.setAttribute("idTipo", idtipo);
                             getServletConfig().getServletContext().getRequestDispatcher("/jsp/administrador/principalAdministrador.jsp").forward(request,response);
                             break;
                     case 2: System.out.println("LISTO REDIRIGIR ----Profesor----");
@@ -59,6 +98,7 @@ public class LoginServlet extends HttpServlet {
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
+                            session.setAttribute("idTipo", idtipo);
                             //getServletConfig().getServletContext().getRequestDispatcher("/principalpaciente.jsp").forward(request,response);
                             break;
                     case 3: System.out.println("LISTO REDIRIGIR ----Moderador----");
@@ -66,6 +106,7 @@ public class LoginServlet extends HttpServlet {
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
+                            session.setAttribute("idTipo", idtipo);
                             //getServletConfig().getServletContext().getRequestDispatcher("/principalpaciente.jsp").forward(request,response);
                             break;
                     case 4: System.out.println("LISTO REDIRIGIR ----Alumno----");
@@ -73,7 +114,8 @@ public class LoginServlet extends HttpServlet {
                             idactual=Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual); 
-                            System.out.println(session.getAttribute("id"));
+                            session.setAttribute("idTipo", idtipo);
+                            
                             
                             response.sendRedirect("jsp/alumno/alumno.jsp");
                             break;
