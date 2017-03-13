@@ -1,5 +1,7 @@
 package com.model.entities;
 
+import javax.servlet.http.Part;
+
 public class Material {
     
     private int idMaterial;
@@ -13,6 +15,7 @@ public class Material {
     private int tipoMaterial;
     private int idUsuario;
     private int idUa;
+    private Part pdf;
 
     public Material() {
     }
@@ -103,6 +106,14 @@ public class Material {
 
     public void setIdUa(int idUa) {
         this.idUa = idUa;
+    }
+    
+    public Part getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(Part pdf) {
+        this.pdf = pdf;
     }
 
     @Override

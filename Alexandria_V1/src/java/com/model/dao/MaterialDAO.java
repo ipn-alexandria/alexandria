@@ -2,6 +2,8 @@ package com.model.dao;
 
 import com.model.entities.Material;
 import com.model.db.Conexion;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.Part;
 
 public class MaterialDAO {
     
@@ -29,6 +32,9 @@ public class MaterialDAO {
     
     private static final String SQL_SELECT_FROMTEMA
             = "SELECT * FROM Material WHERE (idTema = ?)";
+    
+    private static final String SQL_UPDATE_PDF
+            = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
     
     public Connection conexion;
     
@@ -203,6 +209,52 @@ public class MaterialDAO {
         }
         return materialList;
     }
+    
+    public void updatePDF(Material a) throws IOException {
+        
+       Part pf1;
+       InputStream inputStream = null; // input stream of the upload file
+       
+       pf1 = a.getPdf();
+       
+       if (pf1 != null) {
+            // prints out some information for debugging
+            System.out.println(pf1.getName());
+            System.out.println(pf1.getSize());
+            System.out.println(pf1.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = pf1.getInputStream();
+        }
+       
+        try {
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE_PDF);
+            
+            
+            ps.setBinaryStream(1, inputStream, pf1.getSize());
+            ps.setInt(2, a.getIdMaterial());
+
+            int row = ps.executeUpdate();
+            
+            if (row > 0) {
+                System.out.println("File uploaded and saved into database");
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+    
     
     
     public static void main(String[] args) {

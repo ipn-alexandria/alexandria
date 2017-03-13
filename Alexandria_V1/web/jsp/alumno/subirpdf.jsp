@@ -23,18 +23,33 @@
 </head>
 
 <body >
+    
   <div class="cap">
     <div class="title">
         <img src="./img/resources/logo.png" width="25%">
     </div>
 </div>
-<form>
-  
-    <p> Aqui se subira un pdf </p>
-  
-  <a href="alumno.jsp" > <input type="button" value="Subir"> </a>
+    <% String idmatac = (String)session.getAttribute("idmatup");
+        System.out.println("idmatup = " + idmatac);
+    %>
+    <form method="post" action="../../SubirPDF1Servlet" enctype="multipart/form-data">
+        <table border="0">
 
-</form>
+            <tr>
+                <td>Pdf: </td>
+                <td><input type="file" name="pdf" accept="application/pdf"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Save">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+    
+    
+    
 </body>
     <br>
     <br>    <br>
