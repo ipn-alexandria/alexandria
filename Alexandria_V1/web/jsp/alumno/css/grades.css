@@ -273,6 +273,9 @@ button:hover {
 
 .datagrid table tbody tr:last-child td { 
     border-bottom: none; 
+}
+
+.datagrid table tbody tr td:last-child { 
     text-align: center;
 }
 
