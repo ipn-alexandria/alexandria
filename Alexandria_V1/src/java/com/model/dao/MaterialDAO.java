@@ -5,6 +5,7 @@ import com.model.db.Conexion;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -236,56 +237,25 @@ public class MaterialDAO {
             ps.setBinaryStream(1, inputStream, pf1.getSize());
             ps.setInt(2, a.getIdMaterial());
 
-    private static final String SQL_INSERT
-	    = "INSERT INTO Material ( nombreMaterial, idTema, nivelMaterial, direccionMaterial, filtroUno, filtroDos, visibilidadMaterial, tipoMaterial, idUsuario, idUa) "
-	    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-    private static final String SQL_UPDATE
-	    = "UPDATE Material SET nombreMaterial = ?, idTema = ?, nivelMaterial = ?, direccionMaterial = ?, filtroUno = ?, filtroDos = ?, visibilidadMaterial = ?, tipoMaterial = ?, idUsuario = ?, idUa = ? "
-	    + "WHERE (idMaterial = ? ) ";
-    private static final String SQL_DELETE
-	    = "DELETE FROM Material WHERE (idMaterial = ? ) ";
-    private static final String SQL_SELECT
-	    = "SELECT * FROM Material WHERE (idMaterial = ? ) ";
-    private static final String SQL_SELECT_ALL
-	    = "SELECT * FROM Material";
-
-    private static final String SQL_SELECT_FROMTEMA
-	    = "SELECT * FROM Material WHERE (idTema = ?)";
-
-    private static final String SQL_UPDATE_PDF
-	    = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
-
-    private static final String SQL_READ_PDF = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
-
-    public Connection conexion;
-
-    Conexion con = new Conexion();
-
-    public void create(Material a) {
-	try {
-	    PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_INSERT);
-	    ps.setString(1, a.getNombreMaterial());
-	    ps.setInt(2, a.getIdTema());
-	    ps.setInt(3, a.getNivelMaterial());
-	    ps.setString(4, a.getDireccionMaterial());
-	    ps.setInt(5, a.getFiltroUno());
-	    ps.setInt(6, a.getFiltroDos());
-	    ps.setInt(7, a.getVisibilidadMaterial());
-	    ps.setInt(8, a.getTipoMaterial());
-	    ps.setInt(9, a.getIdUsuario());
-	    ps.setInt(10, a.getIdUa());
-	    ps.executeUpdate();
-	} catch (SQLException ex) {
-	    Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-	} finally {
-	    if (conexion != null) {
-		try {
-		    conexion.close();
-		} catch (SQLException ex) {
-		    ex.printStackTrace();
-		}
-	    }
-	}
+            int row = ps.executeUpdate();
+            
+            if (row > 0) {
+                System.out.println("File uploaded and saved into database");
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
     
     public byte[] getPDF(Material m) {
@@ -306,10 +276,10 @@ public class MaterialDAO {
 }
     
     public static void main(String[] args) {
-	Material c = new Material();
-
+        Material c = new Material();
+        
 //        c.setNombreMaterial("Arrays unidimensionales, introduccion");
-	c.setIdTema(1);
+        c.setIdTema(1);
 //        c.setNivelMaterial(1);
 //        c.setDireccionMaterial("https://www.youtube.com/watch?v=Us-TVg40ExM");
 //        c.setFiltroUno(0);
@@ -319,13 +289,13 @@ public class MaterialDAO {
 //        c.setIdUsuario(1);
 //        c.setIdUa(1);
 
-	MaterialDAO d = new MaterialDAO();
-	d.readFROMTEMA(c);
+        MaterialDAO d = new MaterialDAO();
+        d.readFROMTEMA(c);
 //        d.create(c);
 //        d.update(c);
 //        d.delete(c);
 //        System.out.println(d.read(u));
-	System.out.println(d.readFROMTEMA(c));
+        System.out.println(d.readFROMTEMA(c));
     }
-
+    
 }
