@@ -40,16 +40,16 @@
 				</td>
 				<td>
 				    <c:choose>
-					<c:when test="${material.tipoMaterial == 1}">
+					<c:when test="${material.nivelMaterial == 1}">
 					    Principiante
 					</c:when>
-					<c:when test="${material.tipoMaterial == 2}">
+					<c:when test="${material.nivelMaterial == 2}">
 					    Intermedio
 					</c:when>
-					<c:when test="${material.tipoMaterial == 3}">
+					<c:when test="${material.nivelMaterial == 3}">
 					    Experto
 					</c:when>
-					<c:when test="${material.tipoMaterial == 4}">
+					<c:when test="${material.nivelMaterial == 4}">
 					    Challenger
 					</c:when>
 				    </c:choose>
