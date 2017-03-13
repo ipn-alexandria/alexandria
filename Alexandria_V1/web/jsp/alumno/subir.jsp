@@ -1,3 +1,9 @@
+<%@page import="com.model.entities.Ua"%>
+<%@page import="com.model.dao.UaDAO"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.model.entities.Tema"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model.dao.TemaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,24 +44,87 @@
 <form method="post" action="../../SubirMaterialServlet" name="subir">
   <input type="text" placeholder="Nombre del Material" name="NombreMaterial" required>
   
-  <p> Eliga el tema </p>
-<select name="IdTema" class="form-control" >
-  <option value="1">Arrays</option>
-  <option value="2">Otro Tema</option>
-</select>
-  <p> Nivel el tema </p>
-  <select name="NivelMaterial" class="form-control" >
-  <option value="1">Facil</option>
-  <option value="2">Normal</option>
-  <option value="3">Experto</option>
-  <option value="4">Legendario</option>
-</select>
-  
   <p> Unidad de Aprendizaje </p>
   <select name="IdUa" class="form-control">
-  <option value="1">Algoritmia y Programacion Estructurada</option>
-  <option value="2">y Algoritmia</option>
+       <% 
+          
+          UaDAO udao = new UaDAO();
+          
+          
+  List<Ua> UL = (List) udao.readAll();
+ 
+  
+ 
+  String currentNombreUA;
+  int currentIdUA;
+  
+  Iterator<Ua> UIt = UL.iterator();
+  while (UIt.hasNext()) {
+  Ua Uaux = UIt.next();
+  
+  currentIdUA = Uaux.getIdUA();
+  currentNombreUA = Uaux.getNombreUA();
+  
+  
+  %>
+      
+  <option value= <%=currentIdUA %> >  <%=currentNombreUA %>  </option>
+  
+      
+      <%
+  }
+  %>
 </select>
+  
+  <p> Eliga el tema </p>
+<select name="IdTema" class="form-control" >
+
+    
+    
+     <% 
+          
+          TemaDAO tdao = new TemaDAO();
+          
+          
+  List<Tema> TemaL = (List) tdao.readAll();
+ 
+  
+ 
+ int currentIdTema;
+  String currentNombreTema;
+  int currentTemaIdUA;
+  
+  Iterator<Tema> TIt = TemaL.iterator();
+  while (TIt.hasNext()) {
+  Tema Taux = TIt.next();
+  
+  currentIdTema = Taux.getIdTema();
+  currentNombreTema = Taux.getNombretema();
+  currentTemaIdUA = Taux.getIdUA();
+  
+  
+  %>
+    
+     <option value= <%=currentIdTema %> >  <%=currentNombreTema %>  </option>
+     
+       
+  <%
+  }
+  %>
+    
+</select>
+  
+  
+  
+  <p> Nivel el tema </p>
+  <select name="NivelMaterial" class="form-control" >
+  <option value="1">Principiante</option>
+  <option value="2">Intermedio</option>
+  <option value="3">Avanzado</option>
+  <option value="4">Tipo ETS</option>
+</select>
+  
+  
   
     <p> Tipo de archivo </p>
   <select name="TipoMaterial" class="form-control" >

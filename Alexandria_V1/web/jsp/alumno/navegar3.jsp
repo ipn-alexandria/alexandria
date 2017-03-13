@@ -41,9 +41,9 @@
     
     <div class="table" width="100%"> 
     <form method="post" action="../../Navegar3Servlet" name="form1">
-        <div>Nombre  <input type="hidden" name="name" > </div>
-        <div>Nivel  <input type="hidden" name="level" > </div>
-        <div>Tipo  <input type="hidden" name="type" > </div>
+        <div>Nombre  </div>
+        <div>Nivel  </div>
+        <div>Tipo </div>
         
     </form >
     
@@ -124,7 +124,7 @@
  
   
   
-  <input type="submit" value="Continuar">
+ 
   <a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
 
 </form>
