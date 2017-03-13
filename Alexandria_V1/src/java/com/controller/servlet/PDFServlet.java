@@ -1,27 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Creative Commons. El beneficiario de la licencia tiene el derecho de copiar, 
+ * distribuir, exhibir y representar la obra y hacer obras derivadas siempre 
+ * y cuando reconozca y cite la obra de la forma especificada por el autor o 
+ * el licenciante.
  */
 package com.controller.servlet;
 
 import com.model.dao.MaterialDAO;
 import com.model.entities.Material;
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.servlet.ServletContext;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Alan
+ * @author Guadalupe Abril González Abitia <yoru@outlook.com>
  */
-public class Navegar3Servlet extends HttpServlet {
+public class PDFServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,32 +33,20 @@ public class Navegar3Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	response.setContentType("text/html;charset=UTF-8");
 	try (OutputStream out = response.getOutputStream()) {
-	    HttpSession session = request.getSession();
-	    String idtip;
-	    int idMaterial = Integer.parseInt(request.getParameter("IdMaterial"));
-	    System.out.println("\n\t" + idMaterial + " ");
+	    byte[] bytes;
+	    int idMaterial = Integer.parseInt(request.getParameter("idMaterial"));
 	    Material m1 = new Material();
-	    Material m2 = new Material();
-	    MaterialDAO mdao1 = new MaterialDAO();
-	    int idtipom;
 	    m1.setIdMaterial(idMaterial);
-	    m2 = mdao1.read(m1);
-	    idtipom = m2.getTipoMaterial();
-	    if (idtipom == 1) {
-		idtip = Integer.toString(idMaterial);
-		System.out.println("Dato enviado ID: " + idtip);
-		session.setAttribute("idMaterial", idtip);
-		response.sendRedirect("jsp/alumno/vervideo.jsp");
-	    } else if (idtipom == 0) {
-		ServletContext servletContext = session.getServletContext();
-		String contextPath = servletContext.getContextPath();
-		System.out.println("ContextPath: " + contextPath);
-		idtip = Integer.toString(idMaterial);
-		System.out.println("Dato enviado ID: " + idtip);
-		session.setAttribute("rutaMaterial", contextPath + "/PDFServlet?idMaterial=" + idtip);
-		response.sendRedirect("jsp/alumno/verpdf.jsp");
+	    MaterialDAO mdao1 = new MaterialDAO();
+	    if ((bytes = mdao1.getPDF(m1)) != null) {
+		String pdfFileName = idMaterial + ".pdf";
+		response.setContentType("application/pdf");
+		//response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
+		response.setContentLength(bytes.length);
+		out.write(bytes);
+	    } else {
+		System.out.println("PDF es nulo.");
 	    }
 	}
     }
@@ -101,5 +89,9 @@ public class Navegar3Servlet extends HttpServlet {
     public String getServletInfo() {
 	return "Short description";
     }// </editor-fold>
+
+    private byte[] getFromDatabase() {
+	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
