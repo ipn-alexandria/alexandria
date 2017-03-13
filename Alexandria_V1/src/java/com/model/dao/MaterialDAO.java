@@ -36,6 +36,9 @@ public class MaterialDAO {
     private static final String SQL_UPDATE_PDF
             = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
     
+    private static final String SQL_READ_PDF = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
+
+    
     public Connection conexion;
     
     Conexion con = new Conexion();
@@ -255,7 +258,22 @@ public class MaterialDAO {
         }
     }
     
-    
+    public byte[] getPDF(Material m) {
+	try {
+	    ResultSet rs;
+	    PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_READ_PDF);
+	    ps.setInt(1, m.getIdMaterial());
+	    rs = ps.executeQuery();
+	    if (rs.next()) {
+		return rs.getBytes(1);
+	    }
+	} catch (SQLException ex) {
+	    Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+	} finally {
+
+	}
+	return null;
+}
     
     public static void main(String[] args) {
         Material c = new Material();

@@ -132,24 +132,27 @@
                 <div class="services-header">
                     <h3 class="services-header-title">Distribuidor al Menudeo y Mayoreo de productos Máscara de Latex ®</h3>
                     <p class="services-header-body"><em> ¡Haz de tu pedido de tus playeras de tus Personajes Favoritos! </em>  </p><hr>
+                     <%
+                String temadd = (String)session.getAttribute("temadd");
+                
+            %>
+            <embed src=<%=temadd%> type="application/pdf" width="800" height="600"></embed>
                 </div>
             </div>
       
          
-      
+            
+            
+            
             <!-- Begin Services Row 2 -->
 
            
             <div class="row services-row services-row-tail services-row-2">
 
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" >
-                    <div class="services-group wow animated zoomIn" data-wow-offset="40">
                     
                         
-                       <iframe width="100%" height="400px" src="https://www.youtube.com/embed/qndC7AYyAB8?rel=0&controls=2&modestbranding=1" frameborder="0" controls="0" allowfullscreen></iframe>
-                    </div>
+                  
                     
-                </div>
                 
              
                 
