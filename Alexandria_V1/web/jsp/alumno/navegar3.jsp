@@ -65,10 +65,7 @@
 				    </c:choose>
 				</td>
 				<td>
-				    <form method="post" action="../../Navegar3Servlet" name="form2">
-					<input type="hidden" name="IdMaterial" value="<c:out value="${material.idMaterial}" />">
-					<button type="submit" name="go">Ir</button>
-				    </form>
+				    <a href="../../Navegar3Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
 				</td>
 			    </tr>
 			</c:if>
@@ -76,7 +73,6 @@
 		</tbody>
 	    </table>
 	</div>
-	<button type="submit">Continuar</button>
 	<a href="alumno.jsp"><button type="button">Regresar</button></a>
 	<footer class="footer">
 	    Alexandria-IPN 2016 ©
