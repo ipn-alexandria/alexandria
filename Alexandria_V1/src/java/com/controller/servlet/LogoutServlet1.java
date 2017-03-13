@@ -5,12 +5,8 @@
  */
 package com.controller.servlet;
 
-import com.model.dao.MaterialDAO;
-import com.model.entities.Material;
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import javax.servlet.ServletContext;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +17,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alan
  */
-public class Navegar3Servlet extends HttpServlet {
+public class LogoutServlet1 extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -32,36 +29,28 @@ public class Navegar3Servlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
-	response.setContentType("text/html;charset=UTF-8");
-	try (OutputStream out = response.getOutputStream()) {
-	    HttpSession session = request.getSession();
-	    String idtip;
-	    int idMaterial = Integer.parseInt(request.getParameter("IdMaterial"));
-	    System.out.println("\n\t" + idMaterial + " ");
-	    Material m1 = new Material();
-	    Material m2 = new Material();
-	    MaterialDAO mdao1 = new MaterialDAO();
-	    int idtipom;
-	    m1.setIdMaterial(idMaterial);
-	    m2 = mdao1.read(m1);
-	    idtipom = m2.getTipoMaterial();
-	    if (idtipom == 1) {
-		idtip = Integer.toString(idMaterial);
-		System.out.println("Dato enviado ID: " + idtip);
-		session.setAttribute("idMaterial", idtip);
-		response.sendRedirect("jsp/alumno/vervideo.jsp");
-	    } else if (idtipom == 0) {
-		ServletContext servletContext = session.getServletContext();
-		String contextPath = servletContext.getContextPath();
-		System.out.println("ContextPath: " + contextPath);
-		idtip = Integer.toString(idMaterial);
-		System.out.println("Dato enviado ID: " + idtip);
-		System.out.println("contextpath: " + contextPath);
-		session.setAttribute("rutaMaterial", contextPath + "/PDFServlet?idMaterial=" + idtip);
-		response.sendRedirect("jsp/alumno/verpdf.jsp");
-	    }
-	}
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LogoutServlet1</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet LogoutServlet1 at " + request.getContextPath() + "</h1>");
+            
+             HttpSession session = request.getSession();
+            
+           session.setAttribute("idTipo", null);
+            session.invalidate();
+            response.sendRedirect("index.jsp");
+            
+            
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,8 +64,8 @@ public class Navegar3Servlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
-	processRequest(request, response);
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -89,8 +78,8 @@ public class Navegar3Servlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
-	processRequest(request, response);
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -100,7 +89,7 @@ public class Navegar3Servlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-	return "Short description";
+        return "Short description";
     }// </editor-fold>
 
 }

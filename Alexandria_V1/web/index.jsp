@@ -1,5 +1,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+
+
+
+<%
+    
+    
+    
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == ""))
+    {
+         
+%>
+
+
+
+
+
+
 <html lang="en">
     <head>
 
@@ -27,6 +43,7 @@
         
     </head>
   <body>
+      <div class ="backgroundimg">  </div>
 
     <!-- Header -->
         
@@ -136,47 +153,8 @@
                 </div>
             </div>
       
-            <!-- Begin Services Row 1 -->
-            <div class="row services-row services-row-head services-row-1">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated fadeInLeft" data-wow-offset="40">
-                        <img src="" height="90%" width="90%" />
-                    </div>
-                </div>
-        
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                        <img src="" height="90%" width="90%" />
-                    </div>
-                </div>
-        
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated fadeInRight" data-wow-offset="40">
-                        <img src="" height="90%" width="90%" />
-                    </div>        
-                </div>
-            </div>
-            <!-- End Serivces Row 1 -->
-      
-            <!-- Begin Services Row 2 -->
+        </div>
 
-           
-            <div class="row services-row services-row-tail services-row-2">
-
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" >
-                    <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                    
-                        <img src="" height="90%" width="90%" />
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <!-- End Serivces Row 2 -->
-    
-        </div>      
-    </section>
-    <!-- End #services-section -->
 
 
       <!-- Footer -->
@@ -207,5 +185,74 @@
     <script>
       new WOW().init();
     </script>
+    
+       
   </body>
 </html>
+
+
+<!-- redirecting -->
+
+<% }
+
+
+String currentTipo;
+try
+    {
+    
+    
+    System.out.print(session.getAttribute("idTipo"));
+    currentTipo = session.getAttribute("idTipo").toString();
+    
+    
+
+
+if((currentTipo).equals("4")) {
+
+System.out.print(currentTipo);
+
+response.sendRedirect("jsp/alumno/alumno.jsp");
+
+}
+
+if((currentTipo).equals("3")) {
+
+System.out.print(currentTipo);
+
+response.sendRedirect("login.jsp");
+
+}
+
+if((currentTipo).equals("2")) {
+
+System.out.print(currentTipo);
+
+response.sendRedirect("login.jsp");
+
+}
+
+if((currentTipo).equals("1")) {
+
+System.out.print(currentTipo);
+
+response.sendRedirect("login.jsp");
+
+}
+
+} catch(Exception e){}
+
+%>
+
+
+
+
+
+
+
+
+
+<%
+    
+%>
+
+<!-- end redirecting -->

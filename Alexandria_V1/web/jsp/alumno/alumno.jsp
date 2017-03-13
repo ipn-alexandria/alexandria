@@ -1,4 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    
+    
+    
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == ""))
+    {response.sendRedirect("../../index.jsp");}
+         
+%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -40,7 +49,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand wow fadeInDownBig" href="index.html"><img src="assets/img/slider/Office.png" width="100" alt="Office"></a>      
+                <a class="navbar-brand wow fadeInDownBig" href="../../index.jsp"><img src="assets/img/slider/Office.png" width="100" alt="Office"></a>      
             </div>
         
             <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
@@ -58,6 +67,9 @@
 
                      <li>
                         <a href="perfil.jsp"><span>Perfil</span></a>
+                    </li>
+                    <li>
+                        <a href="../../LogoutServlet1"><span>Cerrar Sesión</span></a>
                     </li>
               </ul>         
             </div>
@@ -84,54 +96,6 @@
 
 
 
-            <!-- Begin Services Row 1 -->
-            <!-- Well this akward
-
-
-            <div class="row services-row services-row-head services-row-1">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated fadeInLeft" data-wow-offset="40">
-                        <img src="assets/img/clothes/4.jpg" height="90%" width="90%" />
-                    </div>
-                </div>
-        
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                        <img src="assets/img/clothes/2.jpg" height="90%" width="90%" />
-                    </div>
-                </div>
-        
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="services-group wow animated fadeInRight" data-wow-offset="40">
-                        <img src="assets/img/clothes/3.jpg" height="90%" width="90%" />
-                    </div>        
-                </div>
-            </div>
-            <!-- End Serivces Row 1 -->
-      
-            <!-- Begin Services Row 2 -->
-<!-- Well this akward
-           
-            <div class="row services-row services-row-tail services-row-2">
-
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" >
-                    <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                    
-                        <img src="assets/img/clothes/1.jpg" height="90%" width="90%" />
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <!-- End Serivces Row 2 -->
-            <!-- Well this akward
-    
-        </div>      
-    </section>
-    <!-- End #services-section -->
-
-
-      <!-- Footer -->
      <footer> 
         <div class="container">
             <div class="row">

@@ -17,7 +17,10 @@
          <link rel="shortcut icon" href="favicon.ico">
      <link rel="stylesheet" type="text/css" href="./css/grades.css" media="screen" />
     <style> 
-    body{background-image: url(./img/background.jpg);  }
+    body{
+    
+    
+    }
     </style>
  
     <title>Alexandria</title>

@@ -1,9 +1,3 @@
-/*
- * Creative Commons. El beneficiario de la licencia tiene el derecho de copiar, 
- * distribuir, exhibir y representar la obra y hacer obras derivadas siempre 
- * y cuando reconozca y cite la obra de la forma especificada por el autor o 
- * el licenciante.
- */
 package com.controller.servlet;
 
 import com.model.dao.MaterialDAO;
@@ -17,20 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Guadalupe Abril González Abitia <yoru@outlook.com>
- */
 public class PDFServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	try (OutputStream out = response.getOutputStream()) {

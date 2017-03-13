@@ -1,10 +1,50 @@
 body {
-    background: #fff;
-    margin: 0 0;
-    padding:10px;
-    text-align:center;
-    font-family: 'Lato', sans-serif;
+  
+     background-image: url(../img/background.jpg);
+     background-size: cover;
+   
+     
+  margin: 0 0;
+  padding:10px;
+  text-align:center;
+  font-family: 'Lato', sans-serif;
+   
+  
+ 
+
 }
+
+.backgroundimg{
+    
+     background-image: url(../img/background.jpg);
+     background-size: cover;
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   width: inherit;
+   min-width: 100%;
+   max-width: 100%; 
+
+   width: 100%;
+    z-index: -1000;
+   overflow: hidden;
+   
+     
+}
+
+.content{
+    
+    
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   min-width: 100%;
+
+   width: 100%;
+    z-index: -1000;
+   overflow: hidden;
+}
+
 #videobcg {
     position: absolute;
     top: 0px;
@@ -32,12 +72,10 @@ body {
 }
 
 .cap {
-    margin-top:75px;
-}
-
-.table { display: table; } 
-.table>* { display: table-row; }
-.table>*>* { display: table-cell; }
+  margin-top:75px;
+ }
+ 
+ 
 
 form {
     font-family: 'Lato', sans-serif;
@@ -47,7 +85,7 @@ form {
     font-size: 14px;
     margin: 20px auto 0;
     padding: 10px;
-    width:25%;
+    width:55%;
     height: 35%;
 }
 
@@ -246,6 +284,7 @@ button:hover {
     -webkit-border-radius: 3px; 
     -moz-border-radius: 3px; 
     border-radius: 3px; 
+    
 }
 
 .datagrid table thead th {
@@ -257,16 +296,19 @@ button:hover {
     font-size: 15px; 
     font-weight: bold; 
     border-left: 1px solid #008080; 
+    
 } 
 
 .datagrid table tbody td { 
-    color: #008080; 
+  /*  color: #008080; */
+    color:#FFFFFF;
     border-left: 1px solid #008080;
     font-size: 12px;
-    font-weight: normal; 
+    font-weight: bold;
+    
 }
 
-.datagrid table tbody .alt td { background: #AECFCC; color: #008080; }
+.datagrid table tbody .alt td { background: #AECFCC; color: #008080;  }
 .datagrid table thead th:first-child { border: none; }
 .datagrid table td, .datagrid table th { padding: 3px 10px; }
 .datagrid table tbody td:first-child { border-left: none; }
