@@ -1,3 +1,7 @@
+<%@page import="com.model.dao.UaDAO"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.model.entities.Ua"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,8 +45,39 @@
 
   <p> Unidad de Aprendizaje </p>
   <select name="IdUA" class="form-control">
-  <option value="1">Algoritmia y Programacion Estructurada</option>
-  <option value="2">y Algoritmia</option>
+      
+      <% 
+          
+          UaDAO udao = new UaDAO();
+          
+          
+  List<Ua> UL = (List) udao.readAll();
+ 
+  
+ 
+  String currentNombre;
+  int currentIdUA;
+  
+  Iterator<Ua> UIt = UL.iterator();
+  while (UIt.hasNext()) {
+  Ua Uaux = UIt.next();
+  
+  currentIdUA = Uaux.getIdUA();
+  currentNombre = Uaux.getNombreUA();
+  
+  
+  %>
+      
+      
+      
+      <option value= <%=currentIdUA %> >  <%=currentNombre %>  </option>
+  
+      
+      <%
+  }
+  %>
+  
+  
 </select>
   
  

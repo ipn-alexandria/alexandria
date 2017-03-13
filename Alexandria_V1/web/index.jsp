@@ -5,7 +5,7 @@
 
         <!-- meta data & title -->
         <meta charset="utf-8">
-        <title>Alexandria Alumno</title>
+        <title>Alexandria </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="LAKHeroes Oficial WebPage">
         <meta name="author" content="Vargas Gamboa Ricardo Alan">
@@ -133,8 +133,8 @@
         <div class="container">
             <div class="row">
                 <div class="services-header">
-                    <h3 class="services-header-title">Distribuidor al Menudeo y Mayoreo de productos Máscara de Latex ®</h3>
-                    <p class="services-header-body"><em> ¡Haz de tu pedido de tus playeras de tus Personajes Favoritos! </em>  </p><hr>
+                    <h3 class="services-header-title">Alexandria Beyond Knowledge</h3>
+                    <p class="services-header-body"><em> IPN 2017 </em>  </p><hr>
                 </div>
             </div>
       
@@ -142,19 +142,19 @@
             <div class="row services-row services-row-head services-row-1">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated fadeInLeft" data-wow-offset="40">
-                        <img src="assets/img/clothes/4.jpg" height="90%" width="90%" />
+                        <img src="" height="90%" width="90%" />
                     </div>
                 </div>
         
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated zoomIn" data-wow-offset="40">
-                        <img src="assets/img/clothes/2.jpg" height="90%" width="90%" />
+                        <img src="" height="90%" width="90%" />
                     </div>
                 </div>
         
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="services-group wow animated fadeInRight" data-wow-offset="40">
-                        <img src="assets/img/clothes/3.jpg" height="90%" width="90%" />
+                        <img src="" height="90%" width="90%" />
                     </div>        
                 </div>
             </div>
@@ -168,7 +168,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" >
                     <div class="services-group wow animated zoomIn" data-wow-offset="40">
                     
-                        <img src="assets/img/clothes/1.jpg" height="90%" width="90%" />
+                        <img src="" height="90%" width="90%" />
                     </div>
                     
                 </div>
@@ -188,39 +188,14 @@
                 <div class="col-md-4">
                     <h3><i class="fa fa-map-marker"></i>Contacto:</h3>
                     <p class="footer-contact">
-                        Edo. Mex. Neza. <br>
+                        IPN Alexandria 2017 <br>
                         <br>
-                        Email: LakHeroes@Gmail.com<br>
+                        Email: AlexandriaIPN@Gmail.com<br>
                     </p>
                 </div>
-<!--
-
-                <div class="col-md-4">
-                    <h3><i class="fa fa-external-link"></i> Links</h3>
-                    <p> <a href="#"> About ( Who we are )</a></p>
-                    <p> <a href="#"> Services ( What we do )</a></p>
-                    <p> <a href="#"> Contact ( Feel free to contact )</a></p>
-                    <p> <a href="#"> Blog ( Write to us )</a></p>
-                    <p> <a href="#"> Team ( Meet the Team )</a></p> 
-                </div>
-
--->
-
-                <div class="col-md-4">
-                    <h3><i class="fa fa-heart"></i> ¡Dale Click a Nuestras redes Sociales!</h3>
-                    <div id="social-icons">
 
 
-                        <a href="https://plus.google.com/112489045621313509593" target="_blank" >
-                        <div class="btn-group google-plus fa fa-google-plus fa-3x"></div> </a>
-                      <!--  <div class="btn-group linkedin fa fa-linkedin-square fa-3x"></div> -->
-                        <a href="https://twitter.com/LakHeroes" target="_blank">
-                        <div class="btn-group twitter fa fa-twitter fa-3x"></div> </a>
-                        <a href="http://www.facebook.com/LakHeroes" target="_blank">
-                        <div class="btn-group facebook fa fa-facebook fa-3x"></div> </a>
-
-                    </div>
-                </div>    
+                 
             </div>
         </div>
     </footer>

@@ -152,8 +152,8 @@ cLink = cMat2.getDireccionMaterial();
         <div class="container">
             <div class="row">
                 <div class="services-header">
-                    <h3 class="services-header-title">Distribuidor al Menudeo y Mayoreo de productos Máscara de Latex ®</h3>
-                    <p class="services-header-body"><em> ¡Haz de tu pedido de tus playeras de tus Personajes Favoritos! </em>  </p><hr>
+                    <h3 class="services-header-title">Vea su video</h3>
+                    <p class="services-header-body"><em>  </em>  </p><hr>
                 </div>
             </div>
       
@@ -190,9 +190,9 @@ cLink = cMat2.getDireccionMaterial();
                 <div class="col-md-4">
                     <h3><i class="fa fa-map-marker"></i>Contacto:</h3>
                     <p class="footer-contact">
-                        Edo. Mex. Neza. <br>
+                       Alexandria <br>
                         <br>
-                        Email: LakHeroes@Gmail.com<br>
+                        Email: Alexandria@Gmail.com<br>
                     </p>
                 </div>
 <!--
@@ -208,21 +208,7 @@ cLink = cMat2.getDireccionMaterial();
 
 -->
 
-                <div class="col-md-4">
-                    <h3><i class="fa fa-heart"></i> ¡Dale Click a Nuestras redes Sociales!</h3>
-                    <div id="social-icons">
-
-
-                        <a href="https://plus.google.com/112489045621313509593" target="_blank" >
-                        <div class="btn-group google-plus fa fa-google-plus fa-3x"></div> </a>
-                      <!--  <div class="btn-group linkedin fa fa-linkedin-square fa-3x"></div> -->
-                        <a href="https://twitter.com/LakHeroes" target="_blank">
-                        <div class="btn-group twitter fa fa-twitter fa-3x"></div> </a>
-                        <a href="http://www.facebook.com/LakHeroes" target="_blank">
-                        <div class="btn-group facebook fa fa-facebook fa-3x"></div> </a>
-
-                    </div>
-                </div>    
+                
             </div>
         </div>
     </footer>

@@ -49,7 +49,7 @@ public class Navegar3Servlet extends HttpServlet {
             String idtip;
             
             int idMaterial = Integer.parseInt(request.getParameter("IdMaterial"));
-            
+            System.out.println("\n\t" + idMaterial + " ");
             Material m1 = new Material();
             Material m2 = new Material();
             MaterialDAO mdao1 = new MaterialDAO();
@@ -66,7 +66,7 @@ public class Navegar3Servlet extends HttpServlet {
                 session.setAttribute("idMaterial", idtip);
                 response.sendRedirect("jsp/alumno/vervideo.jsp");
             }
-            else {
+            else if (idtipom == 0){
                 idtip = Integer.toString(idMaterial);
                 System.out.println("Dato enviado ID: " + idtip);
                 session.setAttribute("idMaterial", idtip);

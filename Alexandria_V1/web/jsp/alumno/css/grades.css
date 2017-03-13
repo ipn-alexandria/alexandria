@@ -33,6 +33,11 @@ body {
 .cap {
   margin-top:75px;
  }
+ 
+ 
+.table { display: table; } 
+.table>* { display: table-row; }
+.table>*>* { display: table-cell; }
 
 form {
   font-family: 'Lato', sans-serif;

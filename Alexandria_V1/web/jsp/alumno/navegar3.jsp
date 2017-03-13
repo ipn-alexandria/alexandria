@@ -39,30 +39,66 @@
 </div>
     
     
-<form method="post" action="../../Navegar3Servlet" name="navegar">
-  <p> Seleccione Tema </p>
-  <select name="IdMaterial" class="form-control">
-  <% 
+    <div class="table" width="100%"> 
+    <form method="post" action="../../Navegar3Servlet" name="form1">
+        <div>Nombre  <input type="hidden" name="name" > </div>
+        <div>Nivel  <input type="hidden" name="level" > </div>
+        <div>Tipo  <input type="hidden" name="type" > </div>
+        
+    </form >
+    
+     <% 
   List MatL = (List) session.getAttribute("ListaMaterial");
  
   
   int currentIdMat;
   String currentNombre;
+  int currentNivel;
+  int currentTipo;
+  int currentshow;
   
   
   Iterator<Material> MIt = MatL.iterator();
   while (MIt.hasNext()) {
   Material Maux = MIt.next();
   
-  currentIdMat = Maux.getIdTema();
+  currentIdMat = Maux.getIdMaterial();
   currentNombre = Maux.getNombreMaterial();
+  currentNivel = Maux.getNivelMaterial();
+  currentTipo = Maux.getTipoMaterial();
+  currentshow = Maux.getVisibilidadMaterial();
  
   
   %>
- 
-  <option value= <%=currentIdMat %> >  <%=currentNombre %>  </option>
- 
+    
+ <% if (currentshow == 1){  %>
   
+  
+          <form method="post" action="../../Navegar3Servlet" name="form2">
+        <div>   <%=currentNombre %>  <input type="hidden" name="name" > </div> 
+    <div>    <% if (currentNivel == 1 ) {out.print("Principiante");  }
+    if (currentNivel == 2 ) {out.print("Intermedio");  }
+    if (currentNivel == 3 ) {out.print("Experto");  }
+    if (currentNivel == 4 ) {out.print("Challenger");  }
+        %>  </div>
+        
+        <div>  <% if (currentTipo == 1 ) {out.print("Video Tutorial");   }
+    if (currentTipo == 0 ) {out.print("PDF");  }
+  
+        %>  </div>
+        
+        <div> <input type="hidden" name="IdMaterial" value=<%= currentIdMat %> > </div>
+        <div> <input type="submit" name="go" value="Ir" > </div>
+       
+        
+        
+        
+    </form>
+        
+         <% }  %>
+        
+
+    
   
 
   
@@ -70,12 +106,24 @@
   }
   %>
 
-  </select>
+  
+  
+  </div>
+  
+  
+
+  
+  
+  
+  
+  
   
  
 
   <br>
  
+  
+  
   <input type="submit" value="Continuar">
   <a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
 
