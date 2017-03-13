@@ -1,3 +1,29 @@
+<%
+String currentTipo;
+try
+    {
+    
+    System.out.print("CodigoJSP");
+    System.out.print(session.getAttribute("idTipo"));
+    currentTipo = session.getAttribute("idTipo").toString();
+    
+    
+
+
+if          ((currentTipo.equals("1")) || 
+            (currentTipo.equals("2")) || 
+            (currentTipo.equals("3")) || 
+            (currentTipo.equals("4") ))
+    {
+        session.invalidate();
+        response.sendRedirect("index.jsp");}
+
+} catch(Exception e){}
+
+%>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,9 +37,7 @@
     <link rel="icon" href="favicon.ico">
          <link rel="shortcut icon" href="favicon.ico">
      <link rel="stylesheet" type="text/css" href="./css/grades.css" media="screen" />
-    <style> 
-    body{background-image: url(./img/background.jpg);  }
-    </style>
+   
 
     <title>Alexandria</title>
 
@@ -21,13 +45,19 @@
 
 
 </head>
+ 
 <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
  <!--   <source src="./img/video/IMG_3727.mov" type="video/mp4"> -->
     <source src="movie.webm" type="video/webm">
          Sorry, your browser does not support HTML5 video. //
          Lo sentimos, tu navegador no soporta la visualizacion de video <a href src="https://www.google.com.mx/chrome/">https://www.google.com.mx/chrome/</a>
 </video>
-<body >
+
+<body>
+    <div class="backgroundimg">    
+     
+
+
   <div class="cap">
     <div class="title">
         <img src="./img/resources/logo.png" width="17%">
@@ -41,13 +71,17 @@
   <a href="index.jsp" > <input type="button" value="Regresar"> </a>
 
 </form>
+        
+         
+
 </body>
     <br>
     <br>    <br>
     <br>    <br>
     <br>    
     <footer>
-        Alexandria-IPN 2016 ©
+        
     </footer>
-
+        </div>
+  
 </html>
