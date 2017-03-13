@@ -15,7 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./img/resources/logo.ico" sizes="16x16 32x32 48x48 64x64 110x110 114x114" type="image/vnd.microsoft.icon">
+<link rel="icon" href="favicon.ico">
+         <link rel="shortcut icon" href="favicon.ico"> 
     <link rel="stylesheet" type="text/css" href="./css/grades.css" media="screen" />
     <style> 
     body{background-image: url(./img/background.jpg);  }

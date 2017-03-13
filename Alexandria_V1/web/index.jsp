@@ -7,8 +7,10 @@
         <meta charset="utf-8">
         <title>Alexandria </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="LAKHeroes Oficial WebPage">
+        <meta name="description" content="Alexandria Oficial WebPage">
         <meta name="author" content="Vargas Gamboa Ricardo Alan">
+        <link rel="icon" href="favicon.ico">
+         <link rel="shortcut icon" href="favicon.ico">
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
@@ -21,12 +23,8 @@
         <link rel="stylesheet" type="text/css" media="all" href="assets/css/style-projects.css">
         
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        
+        
     </head>
   <body>
 
@@ -43,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand wow fadeInDownBig" href="index.html"><img src="assets/img/slider/Office.png" width="100" alt="Office"></a>      
+                <a class="navbar-brand wow fadeInDownBig" href="index.jsp"><img src="assets/img/slider/Office.png" width="190" alt="Office"></a>      
             </div>
         
             <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
@@ -85,7 +83,7 @@
                     <div class="carousel-inner">
                         <!-- Begin Slide 1 -->
                         <div class="item active">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3>   <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p>                <!--Texto Carrousel 2 -->
@@ -95,7 +93,7 @@
 
                         <!-- Begin Slide 2 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p> <!--Texto Carrousel  -->
@@ -105,7 +103,7 @@
 
                         <!-- Begin Slide 3 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"> </p> <!--Texto Carrousel  -->
