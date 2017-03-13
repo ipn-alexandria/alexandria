@@ -24,6 +24,10 @@
         <servlet-name>Navegar3Servlet</servlet-name>
         <servlet-class>com.controller.servlet.Navegar3Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubirPDF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.SubirPDF1Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>Navegar3Servlet</servlet-name>
         <url-pattern>/Navegar3Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubirPDF1Servlet</servlet-name>
+        <url-pattern>/SubirPDF1Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

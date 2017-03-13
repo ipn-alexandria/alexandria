@@ -4,10 +4,13 @@ import com.model.dao.MaterialDAO;
 import com.model.entities.Material;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class SubirMaterialServlet extends HttpServlet {
 
@@ -23,6 +26,8 @@ public class SubirMaterialServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SubirMaterialServlet at " + request.getContextPath() + "</h1>");
+            
+            HttpSession session = request.getSession();
             
             String nomat = request.getParameter("NombreMaterial");
             int idtema = Integer.parseInt(request.getParameter("IdTema"));
@@ -56,12 +61,42 @@ public class SubirMaterialServlet extends HttpServlet {
             
             System.out.println("LLEGmos AQUI");
             
+            
+            Material m3 = new Material();
+            MaterialDAO mdao2 = new MaterialDAO();
+            int currentIdMaterial = 0;
+            int idmatup;
+            
+            
+            List matList = mdao2.readAll();
+ 
+            Iterator<Material> MIt = matList.iterator();
+            while (MIt.hasNext()) {
+                Material Maux = MIt.next();
+                currentIdMaterial = Maux.getIdMaterial();
+                
+            }
+            
+            idmatup = currentIdMaterial;
+  
+            
+            String idactual;
+            
+            
             if (timat == 1) {
+                idactual=Integer.toString(idmatup);
+                System.out.println("Dato enviado ID: " + idactual);
+                session.setAttribute("idmatup", idactual); 
                 response.sendRedirect("jsp/alumno/subirvideo.jsp");
             }
             else {
+                idactual=Integer.toString(idmatup);
+                System.out.println("Dato enviado ID: " + idactual);
+                session.setAttribute("idmatup", idactual); 
                 response.sendRedirect("jsp/alumno/subirpdf.jsp");
             }
+            
+            
             
             
             

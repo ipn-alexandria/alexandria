@@ -33,6 +33,7 @@
     <% String id = session.getAttribute("idMaterial").toString(); 
     System.out.print(id);
     int idM = Integer.parseInt(id);
+    
     String cLink;
     Material cMat = new Material();
     Material cMat2 = new Material();
@@ -40,7 +41,7 @@
     
 cMat.setIdMaterial(idM);
 cMat2 = cMatDAO.read(cMat);
-cLink = cMat2.getDireccionMaterial();
+cLink = "https://www.youtube.com/embed/" + cMat2.getDireccionMaterial();
 
 
     %>
