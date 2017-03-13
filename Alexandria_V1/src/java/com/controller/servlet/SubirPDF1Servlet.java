@@ -53,7 +53,7 @@ public class SubirPDF1Servlet extends HttpServlet {
             
             mdao.updatePDF(m1);
             
-            response.sendRedirect("jsp/alumno/alumno.jsp");
+            response.sendRedirect("jsp/misc/successupload.jsp");
             
             
             
