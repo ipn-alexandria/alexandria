@@ -5,26 +5,24 @@
  */
 package com.controller.servlet;
 
-import com.google.api.client.auth.oauth2.Credential;
-import com.youtube.apiv3.YoutubeManager;
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.OutputStream;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author abril.gonzalez
  */
-public class YoutubeServlet extends HttpServlet {
+@MultipartConfig
+public class YoutubeUpload extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -32,26 +30,23 @@ public class YoutubeServlet extends HttpServlet {
 	 * @param request servlet request
 	 * @param response servlet response
 	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException if an I/O error occurs
 	 */
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-		try {
-			InputStream is = getServletContext().getResourceAsStream("/resources/client_secrets.json");
-//			BufferedReader in = new BufferedReader(new InputStreamReader(is));
-//			String inputLine;
-//			StringBuilder gResponse = new StringBuilder();
-//			while ((inputLine = in.readLine()) != null) {
-//				gResponse.append(inputLine);
-//			}
-//			System.out.println(gResponse.toString());
-			YoutubeManager youtubeManager = new YoutubeManager();
-			Credential credential = youtubeManager.authorize(is);
-			System.out.println("Credential: " + credential);
-		} catch (IOException ex) {
-			Logger.getLogger(YoutubeServlet.class.getName()).log(Level.SEVERE, null, ex);
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Part filePart = request.getPart("file");
+		String fileName = String.valueOf("fileName");
+		File file = new File(fileName);
+		System.out.println("file: " + file.getAbsolutePath());
+		OutputStream outFile = new FileOutputStream(file);
+		InputStream filecontent = filePart.getInputStream();
+		int read = 0;
+		byte[] bytes = new byte[1024];
+		while ((read = filecontent.read(bytes)) != -1) {
+			outFile.write(bytes, 0, read);
 		}
 	}
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *

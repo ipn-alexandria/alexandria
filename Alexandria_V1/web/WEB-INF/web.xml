@@ -44,12 +44,16 @@
         <servlet-class>com.controller.servlet.PDFServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>YoutubeServlet</servlet-name>
-        <servlet-class>com.controller.servlet.YoutubeServlet</servlet-class>
+        <servlet-name>YoutubeLogin</servlet-name>
+        <servlet-class>com.controller.servlet.YoutubeLogin</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Oauth2CallbackServlet</servlet-name>
         <servlet-class>com.controller.servlet.Oauth2CallbackServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>YoutubeUpload</servlet-name>
+        <servlet-class>com.controller.servlet.YoutubeUpload</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -88,12 +92,16 @@
         <url-pattern>/PDFServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>YoutubeServlet</servlet-name>
-        <url-pattern>/YoutubeServlet</url-pattern>
+        <servlet-name>YoutubeLogin</servlet-name>
+        <url-pattern>/YoutubeLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Oauth2CallbackServlet</servlet-name>
         <url-pattern>/oauth2callback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>YoutubeUpload</servlet-name>
+        <url-pattern>/YoutubeUpload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
