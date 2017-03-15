@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +11,7 @@
 		<link rel="icon" href="favicon.ico">
 		<link rel="shortcut icon" href="favicon.ico">
 		<script src="js/jquery-1.10.2.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../../css/grades.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/grades.css" media="screen" />
 		<title>Alexandria</title>
 	</head>
 	<body class="backgroundimg">
@@ -24,11 +25,17 @@
 				<table border="0" class="center">
 					<tr>
 						<td>
-							<form enctype="multipart/form-data">
-								<input name="file" type="file" accept="video/*"/>
-								<input type="button" value="Subir"/>
-							</form>
-							<progress value="0"></progress>
+							<c:if test="${param.credential != 1}">
+								<p>Necesita autorizar el ingreso a Youtube.</p>
+							</c:if>
+							<c:if test="${param.credential == 1}">
+								<form enctype="multipart/form-data">
+									<input name="file" type="file" accept="video/*"/>
+									<input type="button" value="Subir"/>
+								</form>
+								<progress value="0">
+								</progress>
+							</c:if>
 						</td>
 					</tr>
 					<tr>

@@ -107,7 +107,7 @@ public class YoutubeManager {
 		return credential;
 	}
 
-	public static void uploadVideo(Credential credential) throws IOException {
+	public static void uploadVideo(Credential credential, InputStream is) throws IOException {
 		// This object is used to make YouTube Data API requests.
 		youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName("youtube-cmdline-uploadvideo-sample").build();
 		System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
@@ -137,7 +137,7 @@ public class YoutubeManager {
 		snippet.setTags(tags);
 		// Add the completed snippet object to the video resource.
 		videoObjectDefiningMetadata.setSnippet(snippet);
-		InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, new FileInputStream("C:/Users/abril.gonzalez/Downloads/giphy.mp4"));
+		InputStreamContent mediaContent = new InputStreamContent(VIDEO_FILE_FORMAT, is);
 		// Insert the video. The command sends three arguments. The first
 		// specifies which information the API request is setting and which
 		// information the API response should return. The second argument

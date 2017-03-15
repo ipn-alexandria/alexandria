@@ -5,6 +5,8 @@
  */
 package com.controller.servlet;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.youtube.apiv3.YoutubeManager;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -33,17 +36,11 @@ public class YoutubeUpload extends HttpServlet {
 	 * @throws IOException if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Credential credential = (Credential) session.getAttribute("ytCredential");
 		Part filePart = request.getPart("file");
-		String fileName = String.valueOf("fileName");
-		File file = new File(fileName);
-		System.out.println("file: " + file.getAbsolutePath());
-		OutputStream outFile = new FileOutputStream(file);
 		InputStream filecontent = filePart.getInputStream();
-		int read = 0;
-		byte[] bytes = new byte[1024];
-		while ((read = filecontent.read(bytes)) != -1) {
-			outFile.write(bytes, 0, read);
-		}
+		YoutubeManager.uploadVideo(credential, filecontent);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
