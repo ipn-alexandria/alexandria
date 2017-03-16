@@ -10,6 +10,7 @@ import com.google.api.client.auth.oauth2.StoredCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.googleapis.media.MediaHttpUploader;
 import com.google.api.client.googleapis.media.MediaHttpUploaderProgressListener;
@@ -32,6 +33,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,6 +75,12 @@ public class YoutubeManager {
 	private static GoogleAuthorizationCodeFlow flow;
 	private static String loginUrl = null;
 
+	public static GoogleCredential getServiceCredential(InputStream key) throws IOException {
+		List<String> scopes = new ArrayList();
+		scopes.add("https://www.googleapis.com/auth/youtube.upload");
+		return GoogleCredential.fromStream(key).createScoped(scopes);
+	}
+
 	private static void buildLoginUrl(InputStream secrets) throws IOException {
 		List<String> scopes = new ArrayList();
 		scopes.add("https://www.googleapis.com/auth/youtube.upload");
@@ -84,7 +92,7 @@ public class YoutubeManager {
 		DataStore<StoredCredential> datastore = fileDataStoreFactory.getDataStore("uploadvideo");
 		flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, scopes).setCredentialDataStore(datastore).build();
 		GoogleAuthorizationCodeRequestUrl url = flow.newAuthorizationUrl();
-		loginUrl = url.setRedirectUri(CALLBACK_URI).build();
+		loginUrl = url.setRedirectUri(CALLBACK_URI).setAccessType("offline").build();
 		clientSecretReader.close();
 		secrets.close();
 	}

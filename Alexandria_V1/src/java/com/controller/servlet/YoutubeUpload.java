@@ -7,17 +7,15 @@ package com.controller.servlet;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.youtube.apiv3.YoutubeManager;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -36,8 +34,10 @@ public class YoutubeUpload extends HttpServlet {
 	 * @throws IOException if an I/O error occurs
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Credential credential = (Credential) session.getAttribute("ytCredential");
+		InputStream is = getServletContext().getResourceAsStream("/resources/Alexandria-a98346193059.json");
+		Credential credential = YoutubeManager.getServiceCredential(is);
+		credential.refreshToken();
+		Logger.getLogger(YoutubeUpload.class.getName()).log(Level.INFO, "Token: {0}", credential.getAccessToken());
 		Part filePart = request.getPart("file");
 		InputStream filecontent = filePart.getInputStream();
 		YoutubeManager.uploadVideo(credential, filecontent);

@@ -10,8 +10,8 @@
 		<meta name="author" content="">
 		<link rel="icon" href="favicon.ico">
 		<link rel="shortcut icon" href="favicon.ico">
-		<script src="js/jquery-1.10.2.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/grades.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../../css/grades.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../../css/ytUpload.css" media="screen" />
 		<title>Alexandria</title>
 	</head>
 	<body class="backgroundimg">
@@ -21,60 +21,42 @@
 					<img src="./img/resources/logo.png" width="25%">
 				</div>
 			</div>
-			<div class="center datagrid">
-				<table border="0" class="center">
-					<tr>
-						<td>
-							<c:if test="${param.credential != 1}">
-								<p>Necesita autorizar el ingreso a Youtube.</p>
-							</c:if>
-							<c:if test="${param.credential == 1}">
-								<form enctype="multipart/form-data">
-									<input name="file" type="file" accept="video/*"/>
-									<input type="button" value="Subir"/>
-								</form>
-								<progress value="0">
-								</progress>
-							</c:if>
-						</td>
-					</tr>
-					<tr>
-					</tr>
-				</table>
+			<span id="signinButton" class="pre-sign-in">
+				<span
+					class="g-signin"
+					data-callback="signinCallback"
+					data-clientid="155787557946-u3b5so0ik3eautotv8k29v1c6oihoe23.apps.googleusercontent.com"
+					data-cookiepolicy="single_host_origin"
+					data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+				</span>
+			</span>
+			<div class="post-sign-in center">
+				<div>
+					<label for="title">Título:</label>
+					<input id="title" type="text" value=""/>
+				</div>
+				<div>
+					<label for="description">Descripción:</label>
+					<textarea id="description"></textarea>
+				</div>
+				<div>
+					<input input type="file" id="file" class="button" accept="video/*">
+					<button id="button">Subir</button>
+					<div class="during-upload">
+						<p><span id="percent-transferred"></span>% (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
+						<progress id="upload-progress" max="1" value="0"></progress>
+					</div>
+					<div class="post-upload">
+						<p>Video subido con ID <span id="video-id"></span>.</p>
+						<span id="post-upload-status"></span>
+					</div>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="../../footer.jsp" />
-		<script>
-			$(':button').on('click', function () {
-				$.ajax({
-					// Your server script to process the upload
-					url: '../../YoutubeUpload',
-					type: 'POST',
-					// Form data
-					data: new FormData($('form')[0]),
-					// Tell jQuery not to process data or worry about content-type
-					// You *must* include these options!
-					cache: false,
-					contentType: false,
-					processData: false,
-					// Custom XMLHttpRequest
-					xhr: function () {
-						var myXhr = $.ajaxSettings.xhr();
-						if (myXhr.upload) {
-							// For handling the progress of the upload
-							myXhr.upload.addEventListener('progress', function (e) {
-								if (e.lengthComputable) {
-									$('progress').attr({
-										value: e.loaded,
-										max: e.total
-									});
-								}
-							}, false);
-						}
-						return myXhr;
-					},
-				});
-			});
-		</script>
+		<script src="../../js/jquery-1.10.2.min.js"></script>
+		<script src="../../js/plusone.js"></script>
+		<script src="../../js/ytCorsUpload.js"></script>
+		<script src="../../js/ytUpload.js"></script>
 	</body>
 </html>
