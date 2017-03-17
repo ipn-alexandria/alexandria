@@ -7,6 +7,8 @@ package com.youtube.apiv3;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.auth.oauth2.StoredCredential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
@@ -75,14 +77,39 @@ public class YoutubeManager {
 	private static GoogleAuthorizationCodeFlow flow;
 	private static String loginUrl = null;
 
+	public static Credential authorize(String credentialDatastore, InputStream secrets, String user) throws IOException {
+		List<String> scopes = new ArrayList();
+		scopes.add("https://www.googleapis.com/auth/youtube");
+		scopes.add("https://www.googleapis.com/auth/youtube.upload");
+		// Load client secrets.
+		Reader clientSecretReader = new InputStreamReader(secrets);
+		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, clientSecretReader);
+		// This creates the credentials datastore at ~/.oauth-credentials/${credentialDatastore}
+		FileDataStoreFactory fileDataStoreFactory = new FileDataStoreFactory(new File(System.getProperty("user.home") + "/" + CREDENTIALS_DIRECTORY));
+		DataStore<StoredCredential> datastore = fileDataStoreFactory.getDataStore(credentialDatastore);
+		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, scopes)
+				.setCredentialDataStore(datastore)
+				.setApprovalPrompt("force")
+				.setAccessType("offline").build();
+		// Build the local server and bind it to port 8080
+		LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setPort(8090).build();
+		// Authorize.
+		System.out.println("Credentials: " + flow.getCredentialDataStore().values());
+		return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize(user);
+	}
+
 	public static GoogleCredential getServiceCredential(InputStream key) throws IOException {
 		List<String> scopes = new ArrayList();
+		scopes.add("https://www.googleapis.com/auth/youtube");
 		scopes.add("https://www.googleapis.com/auth/youtube.upload");
-		return GoogleCredential.fromStream(key).createScoped(scopes);
+		GoogleCredential credential = GoogleCredential.fromStream(key).createScoped(scopes);
+		credential.refreshToken();
+		return credential;
 	}
 
 	private static void buildLoginUrl(InputStream secrets) throws IOException {
 		List<String> scopes = new ArrayList();
+		scopes.add("https://www.googleapis.com/auth/youtube");
 		scopes.add("https://www.googleapis.com/auth/youtube.upload");
 		// Load client secrets.
 		Reader clientSecretReader = new InputStreamReader(secrets);

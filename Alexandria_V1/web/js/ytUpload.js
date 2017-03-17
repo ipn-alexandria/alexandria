@@ -15,9 +15,9 @@
  */
 
 var signinCallback = function (result) {
-	if (result.access_token) {
+	if (result) {
 		var uploadVideo = new UploadVideo();
-		uploadVideo.ready(result.access_token);
+		uploadVideo.ready(result);
 	}
 };
 
@@ -60,7 +60,7 @@ var UploadVideo = function () {
 
 
 UploadVideo.prototype.ready = function (accessToken) {
-	this.accessToken = accessToken;
+	this.accessToken = accessToken + "";
 	this.gapi = gapi;
 	this.authenticated = true;
 	this.gapi.client.request({
@@ -73,6 +73,7 @@ UploadVideo.prototype.ready = function (accessToken) {
 			if (response.error) {
 				console.log(response.error.message);
 			} else {
+				console.log(response);
 				$('#channel-name').text(response.items[0].snippet.title);
 				$('#channel-thumbnail').attr('src', response.items[0].snippet.thumbnails.default.url);
 				$('.pre-sign-in').hide();

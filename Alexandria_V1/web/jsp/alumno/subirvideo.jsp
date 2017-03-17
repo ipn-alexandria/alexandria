@@ -22,13 +22,7 @@
 				</div>
 			</div>
 			<span id="signinButton" class="pre-sign-in">
-				<span
-					class="g-signin"
-					data-callback="signinCallback"
-					data-clientid="155787557946-u3b5so0ik3eautotv8k29v1c6oihoe23.apps.googleusercontent.com"
-					data-cookiepolicy="single_host_origin"
-					data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
-				</span>
+				<p>Autenticando...</p>
 			</span>
 			<div class="post-sign-in center">
 				<div>
@@ -58,5 +52,37 @@
 		<script src="../../js/plusone.js"></script>
 		<script src="../../js/ytCorsUpload.js"></script>
 		<script src="../../js/ytUpload.js"></script>
+		<script>
+			var myToken = null;
+			function getTokenFromServer() {
+				console.log("Obteniendo token.");
+				$.ajax({
+					url: "../../YoutubeLogin",
+					success: function (data) {
+						myToken = data;
+						loadAPIClientInterfaces();
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus);
+						console.log(errorThrown);
+					}
+				});
+			}
+			function loadAPIClientInterfaces() {
+				gapi.client.init({
+					'apiKey': 'AIzaSyCYnYOK-5D6KecQ8zye-0zMVrJKlLA-bEw',
+					'scope': 'https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.upload',
+					'clientId': '155787557946-u3b5so0ik3eautotv8k29v1c6oihoe23.apps.googleusercontent.com',
+					'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
+				}).then(function () {
+					console.log("Inicializado");
+					gapi.auth.setToken({"access_token": myToken});
+					signinCallback(myToken);
+				});
+			}
+		</script>
+		<script async defer src="https://apis.google.com/js/api.js" onload="this.onload = getTokenFromServer()" onreadystatechange="if(this.readyState==='complete')this.onload()">
+		</script>
 	</body>
 </html>

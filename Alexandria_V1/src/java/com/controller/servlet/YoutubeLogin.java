@@ -5,6 +5,7 @@
  */
 package com.controller.servlet;
 
+import com.google.api.client.auth.oauth2.Credential;
 import com.youtube.apiv3.YoutubeManager;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +32,10 @@ public class YoutubeLogin extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		try {
 			InputStream is = getServletContext().getResourceAsStream("/resources/client_secrets.json");
-			response.sendRedirect(YoutubeManager.getLoginUrl(is));
+			Credential credential = YoutubeManager.authorize("uploadvideo", is, request.getSession().getAttribute("user").toString());
+			Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Access: {0}", credential.getAccessToken());
+			Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Refresh: {0}", credential.getRefreshToken());
+			response.getWriter().print(credential.getAccessToken());
 		} catch (IOException ex) {
 			Logger.getLogger(YoutubeLogin.class.getName()).log(Level.SEVERE, null, ex);
 		}
