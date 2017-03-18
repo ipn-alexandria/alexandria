@@ -32,7 +32,7 @@ public class YoutubeLogin extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		try {
 			InputStream is = getServletContext().getResourceAsStream("/resources/client_secrets.json");
-			Credential credential = YoutubeManager.authorize("uploadvideo", is, request.getSession().getAttribute("user").toString());
+			Credential credential = YoutubeManager.authorize("uploadvideo", is, "user");
 			Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Access: {0}", credential.getAccessToken());
 			Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Refresh: {0}", credential.getRefreshToken());
 			response.getWriter().print(credential.getAccessToken());
