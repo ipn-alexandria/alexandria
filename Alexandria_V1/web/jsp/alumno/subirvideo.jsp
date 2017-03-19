@@ -49,7 +49,6 @@
 	</div>
 	<jsp:include page="../../footer.jsp" />
 	<script src="../../js/jquery-1.10.2.min.js"></script>
-	<script src="../../js/plusone.js"></script>
 	<script src="../../js/ytCorsUpload.js"></script>
 	<script src="../../js/ytUpload.js"></script>
 	<script>
@@ -82,7 +81,6 @@
 		});
 	    }
 	</script>
-	<script async defer src="https://apis.google.com/js/api.js" onload="this.onload = getTokenFromServer()" onreadystatechange="if(this.readyState==='complete')this.onload()">
-	</script>
+	<script src="https://apis.google.com/js/client:plusone.js?onload=getTokenFromServer"></script>
     </body>
 </html>
