@@ -36,11 +36,13 @@ public class YoutubeLogin extends HttpServlet {
 		String user = request.getSession().getAttribute("user").toString();
 		System.out.println("Usuario logeado: " + user);
 		Credential credential = YoutubeManager.authorize("uploadvideo", is, "user");
+		credential.refreshToken();
 		Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Access: {0}", credential.getAccessToken());
 		Logger.getLogger(YoutubeLogin.class.getName()).log(Level.INFO, "Refresh: {0}", credential.getRefreshToken());
 		response.getWriter().print(credential.getAccessToken());
 	    } else {
 		System.out.println("Por favor logearse.");
+		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		response.getWriter().print("LOGIN-ERROR");
 	    }
 	} catch (IOException ex) {

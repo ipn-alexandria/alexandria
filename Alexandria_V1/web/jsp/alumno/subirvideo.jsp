@@ -62,6 +62,7 @@
 			loadAPIClientInterfaces();
 		    },
 		    error: function (jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
 			console.log(jqXHR);
 			console.log(textStatus);
 			console.log(errorThrown);
