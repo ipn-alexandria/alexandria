@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <title>Alexandria Alumno</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="LAKHeroes Oficial WebPage">
+        <meta name="description" content="Alexandria Oficial WebPage">
         <meta name="author" content="Vargas Gamboa Ricardo Alan">
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
