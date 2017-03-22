@@ -71,9 +71,9 @@
 	    }
 	    function loadAPIClientInterfaces() {
 		gapi.client.init({
-		    'apiKey': 'AIzaSyCYnYOK-5D6KecQ8zye-0zMVrJKlLA-bEw',
+		    'apiKey': 'AIzaSyCllyz8TAkkUt8ao-ZGGXeXea084a5plus',
 		    'scope': 'https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.upload',
-		    'clientId': '155787557946-u3b5so0ik3eautotv8k29v1c6oihoe23.apps.googleusercontent.com',
+		    'clientId': '1095286051216-h4j22uripre7okep23vrhonn41b7o56h.apps.googleusercontent.com',
 		    'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
 		}).then(function () {
 		    console.log("Inicializado");
