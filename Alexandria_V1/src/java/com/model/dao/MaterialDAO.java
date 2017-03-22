@@ -35,13 +35,10 @@ public class MaterialDAO {
 
     private static final String SQL_UPDATE_PDF
             = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
-
+    
     private static final String SQL_READ_PDF = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
 
-    private static final String SQL_SELECT_FILTRO1 = "SELECT * FROM Material WHERE (filtroUno = ? )";
-
-    private static final String SQL_SELECT_FILTRO2 = "SELECT * FROM Material WHERE (filtroUno = ? AND filtroDos = ? )";
-
+    
     public Connection conexion;
 
     Conexion con = new Conexion();
@@ -258,103 +255,24 @@ public class MaterialDAO {
             }
         }
     }
-
+    
     public byte[] getPDF(Material m) {
-        try {
-            ResultSet rs;
-            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_READ_PDF);
-            ps.setInt(1, m.getIdMaterial());
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getBytes(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+	try {
+	    ResultSet rs;
+	    PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_READ_PDF);
+	    ps.setInt(1, m.getIdMaterial());
+	    rs = ps.executeQuery();
+	    if (rs.next()) {
+		return rs.getBytes(1);
+	    }
+	} catch (SQLException ex) {
+	    Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+	} finally {
 
-        }
-        return null;
-    }
-
-    public List readFILTRO1(Material a) {
-        List<Material> materialList = null;
-        try {
-            ResultSet rs;
-            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_FILTRO1);
-            ps.setInt(1, 0);
-            rs = ps.executeQuery();
-            materialList = obtenerLista(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-        }
-        return materialList;
-    }
-
-    private List<Material> obtenerListaFILTRO1(ResultSet rs) {
-        List<Material> materialList = new ArrayList<>();
-        try {
-            while (rs.next()) {
-                Material a = new Material();
-                a.setIdMaterial(rs.getInt("idMaterial"));
-                a.setNombreMaterial(rs.getString("nombreMaterial"));
-                a.setIdTema(rs.getInt("idTema"));
-                a.setNivelMaterial(rs.getInt("nivelMaterial"));
-                a.setDireccionMaterial(rs.getString("direccionMaterial"));
-                a.setFiltroUno(rs.getInt("filtroUno"));
-                a.setFiltroDos(rs.getInt("filtroDos"));
-                a.setVisibilidadMaterial(rs.getInt("visibilidadMaterial"));
-                a.setTipoMaterial(rs.getInt("tipoMaterial"));
-                a.setIdUsuario(rs.getInt("idUsuario"));
-                a.setIdUa(rs.getInt("idUa"));
-                materialList.add(a);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return materialList;
-    }
-
-    public List readFILTRO2(Material a) {
-        List<Material> materialList = null;
-        try {
-            ResultSet rs;
-            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_SELECT_FILTRO2);
-            ps.setInt(1, 1);
-            ps.setInt(2, 0);
-            rs = ps.executeQuery();
-            materialList = obtenerLista(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-        }
-        return materialList;
-    }
-
-    private List<Material> obtenerListaFILTRO2(ResultSet rs) {
-        List<Material> materialList = new ArrayList<>();
-        try {
-            while (rs.next()) {
-                Material a = new Material();
-                a.setIdMaterial(rs.getInt("idMaterial"));
-                a.setNombreMaterial(rs.getString("nombreMaterial"));
-                a.setIdTema(rs.getInt("idTema"));
-                a.setNivelMaterial(rs.getInt("nivelMaterial"));
-                a.setDireccionMaterial(rs.getString("direccionMaterial"));
-                a.setFiltroUno(rs.getInt("filtroUno"));
-                a.setFiltroDos(rs.getInt("filtroDos"));
-                a.setVisibilidadMaterial(rs.getInt("visibilidadMaterial"));
-                a.setTipoMaterial(rs.getInt("tipoMaterial"));
-                a.setIdUsuario(rs.getInt("idUsuario"));
-                a.setIdUa(rs.getInt("idUa"));
-                materialList.add(a);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return materialList;
-    }
-
+	}
+	return null;
+}
+    
     public static void main(String[] args) {
         Material c = new Material();
 
@@ -377,5 +295,5 @@ public class MaterialDAO {
 //        System.out.println(d.read(u));
         System.out.println(d.readFROMTEMA(c));
     }
-
+    
 }

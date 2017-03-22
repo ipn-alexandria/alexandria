@@ -82,6 +82,7 @@ if          ((currentTipo.equals("1")) ||
             u1.setContrasena(cusu);
             
             if(udao.readLogin(u1) != null) {
+				request.getSession().setAttribute("user", nusu);
                 u2 = udao.readLogin(u1);
                 idtipo = u2.getIdTipodeusuario();
                 switch(idtipo) {
