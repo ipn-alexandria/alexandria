@@ -47,7 +47,7 @@
 		</div>
 	    </div>
 	</div>
-	<jsp:include page="../../footer.jsp" />
+	
 	<script src="../../js/jquery-1.10.2.min.js"></script>
 	<script src="../../js/ytCorsUpload.js"></script>
 	<script src="../../js/ytUpload.js"></script>

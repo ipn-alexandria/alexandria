@@ -110,7 +110,7 @@
 
                         <!-- Begin Slide 2 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p> <!--Texto Carrousel  -->
@@ -120,7 +120,7 @@
 
                         <!-- Begin Slide 3 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide3.jpg" height="400" alt="">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"> </p> <!--Texto Carrousel  -->
@@ -162,12 +162,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h3><i class="fa fa-map-marker"></i>Contacto:</h3>
-                    <p class="footer-contact">
-                        IPN Alexandria 2017 <br>
-                        <br>
-                        Email: AlexandriaIPN@Gmail.com<br>
-                    </p>
+                    <jsp:include page="footer.jsp" />
                 </div>
 
 

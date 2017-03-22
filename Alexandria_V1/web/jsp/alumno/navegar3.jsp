@@ -79,6 +79,6 @@
 	    </div>
 	    <a href="alumno.jsp"><button type="button">Regresar</button></a>
 	</div>
-	<jsp:include page="../../footer.jsp" />
+	
     </body>
 </html>

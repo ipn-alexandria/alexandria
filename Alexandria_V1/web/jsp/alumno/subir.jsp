@@ -82,6 +82,6 @@
 		<a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
 	    </form>
 	</div>
-	<jsp:include page="../../footer.jsp" />
+	
     </body>
 </html>

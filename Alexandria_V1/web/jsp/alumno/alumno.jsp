@@ -42,7 +42,7 @@
 		<div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
 		    <ul class="nav navbar-nav pull-right">
 			<li class="active">
-			    <a href="alumno.jsp">Home</a>
+			    <a href="alumno.jsp">Inicio</a>
 			</li>
 			<li>
 			    <a href="navegar.jsp">Navegar</a>
@@ -61,13 +61,14 @@
 	    </div>
 	</nav>
 	<!-- End Header -->
+        <jsp:include page="../misc/carousel2.jsp" />
 	<!-- Begin #services-section -->
 	<section id="services" class="services-section section-global-wrapper">
 	    <div class="container">
 		<div class="row">
 		    <div class="services-header">
 			<h3 class="services-header-title">Pagina de Alumno</h3>
-			<p class="services-header-body"><em>Segundo Mensaje</em></p><hr>
+			<p class="services-header-body"><em>Bienvenido</em></p><hr>
 		    </div>
 		</div>
 	    </div>
@@ -76,12 +77,7 @@
 	    <div class="container">
 		<div class="row">
 		    <div class="col-md-4">
-			<h3><i class="fa fa-map-marker"></i>Contacto:</h3>
-			<p class="footer-contact">
-			    Alexandria <br>
-			    <br>
-			    Email: Alexandria@Gmail.com<br>
-			</p>
+			<jsp:include page="../../footer.jsp" />
 		    </div>
 		</div>
 	    </div>

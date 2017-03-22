@@ -75,12 +75,7 @@
 	    <div class="container">
 		<div class="row">
 		    <div class="col-md-4">
-			<h3><i class="fa fa-map-marker"></i>Contacto:</h3>
-			<p class="footer-contact">
-			    Alexandria<br>
-			    <br>
-			    Email: Alexandria@Gmail.com<br>
-			</p>
+			<jsp:include page="../../footer.jsp" />
 		    </div>
 		</div>
 	    </div>
