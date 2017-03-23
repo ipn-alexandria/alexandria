@@ -55,6 +55,70 @@
         <servlet-name>YoutubeUpload</servlet-name>
         <servlet-class>com.controller.servlet.YoutubeUpload</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModNavegar2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModNavegar2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModNavegar3Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModNavegar3Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModNavegarServlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModNavegarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModPDFServlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModPDFServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModSubirMaterialServlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModSubirMaterialServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModSubirPDF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModSubirPDF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNavegar2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNavegar2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNavegar3Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNavegar3Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNavegarServlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNavegarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfPDFServlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfPDFServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfSubirMaterialServlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfSubirMaterialServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfSubirPDF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfSubirPDF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModEvF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModEvF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModEvF2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.ModEvF2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfEvF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfEvF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfEvF2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfEvF2Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -102,6 +166,70 @@
     <servlet-mapping>
         <servlet-name>YoutubeUpload</servlet-name>
         <url-pattern>/YoutubeUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModNavegar2Servlet</servlet-name>
+        <url-pattern>/ModNavegar2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModNavegar3Servlet</servlet-name>
+        <url-pattern>/ModNavegar3Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModNavegarServlet</servlet-name>
+        <url-pattern>/ModNavegarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModPDFServlet</servlet-name>
+        <url-pattern>/ModPDFServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModSubirMaterialServlet</servlet-name>
+        <url-pattern>/ModSubirMaterialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModSubirPDF1Servlet</servlet-name>
+        <url-pattern>/ModSubirPDF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNavegar2Servlet</servlet-name>
+        <url-pattern>/ProfNavegar2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNavegar3Servlet</servlet-name>
+        <url-pattern>/ProfNavegar3Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNavegarServlet</servlet-name>
+        <url-pattern>/ProfNavegarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfPDFServlet</servlet-name>
+        <url-pattern>/ProfPDFServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfSubirMaterialServlet</servlet-name>
+        <url-pattern>/ProfSubirMaterialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfSubirPDF1Servlet</servlet-name>
+        <url-pattern>/ProfSubirPDF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModEvF1Servlet</servlet-name>
+        <url-pattern>/ModEvF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModEvF2Servlet</servlet-name>
+        <url-pattern>/ModEvF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfEvF1Servlet</servlet-name>
+        <url-pattern>/ProfEvF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfEvF2Servlet</servlet-name>
+        <url-pattern>/ProfEvF2Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
