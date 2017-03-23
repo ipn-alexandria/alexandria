@@ -35,10 +35,16 @@ public class MaterialDAO {
 
     private static final String SQL_UPDATE_PDF
             = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
-    
-    private static final String SQL_READ_PDF = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
 
-    
+    private static final String SQL_READ_PDF
+            = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
+
+    private static final String SQL_UPDATE_FILTRO1
+            = "UPDATE material SET filtroUno = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
+
+    private static final String SQL_UPDATE_FILTRO2
+            = "UPDATE material SET filtroDos = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
+
     public Connection conexion;
 
     Conexion con = new Conexion();
@@ -255,24 +261,64 @@ public class MaterialDAO {
             }
         }
     }
-    
-    public byte[] getPDF(Material m) {
-	try {
-	    ResultSet rs;
-	    PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_READ_PDF);
-	    ps.setInt(1, m.getIdMaterial());
-	    rs = ps.executeQuery();
-	    if (rs.next()) {
-		return rs.getBytes(1);
-	    }
-	} catch (SQLException ex) {
-	    Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-	} finally {
 
-	}
-	return null;
-}
-    
+    public byte[] getPDF(Material m) {
+        try {
+            ResultSet rs;
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_READ_PDF);
+            ps.setInt(1, m.getIdMaterial());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getBytes(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+        }
+        return null;
+    }
+
+    public void updateFILTRO1(Material a) {
+        try {
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE_FILTRO1);
+            ps.setInt(1, a.getFiltroUno());
+            ps.setInt(2, a.getNivelMaterial());
+            ps.setInt(3, a.getIdMaterial());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void updateFILTRO2(Material a) {
+        try {
+            PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE_FILTRO2);
+            ps.setInt(1, a.getFiltroDos());
+            ps.setInt(2, a.getNivelMaterial());
+            ps.setInt(3, a.getIdMaterial());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Material c = new Material();
 
@@ -295,5 +341,5 @@ public class MaterialDAO {
 //        System.out.println(d.read(u));
         System.out.println(d.readFROMTEMA(c));
     }
-    
+
 }
