@@ -108,8 +108,7 @@ if          ((currentTipo.equals("1")) ||
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
                             session.setAttribute("idTipo", idtipo);
-                            //getServletConfig().getServletContext().getRequestDispatcher("/principalpaciente.jsp").forward(request,response);
-                            break;
+                            response.sendRedirect("jsp/moderador/moderador.jsp");                            break;
                     case 4: System.out.println("LISTO REDIRIGIR ----Alumno----");
                             id = u2.getIdUsuario();
                             idactual=Integer.toString(id);

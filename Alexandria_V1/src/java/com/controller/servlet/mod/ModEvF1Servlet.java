@@ -28,9 +28,9 @@ public class ModEvF1Servlet extends HttpServlet {
             
             HttpSession session = request.getSession();
             
-            int idautor = (int) session.getAttribute("id");
+            String intidmat =  session.getAttribute("idMaterial").toString();
             
-            
+            int idmat = Integer.parseInt(intidmat);
             
             int rfiltro1 = Integer.parseInt(request.getParameter("filtro1"));
             int rnivel = Integer.parseInt(request.getParameter("nivel"));
@@ -44,6 +44,7 @@ public class ModEvF1Servlet extends HttpServlet {
             
             
             if (rfiltro1 == 1) {
+                m1.setIdMaterial(idmat);
                 m1.setFiltroUno(rfiltro1);
                 m1.setNivelMaterial(rnivel);
                 mdao1.updateFILTRO1(m1);
@@ -51,6 +52,7 @@ public class ModEvF1Servlet extends HttpServlet {
                 response.sendRedirect("jsp/moderador/evaluarFiltro1.jsp");
             }
             else {
+                m1.setIdMaterial(idmat);
                 mdao1.delete(m1);
                 //Enviar correo de rechazo a la direccion de idautor
                 //con las observaciones.

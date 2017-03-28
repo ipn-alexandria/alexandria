@@ -119,6 +119,10 @@
         <servlet-name>ProfEvF2Servlet</servlet-name>
         <servlet-class>com.controller.servlet.prof.ProfEvF2Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NavegarF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.mod.NavegarF1Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -230,6 +234,10 @@
     <servlet-mapping>
         <servlet-name>ProfEvF2Servlet</servlet-name>
         <url-pattern>/ProfEvF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NavegarF1Servlet</servlet-name>
+        <url-pattern>/NavegarF1Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

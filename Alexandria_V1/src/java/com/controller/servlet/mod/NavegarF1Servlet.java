@@ -1,6 +1,5 @@
 package com.controller.servlet.mod;
 
-import com.controller.servlet.*;
 import com.model.dao.MaterialDAO;
 import com.model.entities.Material;
 import java.io.File;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ModNavegar3Servlet extends HttpServlet {
+public class NavegarF1Servlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -34,17 +33,17 @@ public class ModNavegar3Servlet extends HttpServlet {
 		idtip = Integer.toString(idMaterial);
 		System.out.println("Dato enviado ID: " + idtip);
 		session.setAttribute("idMaterial", idtip);
-		response.sendRedirect("jsp/moderador/vervideo.jsp");
+		response.sendRedirect("jsp/moderador/evaluarvideo.jsp");
 	    } else if (idtipom == 0) {
 		ServletContext servletContext = session.getServletContext();
 		String contextPath = servletContext.getContextPath();
 		System.out.println("ContextPath: " + contextPath);
 		idtip = Integer.toString(idMaterial);
-                session.setAttribute("idMaterial", idtip);
 		System.out.println("Dato enviado ID: " + idtip);
 		System.out.println("contextpath: " + contextPath);
 		session.setAttribute("rutaMaterial", contextPath + "/PDFServlet?idMaterial=" + idtip);
-		response.sendRedirect("jsp/moderador/verpdf.jsp");
+                session.setAttribute("idMaterial", idtip);
+		response.sendRedirect("jsp/moderador/evaluarpdf.jsp");
 	    }
 	}
     }

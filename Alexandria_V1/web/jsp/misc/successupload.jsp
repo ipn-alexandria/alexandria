@@ -24,6 +24,6 @@
 				<a href="../../index.jsp" > <input type="button" value="Continuar"> </a>
 			</form>
 		</div>
-		<jsp:include page="../../footer.jsp" />
+		
 	</body>
 </html>

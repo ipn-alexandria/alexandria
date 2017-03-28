@@ -58,7 +58,7 @@ public class RegistroServlet extends HttpServlet {
             udao1.create(u1);
             
                     
-            getServletConfig().getServletContext().getRequestDispatcher("/jsp/misc/successreg.jsp").forward(request,response);
+            response.sendRedirect("jsp/misc/successreg.jsp");
             
             
             

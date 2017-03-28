@@ -1,23 +1,36 @@
+<%@page import="com.model.dao.MaterialDAO"%>
+<%@page import="com.model.entities.Material"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- meta data & title -->
         <meta charset="utf-8">
-        <title>Alexandria Alumno</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Alexandria Oficial WebPage">
-        <meta name="author" content="Vargas Gamboa Ricardo Alan">
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-        <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="favicon.ico">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../../css/grades.css" media="screen" />
         <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../assets/css/style.css">
         <link rel="stylesheet" href="../../assets/css/animate.min.css">
         <link rel="stylesheet" type="text/css" media="all" href="../../assets/css/style-projects.css">
-	<link rel="icon" href="favicon.ico">
-	<link rel="shortcut icon" href="favicon.ico">
     </head>
+    <% String id = session.getAttribute("idMaterial").toString();
+	System.out.print(id);
+	int idM = Integer.parseInt(id);
+	
+        
+	Material cMat = new Material();
+	Material cMat2 = new Material();
+	MaterialDAO cMatDAO = new MaterialDAO();
+	cMat.setIdMaterial(idM);
+	cMat2 = cMatDAO.read(cMat);
+	
+    %>
     <body>
 	<nav id="navbar-section" class="navbar navbar-default navbar-static-top navbar-sticky" role="navigation">
 	    <div class="container">
@@ -63,13 +76,36 @@
 		    </object>
 		</div>      
 	</section>
+                        <div class="content">
+	   
+	    <form method="post" action="../../ModEvF1Servlet" name="evf1">
+		<p> Estatus </p>
+		<select name="filtro1" class="form-control">
+		   
+		    <option value= 1 >   Aprobado </option>
+                    <option value= 0 >   Rechazado </option>
+		   
+		</select>
+                <p> Nivel de dificultad </p>
+                <select name="nivel" class="form-control">
+		   
+		    <option value= 1 >  Principiante  </option>
+                    <option value= 2 >   Intermedio </option>
+                    <option value= 3 >   Avanzado </option>
+		   
+		</select>
+                <p> Observaciones </p>
+                <textarea name="obs" form="evf1" rows="4" cols="50"> </textarea>
+                
+		<br><br>
+		<input type="submit" value="Enviar">
+                <br><br>
+		<a href="moderador.jsp"><input type="button" value="Regresar"></a>
+	    </form>
+	</div>
 	<!-- End #services-section -->
 	<!-- Footer -->
-	<footer> 
-	    <div class="container">
-		<jsp:include page="../../footer.jsp" />
-	    </div>
-	</footer>
+	
 	<!-- Footer End -->
 	<script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
 	<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
