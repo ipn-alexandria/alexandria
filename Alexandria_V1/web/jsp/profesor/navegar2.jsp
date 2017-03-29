@@ -1,6 +1,5 @@
-<%@page import="com.model.dao.UaDAO"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="com.model.entities.Ua"%>
+<%@page import="com.model.entities.Tema"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,28 +22,27 @@
 		    <img src="../../img/resources/logo.png" width="17%">
 		</div>
 	    </div>
-	    <form method="post" action="../../ModNavegarServlet" name="navegar">
-		<p> Unidad de Aprendizaje </p>
-		<select name="IdUA" class="form-control">
+	    <form method="post" action="../../ProfNavegar2Servlet" name="navegar">
+		<p> Seleccione Tema </p>
+		<select name="IdTema" class="form-control">
 		    <%
-			UaDAO udao = new UaDAO();
-			List<Ua> UL = (List) udao.readAll();
+			List TemaL = (List) session.getAttribute("ListaTemas");
+			int currentIdTema;
 			String currentNombre;
-			int currentIdUA;
-			Iterator<Ua> UIt = UL.iterator();
-			while (UIt.hasNext()) {
-			    Ua Uaux = UIt.next();
-			    currentIdUA = Uaux.getIdUA();
-			    currentNombre = Uaux.getNombreUA();
+			Iterator<Tema> TIt = TemaL.iterator();
+			while (TIt.hasNext()) {
+			    Tema Taux = TIt.next();
+			    currentIdTema = Taux.getIdTema();
+			    currentNombre = Taux.getNombretema();
 		    %>
-		    <option value= <%=currentIdUA%> >  <%=currentNombre%>  </option>
+		    <option value="<%=currentIdTema%>"><%=currentNombre%></option>
 		    <%
 			}
 		    %>
 		</select>
 		<br>
 		<input type="submit" value="Continuar">
-		<a href="moderador.jsp"><input type="button" value="Regresar"></a>
+		<a href="profesor.jsp" > <input type="button" value="Regresar"> </a>
 	    </form>
 	</div>
 	

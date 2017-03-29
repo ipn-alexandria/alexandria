@@ -1,8 +1,24 @@
+<%-- 
+    Document   : evaluarFiltro1
+    Created on : 22/03/2017, 07:20:16 PM
+    Author     : Alan
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@page import="com.model.entities.Material"%>
+<%@page import="com.model.dao.MaterialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+   <% MaterialDAO mDAO = new MaterialDAO();
+Material n1 = new Material();
+List ListaMaterial2;
+ListaMaterial2 = mDAO.readAll();
+session.setAttribute("ListaMaterial2", ListaMaterial2);
+
+
+%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +29,10 @@
 	<link rel="stylesheet" type="text/css" href="../../css/grades.css" media="screen" />
 	<title>Alexandria</title>
     </head>
-    <body class="backgroundimg">
+   
+    
+
+<body class="backgroundimg">
 	<div class="content">
 	    <div class="cap">
 		<div class="title">
@@ -21,10 +40,10 @@
 		</div>
 	    </div>
 	    <div class="datagrid">
-		<c:if test="${empty ListaMaterial}">
+		<c:if test="${empty ListaMaterial2}">
 		    <p>No hay datos.</p>
 		</c:if>
-		<c:if test="${not empty ListaMaterial}">
+		<c:if test="${not empty ListaMaterial2}">
 		    <table>
 			<thead>
 			    <tr>
@@ -35,8 +54,9 @@
 			    </tr>
 			<thead>
 			<tbody>
-			    <c:forEach var="material" begin="0" items="${ListaMaterial}">
-				<c:if test="${material.visibilidadMaterial == 1}">
+			    <c:forEach var="material" begin="0" items="${ListaMaterial2}">
+				
+                                    <c:if test="${(material.filtroDos == 0) && (material.filtroUno == 1) }">
 				    <tr>
 					<td>
 					    <c:out value="${material.nombreMaterial}" />
@@ -68,17 +88,19 @@
 					    </c:choose>
 					</td>
 					<td>
-					    <a href="../../ModNavegar3Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
+					    <a href="../../NavegarF2Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
 					</td>
 				    </tr>
 				</c:if>
+                                   
 			    </c:forEach>
 			</tbody>
 		    </table>
 		</c:if>
 	    </div>
-	    <a href="moderador.jsp"><button type="button">Regresar</button></a>
+	    <a href="profesor.jsp"><button type="button">Regresar</button></a>
 	</div>
 	
     </body>
+    
 </html>

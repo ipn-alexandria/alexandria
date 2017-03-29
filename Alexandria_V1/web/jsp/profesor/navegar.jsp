@@ -23,7 +23,7 @@
 		    <img src="../../img/resources/logo.png" width="17%">
 		</div>
 	    </div>
-	    <form method="post" action="../../ModNavegarServlet" name="navegar">
+	    <form method="post" action="../../ProfNavegarServlet" name="navegar">
 		<p> Unidad de Aprendizaje </p>
 		<select name="IdUA" class="form-control">
 		    <%
@@ -44,7 +44,7 @@
 		</select>
 		<br>
 		<input type="submit" value="Continuar">
-		<a href="moderador.jsp"><input type="button" value="Regresar"></a>
+		<a href="profesor.jsp"><input type="button" value="Regresar"></a>
 	    </form>
 	</div>
 	

@@ -411,14 +411,15 @@ public class MaterialDAO {
 
 //        c.setNombreMaterial("Arrays unidimensionales, introduccion");
 //        c.setIdTema(1);
-//        c.setNivelMaterial(1);
+        c.setNivelMaterial(1);
 //        c.setDireccionMaterial("https://www.youtube.com/watch?v=Us-TVg40ExM");
 //        c.setFiltroUno(0);
-//        c.setFiltroDos(0);
+        c.setFiltroDos(1);
 //        c.setVisibilidadMaterial(0);
 //        c.setTipoMaterial(1);
 //        c.setIdUsuario(1);
 //        c.setIdUa(1);
+            c.setIdMaterial(25);
 
         MaterialDAO d = new MaterialDAO();
 //        d.readFILTRO1(c);
@@ -426,7 +427,8 @@ public class MaterialDAO {
 //        d.update(c);
 //        d.delete(c);
 //        System.out.println(d.read(u));
-        System.out.println(d.readFILTRO2(c));
+//        System.out.println(d.readFILTRO2(c));
+            d.updateFILTRO2(c);
     }
 
 }

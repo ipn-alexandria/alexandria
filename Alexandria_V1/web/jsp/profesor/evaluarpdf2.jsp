@@ -1,5 +1,3 @@
-<%@page import="com.model.dao.UaDAO"%>
-<%@page import="com.model.entities.Ua"%>
 <%@page import="com.model.dao.MaterialDAO"%>
 <%@page import="com.model.entities.Material"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -48,7 +46,7 @@
 		<div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
 		    <ul class="nav navbar-nav pull-right">
 			<li class="active">
-			    <a href="moderador.jsp">Inicio</a>
+			    <a href="profesor.jsp">Inicio</a>
 			</li>
 			<li>
 			    <a href="navegar.jsp">Navegar</a>
@@ -68,46 +66,7 @@
 	    <div class="container">
 		<div class="row">
 		    <div class="services-header">
-                        <h3 class="services-header-title">
-                            <% 
-                                                        int idm = Integer.parseInt(session.getAttribute("idMaterial").toString()); 
-                                                        Material m1 = new Material();
-                                                        Material m2 = new Material();
-                                                        MaterialDAO mdao1 = new MaterialDAO();
-                                                        m1.setIdMaterial(idm);
-                                                        m2 = mdao1.read(m1);
-                                                    %>
-                                                    <% out.println(m2.getNombreMaterial());%>
-                                                </h3>
-                                                <h3>
-                                                    Nivel:
-                                                    
-                                                    <%
-                                                        int c = m2.getNivelMaterial();
-                                                        switch (c) {
-                                                            case 1: out.println("Básico");
-                                                                    break;
-                                                            case 2: out.println("Intermedio");
-                                                                    break;
-                                                            case 3: out.println("Avanzado");
-                                                                    break;
-                                                        }
-                                                    %>
-                                                        
-                                                </h3>
-                                                <h3>
-                                                    Unidad de Aprendizaje:
-                                                    
-                                                    <%
-                                                        int d = m2.getIdUa();
-                                                        Ua ua1 = new Ua();
-                                                        Ua ua2 = new Ua();
-                                                        UaDAO uadao1 = new UaDAO();
-                                                        ua1.setIdUA(d);
-                                                        ua2 = uadao1.read(ua1);
-                                                        out.println(ua2.getNombreUA());
-                                                    %>
-                        </h3>
+			<h3 class="services-header-title">PDF</h3>
 		    </div>
 		</div>
 		<div style="height:1200px;">
@@ -119,9 +78,9 @@
 	</section>
                         <div class="content">
 	   
-	    <form method="post" action="../../ModEvF1Servlet" name="evf1">
+	    <form method="post" action="../../ProfEvF2Servlet" name="evf1">
 		<p> Estatus </p>
-		<select name="filtro1" class="form-control">
+		<select name="filtro2" class="form-control">
 		   
 		    <option value= 1 >   Aprobado </option>
                     <option value= 0 >   Rechazado </option>
@@ -136,12 +95,12 @@
 		   
 		</select>
                 <p> Observaciones </p>
-                <textarea name="obs" rows=4 cols=50> </textarea>
+                <textarea name="obs" form="evf1" rows="4" cols="50"> </textarea>
                 
 		<br><br>
 		<input type="submit" value="Enviar">
                 <br><br>
-		<a href="moderador.jsp"><input type="button" value="Regresar"></a>
+		<a href="profesor.jsp"><input type="button" value="Regresar"></a>
 	    </form>
 	</div>
 	<!-- End #services-section -->

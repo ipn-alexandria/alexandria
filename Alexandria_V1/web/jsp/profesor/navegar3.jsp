@@ -68,7 +68,7 @@
 					    </c:choose>
 					</td>
 					<td>
-					    <a href="../../ModNavegar3Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
+					    <a href="../../ProfNavegar3Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
 					</td>
 				    </tr>
 				</c:if>
@@ -77,7 +77,7 @@
 		    </table>
 		</c:if>
 	    </div>
-	    <a href="moderador.jsp"><button type="button">Regresar</button></a>
+	    <a href="profesor.jsp"><button type="button">Regresar</button></a>
 	</div>
 	
     </body>

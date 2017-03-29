@@ -24,15 +24,13 @@ public class Conexion {
         String userName = "root";
         String userPassword = "root";
         String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
-        String driverBd = "com.mysql.jdbc.Driver";
+        Connection con = null;
         try {
-            Class.forName(driverBd);
-            conexion = DriverManager.getConnection(urlBd, userName, userPassword);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(urlBd, userName, userPassword);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return conexion;
+        return con;
     }
 }

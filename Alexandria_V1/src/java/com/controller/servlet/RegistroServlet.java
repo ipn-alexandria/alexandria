@@ -1,6 +1,7 @@
 package com.controller.servlet;
 
 import com.model.dao.UsuarioDAO;
+import com.model.db.Jemail;
 import com.model.entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,9 +32,10 @@ public class RegistroServlet extends HttpServlet {
             String paterno = request.getParameter("Paterno");
             String materno = request.getParameter("Materno");
             String matricula = request.getParameter("Matricula");
+            String email = request.getParameter("Email");
             int tusu = Integer.parseInt(request.getParameter("Tipo"));
             
-             out.println("<br/><br/>" + nusu + " " + cusu + " " + nombre + " "+ paterno + " " + materno + " " + matricula + " " + tusu + "<br/>");
+             out.println("<br/><br/>" + nusu + " " + cusu + " " + nombre + " "+ paterno + " " + materno + " " + matricula + " " + email + " " + tusu + "<br/>");
             
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
@@ -56,6 +58,10 @@ public class RegistroServlet extends HttpServlet {
             }
             
             udao1.create(u1);
+            
+            Jemail je = new Jemail();;
+            String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
+            je.enviarEmail(email, msj);
             
                     
             response.sendRedirect("jsp/misc/successreg.jsp");

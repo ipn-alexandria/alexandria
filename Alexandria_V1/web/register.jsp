@@ -26,6 +26,7 @@
 				<input type="text" placeholder="Apellido Paterno" name="Paterno" required />
 				<input type="text" placeholder="Apellido Materno" name="Materno" required />
 				<input type="text" placeholder="Matricula" name="Matricula"  required />
+				<input type="text" placeholder="Email" name="Email"  required />
 				<select name="Tipo" class="form-control">
 					<option value="4">Alumno</option>
 					<option value="2">Profesor</option>

@@ -1,7 +1,10 @@
 package com.controller.servlet.mod;
 
 import com.model.dao.MaterialDAO;
+import com.model.dao.UsuarioDAO;
+import com.model.db.Jemail;
 import com.model.entities.Material;
+import com.model.entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,14 +35,40 @@ public class ModEvF1Servlet extends HttpServlet {
             
             int idmat = Integer.parseInt(intidmat);
             
+            
+            
             int rfiltro1 = Integer.parseInt(request.getParameter("filtro1"));
             int rnivel = Integer.parseInt(request.getParameter("nivel"));
             String robs = (String)request.getParameter("obs");
             
+            out.println("<h1>" + idmat + " " + rfiltro1 + " " + rnivel + " " + robs + " " + "</h1>");
+            
             
             Material m1 = new Material();
+            Material m2 = new Material();
             MaterialDAO mdao1 = new MaterialDAO();
+            MaterialDAO mdao2 = new MaterialDAO();
             
+            Usuario u1 = new Usuario();
+            Usuario u2 = new Usuario();
+            UsuarioDAO udao1 = new UsuarioDAO();
+            
+            Jemail je = new Jemail();
+            
+            int idu = 0;
+            String msj = "";
+            
+            m1.setIdMaterial(idmat);
+            m2 = mdao2.read(m1);
+            idu = m2.getIdUsuario();
+            out.println("<h1>IdUsuario: " + idu + "</h1>");
+            
+            u1.setIdUsuario(idu);
+            u2 = udao1.read(u1);
+            out.println("<h1>test: " + udao1.read(u1) + "</h1>");
+            String email = u2.getEmail();
+            
+            out.println("<h1>Email: " + email + "</h1>");
             
             
             
@@ -48,14 +77,19 @@ public class ModEvF1Servlet extends HttpServlet {
                 m1.setFiltroUno(rfiltro1);
                 m1.setNivelMaterial(rnivel);
                 mdao1.updateFILTRO1(m1);
-                //Enviar correo de confirmacion a la direccion de idautor
+                
+                msj = "\nSu material: " + m2.getNombreMaterial() + "\n\nMaterial aprobado en: Filtro 1" + "\n\nComentarios: " + robs;
+                je.enviarEmail(email, msj);
+                
                 response.sendRedirect("jsp/moderador/evaluarFiltro1.jsp");
             }
             else {
                 m1.setIdMaterial(idmat);
                 mdao1.delete(m1);
-                //Enviar correo de rechazo a la direccion de idautor
-                //con las observaciones.
+                
+                msj = "\nSu material: " + m2.getNombreMaterial() + "\nMaterial rechazado en: Filtro 1" + "\n\nComentarios: " + robs;
+                je.enviarEmail(email, msj);
+                
                 response.sendRedirect("jsp/moderador/evaluarFiltro1.jsp");
             }
             

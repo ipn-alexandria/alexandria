@@ -44,9 +44,9 @@
 			<p>Video subido con ID <span id="video-id"></span>.</p>
 			<span id="post-upload-status"></span>
                         <script>  </script>
-                        <form name="form1" method="post" action="SubirVideoServlet">  
+                        <form name="form1">  
                         <input type=hidden name="idvideo"/>  
-                        <input type="submit" value="Continuar" name="buttonSubmit" onclick="idVideoYT(1)"/>  
+                        <input type="submit" value="Contonuar" name="buttonSubmit" onclick="idVideoYT(1)"/>  
                         </form> 
 		    </div>
 		</div>

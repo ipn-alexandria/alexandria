@@ -15,10 +15,10 @@ import java.util.logging.Logger;
 public class UsuarioDAO {
     
     private static final String SQL_INSERT
-            = "INSERT INTO Usuario ( nombreUsuario, contrasena, nombre, apellidoPaterno, apellidoMaterno, matricula, estado, idTipodeusuario) "
-               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+            = "INSERT INTO Usuario ( nombreUsuario, contrasena, nombre, apellidoPaterno, apellidoMaterno, matricula, email, estado, idTipodeusuario) "
+               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     private static final String SQL_UPDATE
-            = "UPDATE Usuario SET nombreUsuario = ?, contrasena = ?, nombre = ?, apellidoPaterno = ?, apellidoMaterno = ?, matricula = ?, estado = ?, idTipodeusuario = ? "
+            = "UPDATE Usuario SET nombreUsuario = ?, contrasena = ?, nombre = ?, apellidoPaterno = ?, apellidoMaterno = ?, matricula = ?, email = ?, estado = ?, idTipodeusuario = ? "
                + "WHERE (idUsuario = ? ) ";
     private static final String SQL_DELETE
             = "DELETE FROM Usuario WHERE (idUsuario = ? ) ";
@@ -43,8 +43,9 @@ public class UsuarioDAO {
             ps.setString(4, a.getApellidoPaterno());
             ps.setString(5, a.getApellidoMaterno());
             ps.setString(6, a.getMatricula());
-            ps.setInt(7, a.getEstado());
-            ps.setInt(8, a.getIdTipodeusuario());
+            ps.setString(7, a.getEmail());
+            ps.setInt(8, a.getEstado());
+            ps.setInt(9, a.getIdTipodeusuario());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,9 +69,10 @@ public class UsuarioDAO {
             ps.setString(4, a.getApellidoPaterno());
             ps.setString(5, a.getApellidoMaterno());
             ps.setString(6, a.getMatricula());
-            ps.setInt(7, a.getEstado());
-            ps.setInt(8, a.getIdTipodeusuario());
-            ps.setInt(9, a.getIdUsuario());
+            ps.setString(7, a.getEmail());
+            ps.setInt(8, a.getEstado());
+            ps.setInt(9, a.getIdTipodeusuario());
+            ps.setInt(10, a.getIdUsuario());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,6 +172,7 @@ public class UsuarioDAO {
                 a.setApellidoPaterno(rs.getString("apellidoPaterno"));
                 a.setApellidoMaterno(rs.getString("apellidoMaterno"));
                 a.setMatricula(rs.getString("matricula"));
+                a.setEmail(rs.getString("email"));
                 a.setEstado(rs.getInt("estado"));
                 a.setIdTipodeusuario(rs.getInt("idTipodeusuario"));
                 usuarioList.add(a);
@@ -183,22 +186,24 @@ public class UsuarioDAO {
     public static void main(String[] args) {
         Usuario c = new Usuario();
         
-        c.setNombreUsuario("Miguel");
-        c.setContrasena("miguel");
-        c.setNombre("Miguel");
-        c.setApellidoPaterno("Martínez");
-        c.setApellidoMaterno("García");
-        c.setMatricula("2009630162");
-        c.setEstado(1);
-        c.setIdTipodeusuario(1);
+//        c.setNombreUsuario("Miguel7");
+//        c.setContrasena("miguel7");
+//        c.setNombre("Miguel");
+//        c.setApellidoPaterno("Martínez");
+//        c.setApellidoMaterno("García");
+//        c.setMatricula("2009630162");
+//        c.setEmail("mike30.mdo.90@gmail.com");
+//        c.setEstado(1);
         
-//        c.setIdUsuario(1);
+        c.setIdTipodeusuario(12);
+        
+        c.setIdUsuario(7);
 
         UsuarioDAO d = new UsuarioDAO();
-        d.create(c);
+//        d.create(c);
 //        d.update(c);
 //        d.delete(c);
-//        System.out.println(d.read(u));
+        System.out.println(d.read(c));
 //        System.out.println(d.readAll());
     }
     

@@ -9,6 +9,7 @@ public class Usuario {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String matricula;
+    private String email;
     private int estado;
     private int idTipodeusuario;
 
@@ -71,6 +72,14 @@ public class Usuario {
         this.matricula = matricula;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getEstado() {
         return estado;
     }
@@ -89,7 +98,9 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", matricula=" + matricula + ", estado=" + estado + ", idTipodeusuario=" + idTipodeusuario + '}';
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", matricula=" + matricula + ", email=" + email + ", estado=" + estado + ", idTipodeusuario=" + idTipodeusuario + '}';
     }
+
+
     
 }

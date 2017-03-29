@@ -1,17 +1,32 @@
-package com.controller.servlet.prof;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.controller.servlet;
 
-import com.model.dao.MaterialDAO;
-import com.model.entities.Material;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class ProfEvF2Servlet extends HttpServlet {
+/**
+ *
+ * @author Alan
+ */
+public class SubirVideoServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -20,53 +35,10 @@ public class ProfEvF2Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfEvF2Servlet</title>");            
+            out.println("<title>Servlet SubirVideoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfEvF2Servlet at " + request.getContextPath() + "</h1>");
-            
-            
-            HttpSession session = request.getSession();
-            
-            String intidautor =  session.getAttribute("idMaterial").toString();
-            
-            int idm = Integer.parseInt(intidautor);
-          
-            
-            String srfiltro2 = request.getParameter("filtro2").toString();
-            
-            int rfiltro2 = Integer.parseInt(srfiltro2);
-            
-            String srnivel = request.getParameter("nivel").toString();
-            
-            int rnivel = Integer.parseInt(srnivel);
-            String robs = (String)request.getParameter("obs");
-            
-            
-            Material m1 = new Material();
-            MaterialDAO mdao1 = new MaterialDAO();
-            
-            
-            
-            
-            if (rfiltro2 == 1) {
-                m1.setIdMaterial(idm);
-                m1.setFiltroDos(1);
-                m1.setNivelMaterial(rnivel);
-                mdao1.updateFILTRO2(m1);
-                //Enviar correo de confirmacion a la direccion de idautor
-                response.sendRedirect("jsp/profesor/evaluarFiltro2.jsp");
-            }
-            else {
-                m1.setIdMaterial(idm);
-                mdao1.delete(m1);
-                //Enviar correo de rechazo a la direccion de idautor
-                //con las observaciones.
-                response.sendRedirect("jsp/profesor/evaluarFiltro2.jsp");
-            }
-            
-            
-            
+            out.println("<h1>Servlet SubirVideoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
