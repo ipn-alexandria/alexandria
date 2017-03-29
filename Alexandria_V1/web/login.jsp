@@ -37,7 +37,7 @@
 			<form method="post" action="LoginServlet">
 				<input type="text" placeholder="Usuario" name="uname" required>
 				<input type="password" placeholder="Contraseña" name="pass" required>
-				<a href="#" >¿Olvidaste tu nombre de usuario o contraseña?</a>
+				<a href="recuperar.jsp" >¿Olvidaste tu nombre de usuario o contraseña?</a>
 				<input type="submit" value="Entrar">
 				<a href="index.jsp" > <input type="button" value="Regresar"> </a>
 			</form>
