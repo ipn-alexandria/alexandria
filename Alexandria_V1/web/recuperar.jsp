@@ -31,7 +31,7 @@
 				
 				<br>
 				<a href="login.jsp" >Ya Conozco mis datos de acceso</a>
-				<input type="submit" value="recuperar" />
+				<input type="submit" value="Recuperar" />
 				<a href="index.jsp"><input type="button" value="Regresar" /></a>
 			</form>
 		</div>

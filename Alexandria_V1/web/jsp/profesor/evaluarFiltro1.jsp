@@ -96,7 +96,7 @@ session.setAttribute("ListaMaterial2", ListaMaterial2);
 		    </table>
 		</c:if>
 	    </div>
-	    <a href="moderador.jsp"><button type="button">Regresar</button></a>
+	    <a href="profesor.jsp"><button type="button">Regresar</button></a>
 	</div>
 	
     </body>

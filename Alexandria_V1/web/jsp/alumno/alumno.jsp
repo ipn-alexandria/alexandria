@@ -50,9 +50,7 @@
 			<li>
 			    <a href="subir.jsp"><span>Subir</span></a>
 			</li>
-			<li>
-			    <a href="perfil.jsp"><span>Perfil</span></a>
-			</li>
+			
 			<li>
 			    <a href="../../LogoutServlet1"><span>Cerrar Sesión</span></a>
 			</li>

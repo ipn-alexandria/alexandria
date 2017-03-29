@@ -79,7 +79,7 @@
 		</select>
 		<br>
 		<input type="submit" value="Subir">
-		<a href="alumno.jsp" > <input type="button" value="Regresar"> </a>
+		<a href="profesor.jsp" > <input type="button" value="Regresar"> </a>
 	    </form>
 	</div>
 	

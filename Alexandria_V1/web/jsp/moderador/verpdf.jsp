@@ -45,8 +45,12 @@
 			<li>
 			    <a href="subir.jsp"><span>Subir</span></a>
 			</li>
+			
+                        <li>
+			    <a href="evaluarFiltro1.jsp"><span>Revisar</span></a>
+			</li>
 			<li>
-			    <a href="perfil.jsp"><span>Perfil</span></a>
+			    <a href="../../LogoutServlet1"><span>Cerrar Sesión</span></a>
 			</li>
 		    </ul>         
 		</div>

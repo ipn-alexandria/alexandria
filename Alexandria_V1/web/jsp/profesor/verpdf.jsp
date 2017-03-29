@@ -33,7 +33,7 @@
 		<div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
 		    <ul class="nav navbar-nav pull-right">
 			<li class="active">
-			    <a href="moderador.jsp">Inicio</a>
+			    <a href="profesor.jsp">Inicio</a>
 			</li>
 			<li>
 			    <a href="navegar.jsp">Navegar</a>
@@ -41,9 +41,17 @@
 			<li>
 			    <a href="subir.jsp"><span>Subir</span></a>
 			</li>
-			<li>
-			    <a href="perfil.jsp"><span>Perfil</span></a>
+			
+                        <li>
+			    <a href="evaluarFiltro1.jsp"><span>Revisar</span></a>
 			</li>
+                        <li>
+			    <a href="evaluarFiltro2.jsp"><span>Aprobar</span></a>
+			</li>
+			<li>
+			    <a href="../../LogoutServlet1"><span>Cerrar Sesión</span></a>
+			</li>
+			
 		    </ul>         
 		</div>
 	    </div>
