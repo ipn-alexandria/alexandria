@@ -50,6 +50,9 @@
 			<li>
 			    <a href="subir.jsp"><span>Subir</span></a>
 			</li>
+                        <li>
+			    <a href="nombrar.jsp"><span>Nombrar Mod</span></a>
+			</li>
 			
                         <li>
 			    <a href="evaluarFiltro1.jsp"><span>Revisar</span></a>

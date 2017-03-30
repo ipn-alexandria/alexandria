@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.controller.servlet;
 
 import com.model.dao.UsuarioDAO;
@@ -10,8 +15,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RegistroServlet extends HttpServlet {
+/**
+ *
+ * @author mike3
+ */
+public class RecuperarServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -20,52 +38,36 @@ public class RegistroServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistroServlet</title>");            
+            out.println("<title>Servlet RecuperarServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RecuperarServlet at " + request.getContextPath() + "</h1>");
             
             
-            String nusu = request.getParameter("Usuario");
-            String cusu = request.getParameter("Pass");
-            String nombre = request.getParameter("Nombre");
-            String paterno = request.getParameter("Paterno");
-            String materno = request.getParameter("Materno");
-            String matricula = request.getParameter("Matricula");
+            
+            
             String email = request.getParameter("Email");
-            int tusu = Integer.parseInt(request.getParameter("Tipo"));
-            
-             out.println("<br/><br/>" + nusu + " " + cusu + " " + nombre + " "+ paterno + " " + materno + " " + matricula + " " + email + " " + tusu + "<br/>");
+            int idu = 0;
             
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
             UsuarioDAO udao1 = new UsuarioDAO();
             
-            
-            u1.setNombreUsuario(nusu);
-            u1.setContrasena(cusu);
-            u1.setNombre(nombre);
-            u1.setApellidoPaterno(paterno);
-            u1.setApellidoMaterno(materno);
-            u1.setMatricula(matricula);
             u1.setEmail(email);
-            u1.setIdTipodeusuario(tusu);
+            u2 = udao1.readEmail(u1);
             
-            if (tusu == 2) {
-                u1.setEstado(0);
+            if(u2 != null) {
+                Jemail je = new Jemail();;
+                String msj = "\nSus datos de acceso son: \n\nUsuario: " + u2.getNombreUsuario() + "\nContraseña: " + u2.getContrasena();
+                je.enviarEmail(u2.getEmail(), msj);
+                response.sendRedirect("successrec.jsp");
+            } else {
+                response.sendRedirect("failrec.jsp");
             }
-            else {
-                u1.setEstado(1);
-            }
             
-            udao1.create(u1);
             
-            Jemail je = new Jemail();;
-            String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
-            je.enviarEmail(email, msj);
             
-                    
-            response.sendRedirect("jsp/misc/successreg.jsp");
+            
             
             
             

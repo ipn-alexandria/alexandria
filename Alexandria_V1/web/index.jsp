@@ -64,7 +64,7 @@
             <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li class="active">
-                        <a href="index.jsp">Home</a>
+                        <a href="index.jsp">Inicio</a>
                     </li>
                   <li>
                         <a href="login.jsp">Login</a>

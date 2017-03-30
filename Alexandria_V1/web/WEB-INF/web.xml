@@ -131,6 +131,14 @@
         <servlet-name>NavegarF2Servlet</servlet-name>
         <servlet-class>com.controller.servlet.mod.NavegarF2Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RecuperarServlet</servlet-name>
+        <servlet-class>com.controller.servlet.RecuperarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNombrarModServlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNombrarModServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -254,6 +262,14 @@
     <servlet-mapping>
         <servlet-name>NavegarF2Servlet</servlet-name>
         <url-pattern>/NavegarF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecuperarServlet</servlet-name>
+        <url-pattern>/RecuperarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNombrarModServlet</servlet-name>
+        <url-pattern>/ProfNombrarModServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

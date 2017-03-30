@@ -1,4 +1,4 @@
-package com.controller.servlet;
+package com.controller.servlet.prof;
 
 import com.model.dao.UsuarioDAO;
 import com.model.db.Jemail;
@@ -9,8 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class RegistroServlet extends HttpServlet {
+public class ProfNombrarModServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,52 +21,42 @@ public class RegistroServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistroServlet</title>");            
+            out.println("<title>Servlet ProfNombrarModServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfNombrarModServlet at " + request.getContextPath() + "</h1>");
             
             
-            String nusu = request.getParameter("Usuario");
-            String cusu = request.getParameter("Pass");
-            String nombre = request.getParameter("Nombre");
-            String paterno = request.getParameter("Paterno");
-            String materno = request.getParameter("Materno");
-            String matricula = request.getParameter("Matricula");
-            String email = request.getParameter("Email");
-            int tusu = Integer.parseInt(request.getParameter("Tipo"));
-            
-             out.println("<br/><br/>" + nusu + " " + cusu + " " + nombre + " "+ paterno + " " + materno + " " + matricula + " " + email + " " + tusu + "<br/>");
+            HttpSession session = request.getSession();
+            String stridalumno =  session.getAttribute("idAlumno").toString();
+            int idalumno = Integer.parseInt(stridalumno);
+//            int idalumno = 7;
             
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
+            Usuario u3 = new Usuario();
             UsuarioDAO udao1 = new UsuarioDAO();
+            UsuarioDAO udao2 = new UsuarioDAO();
             
             
-            u1.setNombreUsuario(nusu);
-            u1.setContrasena(cusu);
-            u1.setNombre(nombre);
-            u1.setApellidoPaterno(paterno);
-            u1.setApellidoMaterno(materno);
-            u1.setMatricula(matricula);
-            u1.setEmail(email);
-            u1.setIdTipodeusuario(tusu);
+            u1.setIdUsuario(idalumno);
+            u2 = udao1.read(u1);
+            u2.setIdTipodeusuario(3);
+            udao2.update(u2);
             
-            if (tusu == 2) {
-                u1.setEstado(0);
-            }
-            else {
-                u1.setEstado(1);
-            }
-            
-            udao1.create(u1);
+            out.println("<h1>Actualizado " + udao2.read(u2) + "</h1>");
             
             Jemail je = new Jemail();;
-            String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
-            je.enviarEmail(email, msj);
+            String msj = "\nEstimad@ " + u2.getNombreUsuario() + " has sido nombrad@ moderador.";
+            je.enviarEmail(u2.getEmail(), msj);
             
-                    
-            response.sendRedirect("jsp/misc/successreg.jsp");
+            response.sendRedirect("jsp/profesor/successmod.jsp");
+            
+            
+            
+            
+            
+            
             
             
             
