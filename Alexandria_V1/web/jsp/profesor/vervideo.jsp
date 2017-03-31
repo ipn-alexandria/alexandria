@@ -1,6 +1,48 @@
+<%@page import="com.model.dao.UaDAO"%>
+<%@page import="com.model.entities.Ua"%>
+<%@page import="com.model.entities.Ua"%>
 <%@page import="com.model.dao.MaterialDAO"%>
 <%@page import="com.model.entities.Material"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
+	response.sendRedirect("../../index.jsp");
+        return;
+        
+    }
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("2"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
 <!doctype html>
 <html lang="en">
     <head>
@@ -76,7 +118,44 @@
 	    <div class="container">
 		<div class="row">
 		    <div class="services-header">
-			<h3 class="services-header-title">Vea su video</h3>
+			<h3 class="services-header-title"> <% 
+                                                        int idm = Integer.parseInt(session.getAttribute("idMaterial").toString()); 
+                                                        Material m1 = new Material();
+                                                        Material m2 = new Material();
+                                                        MaterialDAO mdao1 = new MaterialDAO();
+                                                        m1.setIdMaterial(idm);
+                                                        m2 = mdao1.read(m1);
+                                                    %>
+                                                    <% out.println(m2.getNombreMaterial());%>
+                                                </h3>
+                                                <h3>
+                                                    Nivel:
+                                                    
+                                                    <%
+                                                        int c = m2.getNivelMaterial();
+                                                        switch (c) {
+                                                            case 1: out.println("Básico");
+                                                                    break;
+                                                            case 2: out.println("Intermedio");
+                                                                    break;
+                                                            case 3: out.println("Avanzado");
+                                                                    break;
+                                                        }
+                                                    %>
+                                                        
+                                                </h3>
+                                                <h3>
+                                                    Unidad de Aprendizaje:
+                                                    
+                                                    <%
+                                                        int d = m2.getIdUa();
+                                                        Ua ua1 = new Ua();
+                                                        Ua ua2 = new Ua();
+                                                        UaDAO uadao1 = new UaDAO();
+                                                        ua1.setIdUA(d);
+                                                        ua2 = uadao1.read(ua1);
+                                                        out.println(ua2.getNombreUA());
+                                                    %></h3>
 			<p class="services-header-body"><em>  </em>  </p><hr>
 		    </div>
 		</div>

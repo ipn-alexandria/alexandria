@@ -3,6 +3,46 @@
 <%@page import="com.model.entities.Ua"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
+	response.sendRedirect("../../index.jsp");
+        return;
+        
+    }
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("3"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

@@ -2,9 +2,43 @@
 
 <%
     if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
 	response.sendRedirect("../../index.jsp");
+        return;
+        
     }
-%>
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("2"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
 <!doctype html>
 <html lang="en">
     <head>
@@ -37,7 +71,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		    </button>
-		    <a class="navbar-brand wow fadeInDownBig" href="../../index.jsp"><img src="../../assets/img/slider/Office.png" width="100" alt="Office"></a>      
+		    <a class="navbar-brand wow fadeInDownBig" href="../../index.jsp"><img src="../../assets/img/slider/Office.png" width="200" alt="Office"></a>      
 		</div>
 		<div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
 		    <ul class="nav navbar-nav pull-right">
@@ -74,7 +108,7 @@
 	    <div class="container">
 		<div class="row">
 		    <div class="services-header">
-			<h3 class="services-header-title">Pagina de Moderador</h3>
+			<h3 class="services-header-title">Pagina de Profesor</h3>
 			<p class="services-header-body"><em>Bienvenido</em></p><hr>
 		    </div>
 		</div>

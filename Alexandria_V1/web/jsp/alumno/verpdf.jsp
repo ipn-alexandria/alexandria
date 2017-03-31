@@ -4,6 +4,45 @@
 <%@page import="com.model.entities.Ua"%>
 <%@page import="com.model.entities.Ua"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
+	response.sendRedirect("../../index.jsp");
+        return;
+        
+    }
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("4"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
 <!doctype html>
 <html lang="en">
     <head>
@@ -103,7 +142,10 @@
 		    </div>
 		</div>
 		<div style="height:1200px;">
-		    <% String ruta = session.getAttribute("rutaMaterial").toString();%>
+		    <% 
+                        System.out.print("Su ruta es");
+                        System.out.print(session.getAttribute("rutaMaterial"));
+                        String ruta = session.getAttribute("rutaMaterial").toString();%>
 		    <object data="<%=ruta%>" type="application/pdf" width="100%" height="100%">
 			<p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="<%=ruta%>">Download PDF</a>.</p>
 		    </object>

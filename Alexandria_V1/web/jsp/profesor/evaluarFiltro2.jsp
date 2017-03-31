@@ -8,6 +8,45 @@
 <%@page import="com.model.entities.Material"%>
 <%@page import="com.model.dao.MaterialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
+	response.sendRedirect("../../index.jsp");
+        return;
+        
+    }
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("2"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
 
    <% MaterialDAO mDAO = new MaterialDAO();
 Material n1 = new Material();
@@ -88,7 +127,7 @@ session.setAttribute("ListaMaterial2", ListaMaterial2);
 					    </c:choose>
 					</td>
 					<td>
-					    <a href="../../NavegarF2Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
+					    <a href="../../ProfNavegarF2Servlet?IdMaterial=<c:out value="${material.idMaterial}" />"><button type="button">Ir</button></a>
 					</td>
 				    </tr>
 				</c:if>

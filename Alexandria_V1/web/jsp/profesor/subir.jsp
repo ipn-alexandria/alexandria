@@ -5,6 +5,45 @@
 <%@page import="java.util.List"%>
 <%@page import="com.model.dao.TemaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+        System.out.print("Acceso denegado Principal");
+	response.sendRedirect("../../index.jsp");
+        return;
+        
+    }
+    
+  try{
+    
+    String cTipo;
+    cTipo = session.getAttribute("idTipo").toString();
+    
+    
+    
+    
+    if ((!cTipo.equals("2"))) {
+        System.out.print("Acceso denegado del try");
+        System.out.print(cTipo+"if");
+        session.invalidate();
+	response.sendRedirect("../../index.jsp");
+        return;
+    }
+    
+    
+    
+    System.out.print("Validado con exito");
+    System.out.print(cTipo);
+    
+    
+    }catch(Exception e){
+         System.out.print("Acceso denegado del Catch");
+        response.sendRedirect("../../index.jsp");
+       
+        return;
+    
+    }
+    
+    %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -25,7 +64,7 @@
 		    <img src="../../img/resources/logo.png" width="17%">
 		</div>
 	    </div>
-	    <form method="post" action="../../SubirMaterialServlet" name="subir">
+	    <form method="post" action="../../ProfSubirMaterialServlet" name="subir">
 		<input type="text" placeholder="Nombre del Material" name="NombreMaterial" required>
 		<p> Unidad de Aprendizaje </p>
 		<select name="IdUa" class="form-control">

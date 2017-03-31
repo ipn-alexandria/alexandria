@@ -20,120 +20,118 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            
-             HttpSession session = request.getSession();
-            
-             
-             //
-             
-             
-             String currentTipo;
-try
-    {
-    
-    System.out.print("CodigoServlet");
-    System.out.print(session.getAttribute("idTipo"));
-    currentTipo = session.getAttribute("idTipo").toString();
-    
-    
 
+            HttpSession session = request.getSession();
 
-if          ((currentTipo.equals("1")) || 
-            (currentTipo.equals("2")) || 
-            (currentTipo.equals("3")) || 
-            (currentTipo.equals("4") ))
-    {
-        
-        System.out.print("CodigoServlet Sesion Invalidada");
-       
-    response.sendRedirect("index.jsp");  
-    session.invalidate();
-    return;
-    
-    }
+            //
+            String currentTipo;
+            try {
 
-} catch(Exception e){}
+                System.out.print("CodigoServlet");
+                System.out.print(session.getAttribute("idTipo"));
+                currentTipo = session.getAttribute("idTipo").toString();
 
-             
-             
-             
-             //
-            
-            
+                if ((currentTipo.equals("1"))
+                        || (currentTipo.equals("2"))
+                        || (currentTipo.equals("3"))
+                        || (currentTipo.equals("4"))) {
+
+                    System.out.print("CodigoServlet Sesion Invalidada");
+
+                    response.sendRedirect("index.jsp");
+                    session.invalidate();
+                    return;
+
+                }
+
+            } catch (Exception e) {
+            }
+
+            //
             Usuario u1 = new Usuario();
             Usuario u2 = new Usuario();
             UsuarioDAO udao = new UsuarioDAO();
-            int id,idtipo;
-            String nu,cu;
-            String idactual="";
-             
+            int id, idtipo;
+            String nu, cu;
+            String idactual = "";
+
             String nusu = request.getParameter("uname");
             String cusu = request.getParameter("pass");
 //            String nusu = request.getParameter("txtNombreU");
 //            String cusu = request.getParameter("txtClaveU");
             out.println("<br/><br/>" + nusu + " " + cusu + "<br/>");
-           
-            
+
             u1.setNombreUsuario(nusu);
             u1.setContrasena(cusu);
-            
-            if(udao.readLogin(u1) != null) {
-				request.getSession().setAttribute("user", nusu);
-                u2 = udao.readLogin(u1);
-                idtipo = u2.getIdTipodeusuario();
-                switch(idtipo) {
-                    case 1: System.out.println("LISTO REDIRIGIR ----Administrador----");
+
+            Usuario u5 = new Usuario();
+            Usuario u6 = new Usuario();
+            UsuarioDAO udao5 = new UsuarioDAO();
+
+            if (udao.readLogin(u1) != null) {
+
+                u5 = udao5.readLogin(u1);
+                if (u5.getEstado() == 0) {
+                   getServletConfig().getServletContext().getRequestDispatcher("/jsp/misc/failaproved.jsp").forward(request, response);
+                    return;
+                } else {
+                    request.getSession().setAttribute("user", nusu);
+                    u2 = udao.readLogin(u1);
+                    idtipo = u2.getIdTipodeusuario();
+                    switch (idtipo) {
+                        case 1:
+                            System.out.println("LISTO REDIRIGIR ----Administrador----");
                             id = u2.getIdUsuario();
-                            idactual=Integer.toString(id);
+                            idactual = Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
                             session.setAttribute("idTipo", idtipo);
-                            getServletConfig().getServletContext().getRequestDispatcher("/jsp/administrador/principalAdministrador.jsp").forward(request,response);
+                            response.sendRedirect("jsp/administrador/admin.jsp");
                             break;
-                    case 2: System.out.println("LISTO REDIRIGIR ----Profesor----");
+                        case 2:
+                            System.out.println("LISTO REDIRIGIR ----Profesor----");
                             id = u2.getIdUsuario();
-                            idactual=Integer.toString(id);
+                            idactual = Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
                             session.setAttribute("idTipo", idtipo);
-                            response.sendRedirect("jsp/profesor/profesor.jsp");  
+                            response.sendRedirect("jsp/profesor/profesor.jsp");
                             break;
-                    case 3: System.out.println("LISTO REDIRIGIR ----Moderador----");
+                        case 3:
+                            System.out.println("LISTO REDIRIGIR ----Moderador----");
                             id = u2.getIdUsuario();
-                            idactual=Integer.toString(id);
+                            idactual = Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
                             session.setAttribute("id", idactual);
                             session.setAttribute("idTipo", idtipo);
-                            response.sendRedirect("jsp/moderador/moderador.jsp");                            break;
-                    case 4: System.out.println("LISTO REDIRIGIR ----Alumno----");
+                            response.sendRedirect("jsp/moderador/moderador.jsp");
+                            break;
+                        case 4:
+                            System.out.println("LISTO REDIRIGIR ----Alumno----");
                             id = u2.getIdUsuario();
-                            idactual=Integer.toString(id);
+                            idactual = Integer.toString(id);
                             System.out.println("Dato enviado ID: " + idactual);
-                            session.setAttribute("id", idactual); 
+                            session.setAttribute("id", idactual);
                             session.setAttribute("idTipo", idtipo);
-                            
-                            
                             response.sendRedirect("jsp/alumno/alumno.jsp");
                             break;
 
-                    default: 
+                        default:
                             break;
-                    
+
+                    }
+                    return;
                 }
-            }
-            else {
+
+            } else {
                 System.out.println("ERROR DE USUARIO");
-                getServletConfig().getServletContext().getRequestDispatcher("/jsp/misc/faillogin.jsp").forward(request,response);
+                getServletConfig().getServletContext().getRequestDispatcher("/jsp/misc/faillogin.jsp").forward(request, response);
             }
-            
-            
-            
-            
-            
+
             out.println("</body>");
             out.println("</html>");
         }

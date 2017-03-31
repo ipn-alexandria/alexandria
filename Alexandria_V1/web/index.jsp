@@ -58,7 +58,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand wow fadeInDownBig" href="index.jsp"><img src="assets/img/slider/Office.png" width="190" alt="Office"></a>      
+                <a class="navbar-brand wow fadeInDownBig" href="index.jsp"><img src="assets/img/slider/Office.png" width="200" alt="Office"></a>      
             </div>
         
             <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
@@ -94,13 +94,14 @@
                         <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-1" data-slide-to="1"></li>
                         <li data-target="#carousel-1" data-slide-to="2"></li>
+                        <li data-target="#carousel-1" data-slide-to="3"></li>
                     </ol>
         
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <!-- Begin Slide 1 -->
                         <div class="item active">
-                            <img src="assets/img/slider/slide1.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide1.jpg" height="400" alt="2">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3>   <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p>                <!--Texto Carrousel 2 -->
@@ -110,7 +111,7 @@
 
                         <!-- Begin Slide 2 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide2.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide2.jpg" height="400" alt="2">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"></p> <!--Texto Carrousel  -->
@@ -120,13 +121,22 @@
 
                         <!-- Begin Slide 3 -->
                         <div class="item">
-                            <img src="assets/img/slider/slide3.jpg" height="400" alt="">
+                            <img src="assets/img/slider/slide3.jpg" height="400" alt="2">
                             <div class="carousel-caption">
                                 <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
                                 <p class="carousel-body"> </p> <!--Texto Carrousel  -->
                             </div>
                         </div>
                         <!-- End Slide 3 -->
+                         <!-- Begin Slide 4 -->
+                        <div class="item">
+                            <img src="assets/img/slider/slide4.jpg" height="400" alt="2">
+                            <div class="carousel-caption">
+                                <h3 class="carousel-title hidden-xs"></h3> <!--Texto Carrousel  -->
+                                <p class="carousel-body"> </p> <!--Texto Carrousel  -->
+                            </div>
+                        </div>
+                        <!-- End Slide 4 -->
                     </div>
         
                     <!-- Controls -->
@@ -214,7 +224,7 @@ if((currentTipo).equals("3")) {
 
 System.out.print(currentTipo);
 
-response.sendRedirect("login.jsp");
+response.sendRedirect("jsp/moderador/moderador.jsp");
 
 }
 
@@ -222,7 +232,7 @@ if((currentTipo).equals("2")) {
 
 System.out.print(currentTipo);
 
-response.sendRedirect("login.jsp");
+response.sendRedirect("jsp/profesor/profesor.jsp");
 
 }
 
@@ -230,7 +240,7 @@ if((currentTipo).equals("1")) {
 
 System.out.print(currentTipo);
 
-response.sendRedirect("login.jsp");
+response.sendRedirect("jsp/administrador/admin.jsp");
 
 }
 

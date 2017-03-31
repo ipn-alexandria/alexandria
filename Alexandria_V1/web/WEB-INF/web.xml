@@ -139,6 +139,62 @@
         <servlet-name>ProfNombrarModServlet</servlet-name>
         <servlet-class>com.controller.servlet.prof.ProfNombrarModServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminNavegar2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNavegar2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNavegar3Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNavegar3Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNavegarServlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNavegarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminPDFServlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminPDFServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSubirMaterialServlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminSubirMaterialServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSubirPDF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminSubirPDF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminEvF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminEvF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminEvF2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminEvF2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNombrarModServlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNombrarModServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNavegarF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNavegarF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfNavegarF2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.prof.ProfNavegarF2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNavegarF1Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNavegarF1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNavegarF2Servlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNavegarF2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminNombrarProfServlet</servlet-name>
+        <servlet-class>com.controller.servlet.admin.AdminNombrarProfServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -270,6 +326,62 @@
     <servlet-mapping>
         <servlet-name>ProfNombrarModServlet</servlet-name>
         <url-pattern>/ProfNombrarModServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNavegarF1Servlet</servlet-name>
+        <url-pattern>/ProfNavegarF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfNavegarF2Servlet</servlet-name>
+        <url-pattern>/ProfNavegarF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNavegarF1Servlet</servlet-name>
+        <url-pattern>/AdminNavegarF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNavegarF2Servlet</servlet-name>
+        <url-pattern>/AdminNavegarF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNavegar2Servlet</servlet-name>
+        <url-pattern>/AdminNavegar2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNavegar3Servlet</servlet-name>
+        <url-pattern>/AdminNavegar3Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNavegarServlet</servlet-name>
+        <url-pattern>/AdminNavegarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminPDFServlet</servlet-name>
+        <url-pattern>/AdminPDFServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSubirMaterialServlet</servlet-name>
+        <url-pattern>/AdminSubirMaterialServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSubirPDF1Servlet</servlet-name>
+        <url-pattern>/AdminSubirPDF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminEvF1Servlet</servlet-name>
+        <url-pattern>/AdminEvF1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminEvF2Servlet</servlet-name>
+        <url-pattern>/AdminEvF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNombrarModServlet</servlet-name>
+        <url-pattern>/AdminNombrarModServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminNombrarProfServlet</servlet-name>
+        <url-pattern>/AdminNombrarProfServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

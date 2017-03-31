@@ -22,8 +22,13 @@ public class Conexion {
     
     public Connection obtenerConexion() {
         String userName = "root";
-        String userPassword = "root";
+       // String userPassword = "rpmXIJ6V2J";
+       // String urlBd = "jdbc:mysql://mysql27283-alexandriav1.jl.serv.net.mx:3306/aldb1";
+        
+        //Acceso Local
+         String userPassword = "root";
         String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
+        //
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

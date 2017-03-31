@@ -40,6 +40,7 @@ public class ProfNavegar3Servlet extends HttpServlet {
 		String contextPath = servletContext.getContextPath();
 		System.out.println("ContextPath: " + contextPath);
 		idtip = Integer.toString(idMaterial);
+                session.setAttribute("idMaterial", idtip);
 		System.out.println("Dato enviado ID: " + idtip);
 		System.out.println("contextpath: " + contextPath);
 		session.setAttribute("rutaMaterial", contextPath + "/PDFServlet?idMaterial=" + idtip);
