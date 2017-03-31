@@ -65,7 +65,8 @@ public class YoutubeManager {
 	/**
 	 * Callback URI.
 	 */
-	private static final String CALLBACK_URI = "http://localhost:8089/Alexandria_V1/oauth2callback";
+	private static final String CALLBACK_URI = "http://alexandriav1.jl.serv.net.mx/oauth2callback";
+//	private static final String CALLBACK_URI = "http://alexandriav1.jl.serv.net.mx/oauth2callback";
 	/**
 	 * MIME type.
 	 */
@@ -76,33 +77,9 @@ public class YoutubeManager {
 	private static final String SAMPLE_VIDEO_FILENAME = "sample-video.mp4";
 	private static GoogleAuthorizationCodeFlow flow;
 	private static String loginUrl = null;
+	private static Credential credential = null;
 
-	public static Credential authorize(String credentialDatastore, InputStream secrets, String user) throws IOException {
-		List<String> scopes = new ArrayList();
-		scopes.add("https://www.googleapis.com/auth/youtube");
-		scopes.add("https://www.googleapis.com/auth/youtube.upload");
-		// Load client secrets.
-		Reader clientSecretReader = new InputStreamReader(secrets);
-		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, clientSecretReader);
-		// This creates the credentials datastore at ~/.oauth-credentials/${credentialDatastore}
-		FileDataStoreFactory fileDataStoreFactory = new FileDataStoreFactory(new File(System.getProperty("user.home") + "/" + CREDENTIALS_DIRECTORY));
-		DataStore<StoredCredential> datastore = fileDataStoreFactory.getDataStore(credentialDatastore);
-		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, scopes)
-				.setCredentialDataStore(datastore)
-				.setApprovalPrompt("force")
-				.setAccessType("offline").build();
-		// Build the local server and bind it to port 8080
-		LocalServerReceiver localReceiver = new LocalServerReceiver.Builder().setPort(8090).build();
-		// Authorize.
-		System.out.println("Credentials: " + flow.getCredentialDataStore().values());
-		return new AuthorizationCodeInstalledApp(flow, localReceiver).authorize(user);
-	}
-
-	public static GoogleCredential getServiceCredential(InputStream key) throws IOException {
-		List<String> scopes = new ArrayList();
-		scopes.add("https://www.googleapis.com/auth/youtube");
-		scopes.add("https://www.googleapis.com/auth/youtube.upload");
-		GoogleCredential credential = GoogleCredential.fromStream(key).createScoped(scopes);
+	public static Credential authorize() throws IOException {
 		credential.refreshToken();
 		return credential;
 	}
@@ -124,28 +101,30 @@ public class YoutubeManager {
 		secrets.close();
 	}
 
-	public static String getLoginUrl(InputStream secrets) throws IOException {
+	public static void getLoginUrl(InputStream secrets) throws IOException {
 		if (loginUrl == null) {
 			buildLoginUrl(secrets);
 		}
-		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Login URL: {0}", loginUrl);
-		return loginUrl;
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Ingrese a la URL: {0}", loginUrl);
 	}
 
-	public static Credential authorize(String authCode) throws IOException {
-		GoogleTokenResponse response = flow.newTokenRequest(authCode).setRedirectUri(CALLBACK_URI).execute();
-		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Token: {0}", response);
-		Credential credential = flow.createAndStoreCredential(response, "user");
-		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Credential: {0}", credential);
-		System.out.println("Credential access token is " + credential.getAccessToken());
-		System.out.println("Credential refresh token is " + credential.getRefreshToken());
-		return credential;
+	public static void authorize(String authCode) throws IOException {
+		if (credential == null) {
+			GoogleTokenResponse response = flow.newTokenRequest(authCode).setRedirectUri(CALLBACK_URI).execute();
+			Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Token: {0}", response);
+			credential = flow.createAndStoreCredential(response, "user");
+			Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Credential: {0}", credential);
+		} else {
+			Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Credencial ya existente.");
+		}
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Credential access token is " + credential.getAccessToken());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Credential refresh token is " + credential.getRefreshToken());
 	}
 
 	public static void uploadVideo(Credential credential, InputStream is) throws IOException {
 		// This object is used to make YouTube Data API requests.
 		youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName("youtube-cmdline-uploadvideo-sample").build();
-		System.out.println("Uploading: " + SAMPLE_VIDEO_FILENAME);
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Uploading: " + SAMPLE_VIDEO_FILENAME);
 		// Add extra information to the video before uploading.
 		Video videoObjectDefiningMetadata = new Video();
 		// Set the video to be publicly visible. This is the default
@@ -195,20 +174,20 @@ public class YoutubeManager {
 			public void progressChanged(MediaHttpUploader uploader) throws IOException {
 				switch (uploader.getUploadState()) {
 					case INITIATION_STARTED:
-						System.out.println("Initiation Started");
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Initiation Started");
 						break;
 					case INITIATION_COMPLETE:
-						System.out.println("Initiation Completed");
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Initiation Completed");
 						break;
 					case MEDIA_IN_PROGRESS:
-						System.out.println("Upload in progress");
-						System.out.println("Upload percentage: " + uploader.getProgress());
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Upload in progress");
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Upload percentage: " + uploader.getProgress());
 						break;
 					case MEDIA_COMPLETE:
-						System.out.println("Upload Completed!");
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Upload Completed!");
 						break;
 					case NOT_STARTED:
-						System.out.println("Upload Not Started!");
+						Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "Upload Not Started!");
 						break;
 				}
 			}
@@ -217,11 +196,11 @@ public class YoutubeManager {
 		// Call the API and upload the video.
 		Video returnedVideo = videoInsert.execute();
 		// Print data about the newly inserted video from the API response.
-		System.out.println("\n================== Returned Video ==================\n");
-		System.out.println("  - Id: " + returnedVideo.getId());
-		System.out.println("  - Title: " + returnedVideo.getSnippet().getTitle());
-		System.out.println("  - Tags: " + returnedVideo.getSnippet().getTags());
-		System.out.println("  - Privacy Status: " + returnedVideo.getStatus().getPrivacyStatus());
-		System.out.println("  - Video Count: " + returnedVideo.getStatistics().getViewCount());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "\n================== Returned Video ==================\n");
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "  - Id: " + returnedVideo.getId());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "  - Title: " + returnedVideo.getSnippet().getTitle());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "  - Tags: " + returnedVideo.getSnippet().getTags());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "  - Privacy Status: " + returnedVideo.getStatus().getPrivacyStatus());
+		Logger.getLogger(YoutubeManager.class.getName()).log(Level.INFO, "  - Video Count: " + returnedVideo.getStatistics().getViewCount());
 	}
 }

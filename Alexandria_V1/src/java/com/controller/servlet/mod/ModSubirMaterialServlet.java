@@ -88,7 +88,7 @@ public class ModSubirMaterialServlet extends HttpServlet {
                 idactual=Integer.toString(idmatup);
                 System.out.println("Dato enviado ID a subirvideo: " + idactual);
                 session.setAttribute("idmatup", idactual); 
-                //response.sendRedirect("jsp/moderador/subirvideo.jsp");
+                response.sendRedirect("jsp/moderador/subirvideo.jsp");
             }
             else {
                 idactual=Integer.toString(idmatup);

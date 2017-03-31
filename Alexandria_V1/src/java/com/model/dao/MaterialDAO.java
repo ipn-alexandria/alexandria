@@ -34,7 +34,7 @@ public class MaterialDAO {
             = "SELECT * FROM Material WHERE (idTema = ?)";
 
     private static final String SQL_UPDATE_PDF
-            = "UPDATE material SET pdf = ? WHERE (idMaterial = ?) ";
+            = "UPDATE Material SET pdf = ? WHERE (idMaterial = ?) ";
 
     private static final String SQL_READ_PDF 
             = "SELECT pdf FROM Material WHERE (idMaterial = ? )";
@@ -46,10 +46,10 @@ public class MaterialDAO {
             = "SELECT * FROM Material WHERE (filtroUno = ? AND filtroDos = ? )";
     
     private static final String SQL_UPDATE_FILTRO1
-            = "UPDATE material SET filtroUno = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
+            = "UPDATE Material SET filtroUno = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
     
     private static final String SQL_UPDATE_FILTRO2
-            = "UPDATE material SET filtroDos = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
+            = "UPDATE Material SET filtroDos = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
 
     public Connection conexion;
 

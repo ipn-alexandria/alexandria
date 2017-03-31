@@ -5,14 +5,12 @@
  */
 package com.controller.servlet;
 
-import com.google.api.client.auth.oauth2.Credential;
 import com.youtube.apiv3.YoutubeManager;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,10 +28,7 @@ public class Oauth2CallbackServlet extends HttpServlet {
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("code");
-		Credential credential = YoutubeManager.authorize(code);
-		HttpSession session = request.getSession();
-		session.setAttribute("ytCredential", credential);
-		response.sendRedirect("jsp/alumno/subirvideo.jsp?credential=1");
+		YoutubeManager.authorize(code);
 	}
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

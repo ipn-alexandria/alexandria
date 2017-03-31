@@ -186,7 +186,7 @@
 		   
 		</select>
                 <p> Observaciones </p>
-                <textarea name="obs" form="evf1" rows="4" cols="50"> </textarea>
+                <textarea name="obs" rows=4 cols=50> </textarea>
                 
 		<br><br>
 		<input type="submit" value="Enviar">

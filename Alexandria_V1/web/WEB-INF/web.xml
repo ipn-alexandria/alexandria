@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
     <listener>
         <listener-class>com.controller.servlet.AppContextListener</listener-class>
     </listener>
@@ -50,10 +53,6 @@
     <servlet>
         <servlet-name>Oauth2CallbackServlet</servlet-name>
         <servlet-class>com.controller.servlet.Oauth2CallbackServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>YoutubeUpload</servlet-name>
-        <servlet-class>com.controller.servlet.YoutubeUpload</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ModNavegar2Servlet</servlet-name>
@@ -238,10 +237,6 @@
     <servlet-mapping>
         <servlet-name>Oauth2CallbackServlet</servlet-name>
         <url-pattern>/oauth2callback</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>YoutubeUpload</servlet-name>
-        <url-pattern>/YoutubeUpload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ModNavegar2Servlet</servlet-name>
