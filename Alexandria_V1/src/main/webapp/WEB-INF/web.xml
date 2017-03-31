@@ -118,6 +118,10 @@
         <servlet-name>ProfEvF2Servlet</servlet-name>
         <servlet-class>com.controller.servlet.prof.ProfEvF2Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubirVideoServlet</servlet-name>
+        <servlet-class>com.controller.servlet.SubirVideoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -225,6 +229,10 @@
     <servlet-mapping>
         <servlet-name>ProfEvF2Servlet</servlet-name>
         <url-pattern>/ProfEvF2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubirVideoServlet</servlet-name>
+        <url-pattern>/SubirVideoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

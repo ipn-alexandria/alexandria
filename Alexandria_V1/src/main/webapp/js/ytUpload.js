@@ -143,6 +143,7 @@ UploadVideo.prototype.uploadFile = function (file) {
 			var uploadResponse = JSON.parse(data);
 			this.videoId = uploadResponse.id;
 			$('#video-id').text(this.videoId);
+			$('#urlVideo').attr('value', this.videoId);
 			$('.post-upload').show();
 			this.pollForVideoStatus();
 		}.bind(this)
@@ -181,6 +182,7 @@ UploadVideo.prototype.pollForVideoStatus = function () {
 					case 'processed':
 //						$('#player').append(response.items[0].player.embedHtml);
 						$('#post-upload-status').append('<p>Procesado. ' + response.items[0].status.uploadStatus + '</p>');
+						$('#buttonContinuar').show();
 						break;
 						// All other statuses indicate a permanent transcoding failure.
 					default:
