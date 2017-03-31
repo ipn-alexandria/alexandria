@@ -49,7 +49,7 @@ public class MaterialDAO {
             = "UPDATE Material SET filtroUno = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
     
     private static final String SQL_UPDATE_FILTRO2
-            = "UPDATE Material SET filtroDos = ?, nivelMaterial = ? WHERE (idMaterial = ?) ";
+            = "UPDATE Material SET filtroDos = ?, nivelMaterial = ?, visibilidadMaterial = ? WHERE (idMaterial = ?) ";
 
     public Connection conexion;
 
@@ -389,7 +389,8 @@ public class MaterialDAO {
             PreparedStatement ps = con.obtenerConexion().prepareStatement(SQL_UPDATE_FILTRO2);
             ps.setInt(1, a.getFiltroDos());
             ps.setInt(2, a.getNivelMaterial());
-            ps.setInt(3, a.getIdMaterial());
+            ps.setInt(3, a.getVisibilidadMaterial());
+            ps.setInt(4, a.getIdMaterial());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(MaterialDAO.class.getName()).log(Level.SEVERE, null, ex);

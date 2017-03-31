@@ -78,9 +78,10 @@ public class ProfEvF2Servlet extends HttpServlet {
             
             if (rfiltro2 == 1) {
                 m1.setIdMaterial(idmat);
-                m1.setFiltroDos(rfiltro2);
+                m1.setFiltroDos(1);
                 m1.setNivelMaterial(rnivel);
-                mdao1.updateFILTRO1(m1);
+                m1.setVisibilidadMaterial(1);
+                mdao1.updateFILTRO2(m1);
                 
                 msj = "\nSu material: " + m2.getNombreMaterial() + "\n\nMaterial aprobado en: Filtro 2" + "\n\nComentarios: " + robs;
                 je.enviarEmail(email, msj);
