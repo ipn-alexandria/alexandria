@@ -1,44 +1,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
-        System.out.print("Acceso denegado Principal");
-	response.sendRedirect("../../index.jsp");
-        return;
-        
-    }
-    
-  try{
-    
-    String cTipo;
-    cTipo = session.getAttribute("idTipo").toString();
-    
-    
-    
-    
-    if ((!cTipo.equals("4"))) {
-        System.out.print("Acceso denegado del try");
-        System.out.print(cTipo+"if");
-        session.invalidate();
-	response.sendRedirect("../../index.jsp");
-        return;
-    }
-    
-    
-    
-    System.out.print("Validado con exito");
-    System.out.print(cTipo);
-    
-    
-    }catch(Exception e){
-         System.out.print("Acceso denegado del Catch");
-        response.sendRedirect("../../index.jsp");
-       
-        return;
-    
-    }
-    
-    %>
+	if ((session.getAttribute("idTipo") == null) || (session.getAttribute("IdTipo") == "")) {
+		System.out.print("Acceso denegado Principal");
+		response.sendRedirect("../../index.jsp");
+		return;
+	}
+	try {
+		String cTipo;
+		cTipo = session.getAttribute("idTipo").toString();
+		if ((!cTipo.equals("4"))) {
+			System.out.print("Acceso denegado del try");
+			System.out.print(cTipo + "if");
+			session.invalidate();
+			response.sendRedirect("../../index.jsp");
+			return;
+		}
+		System.out.print("Validado con exito");
+		System.out.print(cTipo);
+	} catch (Exception e) {
+		System.out.print("Acceso denegado del Catch");
+		response.sendRedirect("../../index.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -82,15 +67,21 @@
 					<div class="post-upload">
 						<p>Video subido con ID <span id="video-id"></span>.</p>
 						<span id="post-upload-status"></span>
+						<form method="post" action="../../SubirVideoServlet">
+							<input type="hidden" id="urlVideo" name="urlVideo" value="" />
+							<input type="submit" id="buttonContinuar" />
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<jsp:include page="../../footer.jsp" />
 		<script src="../../js/jquery-1.10.2.min.js"></script>
 		<script src="../../js/ytCorsUpload.js"></script>
 		<script src="../../js/ytUpload.js"></script>
 		<script>
+			$(document).ready(function () {
+				$('#buttonContinuar').hide();
+			});
 			var myToken = null;
 			function getTokenFromServer() {
 				console.log("Obteniendo token.");

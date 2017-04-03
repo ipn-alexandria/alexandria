@@ -65,7 +65,7 @@ public class YoutubeManager {
 	/**
 	 * Callback URI.
 	 */
-//	private static final String CALLBACK_URI = "http://localhost:8080/oauth2callback";
+//	private static final String CALLBACK_URI = "http://localhost:8080/Alexandria_V1/oauth2callback";
 	private static final String CALLBACK_URI = "http://alexandriav1.jl.serv.net.mx/oauth2callback";
 	/**
 	 * MIME type.
