@@ -43,8 +43,7 @@ public class SubirVideoServlet extends HttpServlet {
 			Material m1 = new Material();
 			m1.setIdMaterial(idmat);
 			Material m2 = mdao.read(m1);
-			m2.setDireccionMaterial(request.getParameter("urlVideo"));
-//			m2.setDireccionMaterial("http://www.youtube.com/embed/" + request.getParameter("urlVideo"));
+			m2.setDireccionMaterial("http://www.youtube.com/embed/" + request.getParameter("urlVideo"));
 			mdao.update(m2);
 			response.sendRedirect("jsp/misc/successupload.jsp");
 		}
