@@ -99,7 +99,7 @@ UploadVideo.prototype.uploadFile = function (file) {
 			categoryId: this.categoryId
 		},
 		status: {
-			privacyStatus: 'private'
+			privacyStatus: 'unlisted'
 		}
 	};
 	var uploader = new MediaUploader({
