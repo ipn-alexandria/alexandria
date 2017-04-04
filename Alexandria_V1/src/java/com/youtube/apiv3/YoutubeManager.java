@@ -78,10 +78,11 @@ public class YoutubeManager {
 	private static GoogleAuthorizationCodeFlow flow;
 	private static String loginUrl = null;
 	private static Credential credential = null;
-
-	public static Credential authorize() throws IOException {
-		credential.refreshToken();
-		return credential;
+        
+        public static Credential authorize() throws IOException {
+		Credential loadedCredential  = flow.loadCredential("user");
+		loadedCredential.refreshToken();
+		return loadedCredential;
 	}
 
 	private static void buildLoginUrl(InputStream secrets) throws IOException {
