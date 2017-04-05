@@ -274,9 +274,10 @@ button:hover {
 
 .datagrid table tbody td { 
     color: #008080; 
-    /*color:#FFFFFF;*/
+    /*color:#000000;*/
     border-left: 1px solid #008080;
-    font-size: 12px;
+    background: #FFFFFF;
+    font-size: 14px;
     font-weight: bold;
 }
 
