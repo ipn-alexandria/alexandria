@@ -98,7 +98,7 @@
 	    </div>
 	</nav>
 	<!-- End Header -->
-        <jsp:include page="../misc/carousel2.jsp" />
+        <jsp:include page="../misc/carouselModerador.jsp" />
 	<!-- Begin #services-section -->
 	<section id="services" class="services-section section-global-wrapper">
 	    <div class="container">
