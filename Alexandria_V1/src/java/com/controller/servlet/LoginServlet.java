@@ -24,7 +24,8 @@ public class LoginServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-
+            
+            request.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
 
             //

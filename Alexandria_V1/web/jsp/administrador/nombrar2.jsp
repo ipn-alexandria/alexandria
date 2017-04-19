@@ -68,7 +68,7 @@
 		<div class="content">
 			<div class="cap">
 				<div class="title">
-				 	<img src="./img/resources/logo.png" width="25%">
+				 	<img src="../../img/resources/logo.png" width="25%">
 				</div>
 			</div>
 			<form>

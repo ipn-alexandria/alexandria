@@ -104,7 +104,7 @@
 					    <c:out value="${usuario.idUsuario}" />
 					</td>
 					<td>
-					    <c:out value="${usuario.nombreUsuario}" />
+					    <c:out value="${usuario.nombre}" />
 					</td>
 					<td>
 					    <c:out value="${usuario.apellidoPaterno}" />

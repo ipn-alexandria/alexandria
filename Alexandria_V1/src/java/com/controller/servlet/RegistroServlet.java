@@ -25,7 +25,7 @@ public class RegistroServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet RegistroServlet at " + request.getContextPath() + "</h1>");
             
-            
+            request.setCharacterEncoding("UTF-8");
             String nusu = request.getParameter("Usuario");
             String cusu = request.getParameter("Pass");
             String nombre = request.getParameter("Nombre");

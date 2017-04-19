@@ -27,6 +27,7 @@ public class SubirMaterialServlet extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet SubirMaterialServlet at " + request.getContextPath() + "</h1>");
             
+            request.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
             
             String nomat = request.getParameter("NombreMaterial");
