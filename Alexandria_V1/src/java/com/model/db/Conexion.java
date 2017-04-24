@@ -22,12 +22,12 @@ public class Conexion {
     
     public Connection obtenerConexion() {
         String userName = "root";
-//        String userPassword = "IXBshx92355";
-//        String urlBd = "jdbc:mysql://mysql27473-alexandriav1.jl.serv.net.mx:3306/aldb1";
+        String userPassword = "IXBshx92355";
+        String urlBd = "jdbc:mysql://mysql27473-alexandriav1.jl.serv.net.mx:3306/aldb1";
         
         //Acceso Local
-         String userPassword = "mike";
-        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
+//         String userPassword = "mike";
+//        String urlBd = "jdbc:mysql://127.0.0.1:3306/aldb1";
         //
         Connection con = null;
         try {
