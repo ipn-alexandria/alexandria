@@ -58,14 +58,38 @@ public class RegistroServlet extends HttpServlet {
                 u1.setEstado(1);
             }
             
-            udao1.create(u1);
+            Usuario u3 = new Usuario();
+            Usuario u4 = new Usuario();
+            UsuarioDAO udao2 = new UsuarioDAO();
             
-            Jemail je = new Jemail();;
-            String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
-            je.enviarEmail(email, msj);
+            u3.setEmail(email);
+            u4 = udao2.readEmail(u3);
+            
+            if (u4 == null) {
+                System.out.println("EL CORREO NO EXISTIA, CORRECTO");
+                udao1.create(u1);
+
+                Jemail je = new Jemail();;
+                String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
+                je.enviarEmail(email, msj);
+
+                response.sendRedirect("jsp/misc/successreg.jsp");
+            }
+            else {
+                System.out.println("EL CORREO SI EXISTIA, REPETIDO");
+                response.sendRedirect("jsp/misc/failreg.jsp");
+            }
+            
             
                     
-            response.sendRedirect("jsp/misc/successreg.jsp");
+//            udao1.create(u1);
+//            
+//            Jemail je = new Jemail();;
+//            String msj = "\nUsuario: " + nusu + "\nContraseña: " + cusu;
+//            je.enviarEmail(email, msj);
+//            
+//                    
+//            response.sendRedirect("jsp/misc/successreg.jsp");
             
             
             
