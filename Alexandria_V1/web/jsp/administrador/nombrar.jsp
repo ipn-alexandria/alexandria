@@ -80,12 +80,12 @@
 		    <img src="../../img/resources/logo.png" width="17%">
 		</div>
 	    </div>
-	    <div class="datagrid">
+	    <!--<div class="datagrid">-->
 		<c:if test="${empty ListaUsuario}">
 		    <p>No hay datos.</p>
 		</c:if>
 		<c:if test="${not empty ListaUsuario}">
-		    <table>
+		    <table bgcolor="#FFFFFF" class="table center" style="color:#227751" border="1px">
 			<thead>
 			    <tr>
                                 <th>ID</th>
@@ -136,7 +136,7 @@
 			</tbody>
 		    </table>
 		</c:if>
-	    </div>
+	    <!--</div>-->
 	    <a href="admin.jsp"><button type="button">Regresar</button></a>
 	</div>
 	

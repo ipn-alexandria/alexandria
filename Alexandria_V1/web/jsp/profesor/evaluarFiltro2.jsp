@@ -78,12 +78,12 @@ session.setAttribute("ListaMaterial2", ListaMaterial2);
 		    <img src="../../img/resources/logo.png" width="17%">
 		</div>
 	    </div>
-	    <div class="datagrid">
+	    <!--<div class="datagrid">-->
 		<c:if test="${empty ListaMaterial2}">
 		    <p>No hay datos.</p>
 		</c:if>
 		<c:if test="${not empty ListaMaterial2}">
-		    <table>
+		    <table bgcolor="#FFFFFF" class="table center" style="color:#227751" border="1px">
 			<thead>
 			    <tr>
 				<th>Nombre</th>
@@ -136,7 +136,7 @@ session.setAttribute("ListaMaterial2", ListaMaterial2);
 			</tbody>
 		    </table>
 		</c:if>
-	    </div>
+	    <!--</div>-->
 	    <a href="profesor.jsp"><button type="button">Regresar</button></a>
 	</div>
 	
